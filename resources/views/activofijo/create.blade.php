@@ -3,7 +3,7 @@
 @section('content')
 <div>
 	<div class="pull-right">
-		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"> Regresar</a>
+		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"> volver al listado</a>
 	</div>
 	<h1>Nuevo Activo {{ucfirst($tipo)}}</h1>	
 </div>
@@ -41,9 +41,11 @@
     </div>
     <div class="col-md-2">
       <label>Fecha Alta</label>
+      
       {!!Form::text('FecAlta', @$FecAlta, array("class"=>"form-control","placeholder"=>"Fecha Alta"))!!}
     </div>
-  </fieldset>
+
+  </fieldset><br>
 
 @include('activofijo.forms',['txt_btn' => 'Guardar'])
 

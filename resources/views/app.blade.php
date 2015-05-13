@@ -7,10 +7,7 @@
 	<title>IVEA :: Sistema de Control de Activo Fijo</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-<<<<<<< HEAD
 	<link href="{{ asset('/css/font-awesome.css') }}" rel="stylesheet">
-=======
->>>>>>> 6d39c7245e43b2804b83dc80c2da452c1e41a2c2
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
