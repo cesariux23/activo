@@ -71,9 +71,9 @@ class EmpleadosController extends Controller {
 	 */
   public function show($id)
     {
-        $post = Empleado::findOrFail($id);
+        $empleado = Empleado::findOrFail($id);
 
-        return view('empleados.show', compact('post'));
+        return view('empleados.show', compact('empleado'));
     }
 
 	/**
