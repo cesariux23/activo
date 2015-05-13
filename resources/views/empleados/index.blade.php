@@ -7,7 +7,10 @@
 	</div>
 	<h1>Listado de Empleados</h1>	
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6d39c7245e43b2804b83dc80c2da452c1e41a2c2
 <div class="well">
 		{!! Form::model(Request::all(),array('route' => 'empleados.index', 'method' => 'GET','class' => 'form-inline')) !!}
 			<div class="form-group">
