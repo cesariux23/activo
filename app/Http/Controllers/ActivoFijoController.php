@@ -46,6 +46,7 @@ class ActivoFijoController extends Controller {
 		$activoestatal = ActivoFijo::all();
 		$tipo= $request->segment(1);
 
+
 		$proveedores = Proveedor::all();
 		$adquisicion = TipoAdquisicion::all();
 		$rubro = Rubro::all();
@@ -93,8 +94,17 @@ class ActivoFijoController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id, Request $request)
 	{
+		$post = ActivoFijo::find($id);
+        $activofijos = ActivoFijo::all()->lists('Movto','Gpo');
+        $tipo= $request->segment(1);
+
+		$proveedores = Proveedor::all();
+		$adquisicion = TipoAdquisicion::all();
+		$rubro = Rubro::all();
+
+        return view('activofijo.edit', compact('post','ActivoFijos','tipo','proveedores','adquisicion','rubro'));
 		//
 	}
 

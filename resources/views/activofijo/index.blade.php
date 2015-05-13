@@ -40,7 +40,7 @@
 			<th>Localización</th>
 
 			
-			<th width="150px">Acciones</th>
+			<th width="200px">Acciones</th>
 		</tr>
 	</thead>
 
