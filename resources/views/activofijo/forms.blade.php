@@ -141,7 +141,7 @@
 	</div>
 	</fieldset>
 	<br>
-	@include('forms.botones',['txt_btn' => $txt_btn, 'path'=>'empleados'])
+	@include('forms.botones',['txt_btn' => $txt_btn, 'path'=>'activofijo'])
 
 
 	<!-- Modal -->

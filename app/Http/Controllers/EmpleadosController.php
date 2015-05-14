@@ -23,15 +23,15 @@ class EmpleadosController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-        $oficina=$request->get('IdOfna');
-        $empleado=$request->get('IdEmp');
-        $nombre=$request->get('DescEmp');
-		$empleados = Empleado::where('Baja',0)->ID($empleado)->nombre($nombre)->oficina($oficina)->paginate();
-        $oficinas=array(''=>"-- Seleccione --")+Oficina::lists('DescOfna', 'IdOfna');
-		return view('empleados/index', compact('empleados','oficinas','empleado','oficina','nombre'));
+    $oficina=$request->get('IdOfna');
+    $empleado=$request->get('IdEmp');
+    $nombre=$request->get('DescEmp');
+    $empleados = Empleado::where('Baja',0)->ID($empleado)->nombre($nombre)->oficina($oficina)->paginate();
+    $oficinas=array(''=>"-- Seleccione --")+Oficina::lists('DescOfna', 'IdOfna');
+    return view('empleados/index', compact('empleados','oficinas','empleado','oficina','nombre'));
 		//return view('empleados/index')->with('empleados',Empleado::all());
-		
-	}
+    
+  }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -52,16 +52,18 @@ class EmpleadosController extends Controller {
 	public function store(Empleados $emp)
 	{
 		 //Se guardan los valores nuevos
-        $o= new Empleado();
-        $o->IdEmp=$emp->input('IdEmp');
-        $o->DescEmp=$emp->input('DescEmp');
-        $o->IdOfna=$emp->input('oficina');
-        $o->save();
+    $o= new Empleado();
+    $o->IdEmp=$emp->input('IdEmp');
+    $o->DescEmp=$emp->input('DescEmp');
+    $o->IdOfna=$emp->input('oficina');
+        //guarda los datos
+    $o->save();
 
-    	//se notifica
-    	flash()->success('Se ha registrado correctamente.');
-        return redirect()->route('empleados.index');
-	}
+        //se notifica
+    flash()->success('Se ha registrado correctamente.');
+        //redirecciona al index
+    return redirect()->route('empleados.index');
+  }
 
 	/**
 	 * Display the specified resource.
@@ -70,15 +72,15 @@ class EmpleadosController extends Controller {
 	 * @return Response
 	 */
   public function show($id)
-    {
+  {
 
-        $post = Empleado::findOrFail($id);
+    $post = Empleado::findOrFail($id);
 
-        return view('empleados.show', compact('post'));
-        $empleado = Empleado::findOrFail($id);
+    return view('empleados.show', compact('post'));
+    $empleado = Empleado::findOrFail($id);
 
-        return view('empleados.show', compact('empleado'));
-    }
+    return view('empleados.show', compact('empleado'));
+  }
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -86,13 +88,13 @@ class EmpleadosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	 public function edit($id)
-    {
-        $post = Empleado::find($id);
-        $oficinas = Oficina::all()->lists('DescOfna','IdOfna');
+  public function edit($id)
+  {
+    $post = Empleado::find($id);
+    $oficinas = Oficina::all()->lists('DescOfna','IdOfna');
 
-        return view('empleados.edit', compact('post','oficinas'));
-    }
+    return view('empleados.edit', compact('post','oficinas'));
+  }
 
   /**
      * Update the specified resource in storage.
@@ -101,16 +103,16 @@ class EmpleadosController extends Controller {
      * @return Response
      */
 
-    
-    public function update(Empleados $emp)
-    {
+  
+  public function update(Empleados $emp)
+  {
         //$o = Oficina::find();        
-        $input = array_except($emp->Input(),array('_token','_method','IdEmp'));
-        Empleado::where('IdEmp',$emp->input('IdEmp'))->update($input);
+    $input = array_except($emp->Input(),array('_token','_method','IdEmp'));
+    Empleado::where('IdEmp',$emp->input('IdEmp'))->update($input);
 
-        flash()->success('Se ha guardado los cambios correctamente.');
-        return redirect()->route('empleados.index');
-    }
+    flash()->success('Se ha guardado los cambios correctamente.');
+    return redirect()->route('empleados.index');
+  }
 
 
     /**
@@ -125,20 +127,20 @@ class EmpleadosController extends Controller {
 
         //return Redirect::route('empleados.index');
 
-        $o = Empleado::findOrFail($id);
-        if($request->input('baja')==1){
-          $o->Baja=1;
-          $o->save();flash()->success('Se ha dado de baja correctamente el empleado.');
-        }
-        else{
-          $o->delete();
-          flash()->success('Se ha eleminado correctamente el empleado.');
-        }
-        
+      $o = Empleado::findOrFail($id);
+      if($request->input('baja')==1){
+        $o->Baja=1;
+        $o->save();flash()->success('Se ha dado de baja correctamente el empleado.');
+      }
+      else{
+        $o->delete();
+        flash()->success('Se ha eleminado correctamente el empleado.');
+      }
+      
 
-        
-        return redirect()->route('empleados.index');
+      
+      return redirect()->route('empleados.index');
     }
 
-}
+  }
 

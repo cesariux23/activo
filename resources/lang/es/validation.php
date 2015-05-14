@@ -106,12 +106,27 @@ return [
 
 	'attributes' => [
     	'IdOfna' => 'ID',
-  		'DescOfna' => 'Nombre',
+  		'DescOfna' => 'Descripcion Oficina',
   		'DirOfna'  => 'Dirección',
   		'IdTipAdq'  => 'Adquisición',
   		'DescAdq'  => 'Descripción Adquisición',
   		'IdEmp' => 'ID',
-  		'DescEmp' => 'NOMBRE COMPLETO',
+  		'DescEmp' => 'Nombre Completo',
+  		'Gpo' => 'Grupo',
+  		'Clave' => 'Clave',
+  		'NumInv' => 'Número de Inventario',
+  		'AnoPrg' => 'Año P.',
+  		'Denomin' => 'Denominación',
+  		'FecAlta' => 'Fecha Alta',
+  		'DescArt' => 'Descripción Artículo',
+  		'IdProv' => 'Id Proveedor',
+  		'NumFact' => 'Número de Factura',
+  		'FecFact' => 'Fecha Factura',
+  		'Costo' => 'Costo',
+  		'IdTipAdq' => 'Id Tipo Adquisición',
+  		'IdRub' => 'Id Rubro',
+  		'Edo' => 'Estado',
+  		'Localiz' => 'Localizado',
 
   	]
 ];

@@ -25,7 +25,20 @@ class ActivoFijos extends Request {
 			
 			"Gpo"=>"required|unique:movimientos,Gpo,".$this->input('Gpo').",Gpo|min:1",
 			"Clave"=>"required",
-			"NumInv"=>"required"
+			"NumInv"=>"required",
+			"AnoPrg"=>"required",
+			//"TpoBien"=>"required",
+			"Denomin"=>"required",
+			"FecAlta"=>"required",
+			"DescArt"=>"required",
+			//"IdProv"=>"required",
+			"NumFact"=>"required",
+			"FecFact"=>"required",
+			"Costo"=>"required",
+			//"IdTipAdq"=>"required",
+			//"IdRub"=>"required",
+			"Edo"=>"required",
+			//"Localiz"=>"required"
 		];
 	}
 }
