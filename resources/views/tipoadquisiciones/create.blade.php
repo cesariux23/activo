@@ -17,6 +17,6 @@
 	{!!Form::text('IdTipAdq', old('IdTipAdq'), array("class"=>"form-control","placeholder"=>"Adquisicion"))!!}
 </div>
 
-@include('tipoadquisiciones.forms',['txt_btn' => 'Guardar Adquisicion'])
+@include('tipoadquisiciones.forms',['txt_btn' => 'Guardar'])
 
 @endsection

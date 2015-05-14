@@ -17,6 +17,6 @@
 	{!!Form::text('IdEmp', old('IdEmp'), array("class"=>"form-control","placeholder"=>"Número de Empleado"))!!}
 </div>
 
-@include('empleados.forms',['txt_btn' => 'Guardar Empleado'])
+@include('empleados.forms',['txt_btn' => 'Guardar'])
 
 @endsection

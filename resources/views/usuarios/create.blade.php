@@ -17,6 +17,6 @@
 	{!!Form::text('Idtfcn', old('Idtfcn'), array("class"=>"form-control","placeholder"=>"Id Usuario","style"=>"text-transform:uppercase;", "onkeyup"=>"javascript:this.value=this.value.toUpperCase();"))!!}
 </div>
 
-@include('usuarios.forms',['txt_btn' => 'Guardar Usuario'])
+@include('usuarios.forms',['txt_btn' => 'Guardar'])
 
 @stop

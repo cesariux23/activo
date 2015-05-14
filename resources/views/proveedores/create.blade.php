@@ -17,6 +17,6 @@
 	{!!Form::text('IdProv', old('IdProv'), array("class"=>"form-control","placeholder"=>"Número de Proveedor"))!!}
 </div>
 
-@include('proveedores.forms',['txt_btn' => 'Guardar Proveedor'])
+@include('proveedores.forms',['txt_btn' => 'Guardar'])
 
 @stop

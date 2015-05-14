@@ -18,6 +18,6 @@
 
 </div>
 
-@include('oficinas.form',['txt_btn' => 'Guardar adscripción'])
+@include('oficinas.form',['txt_btn' => 'Guardar'])
 
 @endsection

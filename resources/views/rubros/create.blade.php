@@ -17,6 +17,6 @@
 	{!!Form::text('IdRub', old('IdRub'), array("class"=>"form-control","placeholder"=>"Rubro", "style"=>"text-transform:uppercase;", "onkeyup"=>"javascript:this.value=this.value.toUpperCase();"))!!}
 </div>
 
-@include('rubros.forms',['txt_btn' => 'Guardar Rubro'])
+@include('rubros.forms',['txt_btn' => 'Guardar'])
 
 @endsection
