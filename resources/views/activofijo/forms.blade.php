@@ -19,7 +19,7 @@
 		</div>
 		<div class="col-md-1">
 			<label>Tipo</label>
-			{!!Form::text('TpoBien', @$TpoBien, array("class"=>"form-control","placeholder"=>"Tipo"))!!}
+			{!!Form::text('TpoBien', @$TpoBien, array("class"=>"form-control","placeholder"=>"Tipo", 'disabled' => 'disabled'))!!}
 		</div>
 		<div class="col-md-2">
 			<label>Denominación</label>

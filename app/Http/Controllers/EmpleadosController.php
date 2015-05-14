@@ -26,7 +26,7 @@ class EmpleadosController extends Controller {
         $oficina=$request->get('IdOfna');
         $empleado=$request->get('IdEmp');
         $nombre=$request->get('DescEmp');
-		$empleados = Empleado::ID($empleado)->nombre($nombre)->oficina($oficina)->paginate();
+		$empleados = Empleado::where('Baja',0)->ID($empleado)->nombre($nombre)->oficina($oficina)->paginate();
         $oficinas=array(''=>"-- Seleccione --")+Oficina::lists('DescOfna', 'IdOfna');
 		return view('empleados/index', compact('empleados','oficinas','empleado','oficina','nombre'));
 		//return view('empleados/index')->with('empleados',Empleado::all());
@@ -119,17 +119,24 @@ class EmpleadosController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         //Oficina::destroy($id);
 
         //return Redirect::route('empleados.index');
 
         $o = Empleado::findOrFail($id);
+        if($request->input('baja')==1){
+          $o->Baja=1;
+          $o->save();flash()->success('Se ha dado de baja correctamente el empleado.');
+        }
+        else{
+          $o->delete();
+          flash()->success('Se ha eleminado correctamente el empleado.');
+        }
+        
 
-        $o->delete();
-
-        flash()->success('Se ha eleminado correctamente el empleado.');
+        
         return redirect()->route('empleados.index');
     }
 

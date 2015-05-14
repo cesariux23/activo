@@ -10,7 +10,7 @@
 
 @include('forms.errores')
 
-{!!Form::open(array('url' =>$tipo.'/activofijo'))!!}
+{!!Form::model($activofijo,array('url' =>$tipo.'/activofijo'))!!}
 
 @include('activofijo.forms',['txt_btn' => 'Guardar'])
 
