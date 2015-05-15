@@ -87,11 +87,11 @@ class TipoAdquisicionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
 				//$o = Oficina::find();        
-        $input = array_except($emp->Input(),array('_token','_method','IdTipAdq'));
-        TipoAdquisicion::where('IdTipAdq',$emp->input('IdTipAdq'))->update($input);
+        $input = array_except($request->Input(),array('_token','_method','IdTipAdq'));
+        TipoAdquisicion::where('IdTipAdq',$request->input('IdTipAdq'))->update($input);
 
         flash()->success('Se ha guardado los cambios correctamente.');
         return redirect()->route('tipoadquisiciones.index');
