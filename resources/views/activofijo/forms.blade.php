@@ -27,8 +27,7 @@
 		</div>
 		<div class="col-md-2">
 			<label>Fecha Alta</label>
-
-			{!!Form::text('FecAlta', @$FecAlta, array("id"=>"FecAlta", "class"=>"form-control","placeholder"=>"Fecha Alta"))!!}
+			{!!Form::text('FecAlta', @$FecAlta, array("id"=>"FecAlta", "class"=>"form-control","placeholder"=>"AÑO/MES/DIA"))!!}
 		</div>
 	</div>
 </fieldset>
@@ -38,7 +37,8 @@
 <fieldset>
 	<legend>Descripción del Artículo:</legend>
 	<div class="form-group">
-		{!!Form::textarea('DescArt', @$DescArt, array("class"=>"form-control", "rows"=>"3","placeholder"=>"Descripción"))!!}
+		{!!Form::textarea('DescArt', @$DescArt, array("class"=>"form-control", "rows"=>"3","placeholder"=>"Descripción","style"=>"text-transform:uppercase;", "onkeyup"=>"javascript:this.value=this.value.toUpperCase();"))!!}
+
 	</div>
 </fieldset>
 
@@ -109,7 +109,7 @@
 	</div>
 	<div class="col-md-2">
 		<label>Estado</label>
-		{!!Form::text('Edo', @$Edo, array("class"=>"form-control","placeholder"=>"Estado"))!!}
+		{!!Form::text('Edo', @$Edo, array("class"=>"form-control","placeholder"=>"Estado","style"=>"text-transform:uppercase;", "onkeyup"=>"javascript:this.value=this.value.toUpperCase();"))!!}
 	</div>
 	</div>
 </fieldset>
@@ -123,11 +123,11 @@
 	</div>
 	<div class="col-md-2">
 		<label>Usuario Responsable</label>
-		{!!Form::text('DescEmp', @$DescEmp, array("class"=>"form-control","placeholder"=>"Nombre"))!!}
+		{!!Form::text('DescEmp', @$DescEmp, array("class"=>"form-control","placeholder"=>"Nombre","style"=>"text-transform:uppercase;", "onkeyup"=>"javascript:this.value=this.value.toUpperCase();"))!!}
 	</div>
 	<div class="col-md-2">
 		<label>Departamento</label>
-		{!!Form::text('DescOfna', @$DescOfna, array("class"=>"form-control","placeholder"=>"Departamento"))!!}
+		{!!Form::text('DescOfna', @$DescOfna, array("class"=>"form-control","placeholder"=>"Departamento","style"=>"text-transform:uppercase;", "onkeyup"=>"javascript:this.value=this.value.toUpperCase();"))!!}
 	</div>
 
 	<div class="col-md-6">.¿El bien está actualmente localizado físicamente?
