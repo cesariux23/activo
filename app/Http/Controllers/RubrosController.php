@@ -87,11 +87,11 @@ class RubrosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Rubros $rub)
 	{
-		//$o = Oficina::find();        
-        $input = array_except($emp->Input(),array('_token','_method','IdRub'));
-        Rubro::where('IdRub',$emp->input('IdRub'))->update($input);
+		
+        $input = array_except($rub->Input(),array('_token','_method','IdRub'));
+        Rubro::where('IdRub',$rub->Input('IdRub'))->update($input);
 
         flash()->success('Se ha guardado los cambios correctamente.');
         return redirect()->route('rubros.index');
