@@ -49,6 +49,10 @@ class ActivoFijo extends Model {
         # Concatena el numero de inventario
         return 'INEA-'.$this->Gpo.'-'.$this->Clave.'-'.sprintf('%05d', $this->NumInv).'-'.substr($this->AnoPrg, 2,2) ;
     }
+    public function detalles()
+    {
+        return $this->hasMany('ActivoFijo\MovtosDetalle', 'Movto','Movto');
+    }
 }
 
 

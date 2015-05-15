@@ -16,8 +16,13 @@ class MovtosDetalle extends Model {
         return $this->belongsTo('ActivoFijo\Movimiento', 'Movto','Movto');
     }
 
-    	public function empleado()
+    public function empleado()
     {
         return $this->belongsTo('ActivoFijo\Empleado', 'IdEmp','IdEmp');
+    }
+
+    public function ubicacion()
+    {
+        return $this->belongsTo('ActivoFijo\Oficina', 'Ubicac','IdOfna');
     }
 }

@@ -13,7 +13,13 @@ use ActivoFijo\Proveedor;
 use ActivoFijo\TipoAdquisicion;
 //modelo Rubro
 use ActivoFijo\Rubro;
+//modelo Empleado
+use ActivoFijo\Empleado;
+//modelo Oficina
+use ActivoFijo\Oficina;
 
+//modelo MovtosDetalle
+use ActivoFijo\MovtosDetalle;
 //Request Validator
 use ActivoFijo\Http\Requests\ActivoFijos;
 
@@ -48,13 +54,23 @@ class ActivoFijoController extends Controller {
 		$activofijo->TpoBien=
 		$tipo= $request->segment(1);
 		$activofijo->TpoBien=strtoupper(substr($tipo,0,1));
-
-
+		$empleados=Empleado::where('Baja',0)->get();
+		$oficinas=Oficina::all();
 		$proveedores = Proveedor::all();
 		$adquisicion = TipoAdquisicion::all();
 		$rubro = Rubro::all();
 
-		return view('activofijo.create', compact('activofijo', 'tipo','proveedores','adquisicion','rubro'));
+		//crea detalle por default
+		$detalle=new MovtosDetalle;
+		//asigna valores por defecto
+		$detalle->FecMovto=date('Y-m-d');
+		$detalle->IdEmp='123456';
+		$detalle->Ubicac='1111';
+		//crea un arreglo
+		$detalles=[$detalle];
+		$activofijo->detalle=$detalle;
+
+		return view('activofijo.create', compact('detalles','activofijo', 'tipo','proveedores','adquisicion','rubro', 'empleados','oficinas'));
 	}
 
 	/**
@@ -120,8 +136,14 @@ class ActivoFijoController extends Controller {
 	 */
 	public function show($id, Request $request)
 	{
-		//
-		echo ($id);
+		$bien = ActivoFijo::find($id);
+		$tipo= $request->segment(1);
+		$proveedores = Proveedor::all();
+		$adquisicion = TipoAdquisicion::all();
+		$empleados=Empleado::where('Baja',0)->get();
+		$oficinas=Oficina::all();
+		$rubro = Rubro::all();
+		return view('activofijo.show',compact('tipo','bien','proveedores','adquisicion','rubro','empleados','oficinas'));
 	}
 
 	/**

@@ -14,5 +14,10 @@ class Movimiento extends Model {
     {
         return $this->belongsTo('ActivoFijo\Proveedor', 'IdProv','IdProv');
     }
+    public function detalles()
+    {
+        return $this->hasMany('ActivoFijo\MovtosDetalleaa', 'Movto','Movto');
+    }
+
 }
 

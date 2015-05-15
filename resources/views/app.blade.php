@@ -9,6 +9,8 @@
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<!-- El CSS del Font Awesome-->
 	<link href="{{ asset('/css/font-awesome.css') }}" rel="stylesheet">
+	<!-- El CSS del Font Awesome-->
+	<link href="{{ asset('/css/ivea.css') }}" rel="stylesheet">
 	<!-- El CSS del Calendario -->
 	<link href="{{ asset('/css/calendario.css') }}" rel="stylesheet">
 

@@ -1,0 +1,4 @@
+LOAD DATA LOCAL INFILE '/wamp/www/activo/modelo/Movimientos.csv' INTO TABLE activofijo.movimientos FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+
+
+LOAD DATA LOCAL INFILE '/wamp/www/activo/modelo/MovtosDetal.csv' INTO TABLE activofijo.movtosdetal FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';

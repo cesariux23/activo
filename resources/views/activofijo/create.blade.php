@@ -12,8 +12,12 @@
 
 {!!Form::model($activofijo,array('url' =>$tipo.'/activofijo'))!!}
 
-@include('activofijo.forms',['txt_btn' => 'Guardar'])
+{{$activofijo->detalle}}
 
+@include('activofijo.forms')
+@include('activofijo.tablaresponsable',['detalles'=>$detalles, 'nuevo'=>true])
+@include('activofijo.modal')
+@include('forms.botones',['txt_btn' => 'Guardar', 'path'=>'activofijo'])
 @endsection
 
 @section('script')
