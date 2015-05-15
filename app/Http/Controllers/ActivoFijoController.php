@@ -100,7 +100,7 @@ class ActivoFijoController extends Controller {
         $o->IdRub=$actest->input('IdRub');
 
         $o->Edo=$actest->input('Edo');
-        $o->localiz=$actest->input('localiz');
+        $o->Localiz=$actest->input('Localiz');
 
         //guarda los datos
         $o->save();

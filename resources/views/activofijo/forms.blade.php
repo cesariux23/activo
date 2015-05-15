@@ -28,7 +28,7 @@
 		<div class="col-md-2">
 			<label>Fecha Alta</label>
 
-			{!!Form::text('FecAlta', @$FecAlta, array("class"=>"form-control","placeholder"=>"Fecha Alta"))!!}
+			{!!Form::text('FecAlta', @$FecAlta, array("id"=>"FecAlta", "class"=>"form-control","placeholder"=>"Fecha Alta"))!!}
 		</div>
 	</div>
 </fieldset>
@@ -49,11 +49,11 @@
 	<div class="row">
 		<div class="col-md-2">
 		<label>Id</label>
-		<input type="text" id="idprov" class="form-control">
+		<input type="text" id="prov" class="form-control">
 	</div>
 	<div class="col-md-4">
 		<label>Nombre</label>
-		<select name="proveedor" id="prov" class="form-control">
+		<select name="IdProv" id="idprov" class="form-control">
 			<option value="">--Seleccione--</option>
 			@foreach ($proveedores as $prov)	
 			<option value="{{$prov->IdProv }}">{{ $prov->IdProv." -- ".$prov->DescProv}}</option>
@@ -87,7 +87,7 @@
 	</div>
 		<div class="col-md-3">
 		<label>Nombre</label>
-		<select name="adquisicion" id="adq" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">	
+		<select name="IdTipAdq" id="adq" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">	
 			<option value="">--Seleccione--</option>
 			@foreach ($adquisicion as $adq)	
 			<option value="{{$adq->IdTipAdq }}">{{ $adq->IdTipAdq." -- ".$adq->DescAdq }}</option>
@@ -100,7 +100,7 @@
 	</div>
 	<div class="col-md-3">
 		<label>Rubro</label>
-		<select name="rubro" id="rubdesc" class="form-control">
+		<select name="IdRub" id="rubdesc" class="form-control">
 			<option value="">--Seleccione--</option>
 			@foreach ($rubro as $rubdesc)	
 			<option value="{{$rubdesc->IdRub }}">{{ $rubdesc->IdRub." -- ".$rubdesc->DescRub }}</option>

@@ -7,7 +7,10 @@
 	<title>IVEA :: Sistema de Control de Activo Fijo</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<!-- El CSS del Font Awesome-->
 	<link href="{{ asset('/css/font-awesome.css') }}" rel="stylesheet">
+	<!-- El CSS del Calendario -->
+	<link href="{{ asset('/css/calendario.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -88,6 +91,25 @@
 		<!-- This is only necessary if you do Flash::overlay('...') -->
 		<script>
 			$('#flash-overlay-modal').modal();
+		</script>
+		
+		<script type="text/javascript" src="{{ asset('/js/calendario.js') }}"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#fecha1").datepicker();
+				$("#fecha2").datepicker({
+					changeMonth:true,
+					changeYear:true,
+				});
+				$("#fecha3").datepicker({
+					changeMonth:true,
+					changeYear:true,
+					showOn: "button",
+					buttonImage: "{{ asset('css/images/ico.png') }}",
+					buttonImageOnly: true,
+					showButtonPanel: true,
+				})
+			})
 		</script>
 		@yield('script')
 	</body>

@@ -47,7 +47,7 @@ class ActivoFijo extends Model {
     public function getNumeroInventarioAttribute()
     {
         # Concatena el numero de inventario
-        return $this->Gpo.'-'.$this->Clave.'-'.sprintf('%05d', $this->NumInv).'-'.substr($this->AnoPrg, 2,2) ;
+        return 'INEA-'.$this->Gpo.'-'.$this->Clave.'-'.sprintf('%05d', $this->NumInv).'-'.substr($this->AnoPrg, 2,2) ;
     }
 }
 
