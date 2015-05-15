@@ -27,6 +27,7 @@ class EmpleadosController extends Controller {
     $empleado=$request->get('IdEmp');
     $nombre=$request->get('DescEmp');
     $empleados = Empleado::where('Baja',0)->ID($empleado)->nombre($nombre)->oficina($oficina)->paginate();
+    $empleados->setPath('empleados');
     $oficinas=array(''=>"-- Seleccione --")+Oficina::lists('DescOfna', 'IdOfna');
     return view('empleados/index', compact('empleados','oficinas','empleado','oficina','nombre'));
 		//return view('empleados/index')->with('empleados',Empleado::all());

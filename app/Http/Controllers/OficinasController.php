@@ -20,6 +20,7 @@ class OficinasController extends Controller {
     public function index()
     {
         $oficinas = Oficina::paginate();
+        $oficinas->setPath('adscripciones');
 
         return view('oficinas.index', compact('oficinas'));
     }

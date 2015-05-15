@@ -22,6 +22,7 @@ class ProveedoresController extends Controller {
 	{
 		//$proveedores = Proveedor::all();
 		$proveedores = Proveedor::paginate();
+		$proveedores->setPath('proveedores');
 
 		return view('proveedores.index',compact('proveedores'));
 	}

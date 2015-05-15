@@ -21,6 +21,7 @@ class RubrosController extends Controller {
 	public function index()
 	{
 		 $rubros = Rubro::paginate();
+		 $rubros->setPath('rubros');
 
 		return view('rubros/index', compact('rubros'));
 	}

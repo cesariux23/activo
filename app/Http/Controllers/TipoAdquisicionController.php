@@ -22,6 +22,7 @@ class TipoAdquisicionController extends Controller {
 	{
 		
 		$tipoadquisiciones = TipoAdquisicion::paginate();
+		$tipoadquisiciones->setPath('tipoadquisiciones');
 
 		return view('tipoadquisiciones/index',compact('tipoadquisiciones'));
 	}
