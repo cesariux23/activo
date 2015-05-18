@@ -13,29 +13,17 @@
 								<div class="row">
 									<div class="col-md-2">
 										<label>Fecha movimiento</label>
-										{!!Form::text('detalle[FecMovto]', null, array("class"=>"form-control","placeholder"=>"Fecha Alta"))!!}
+										{!!Form::text('detalle[FecMovto]', null, array("class"=>"form-control","placeholder"=>"Fecha Alta",'id'=>'fechaAlta'))!!}
 									</div>
 									<div class="col-md-2">
 										<label>Clave</label>
-										{!!Form::text('detalle[IdEmp]', null, array("class"=>"form-control","placeholder"=>"Fecha Alta"))!!}
+										{!!Form::text('detalle[IdEmp]', null, array("class"=>"form-control","placeholder"=>"Fecha Alta", 'id'=>"idemp"))!!}
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-8">
 										<label>Nombre Usuario</label>
-										<select name="detalle[IdEmp]2" id="usuario" class="form-control">
-											<option value="">--Seleccione--</option>
-											@foreach ($empleados as $emp)	
-											<option value="{{$emp->IdEmp }}">{{ $emp->IdEmp." -- ".$emp->DescEmp }}</option>
-											@endforeach
-										</select>
-									</div>
-									<div class="col-md-4">
-										<label>Departamento</label>
-										<select  id="departamentoEmpleado" class="form-control">
-											<option value="">--Seleccione--</option>
-											@foreach ($oficinas as $of)	
-											<option value="{{$of->IdOfna }}">{{ $of->IdOfna." -- ".$of->DescOfna }}</option>
-											@endforeach
-										</select>
+										{!! Form::select('detalle[IdEmp]',$empleados,null,array("class"=>"form-control",'id'=>"descemp")) !!}
+										<br>
+										<span id="departamento"></span>
 									</div>
 								</div>		
 							</fieldset>
@@ -45,15 +33,15 @@
 								<div class="row">
 									<div class="col-md-2">
 										<label>Estado del Bien</label>
-										{!!Form::text('FecAlta', @$FecAlta, array("class"=>"form-control","placeholder"=>"1.Bueno"))!!}
+										{!!Form::text('EdoDelBien', @$FecAlta, array("class"=>"form-control","placeholder"=>"1.Bueno"))!!}
 									</div>
 									<div class="col-md-2">
 										<label>Ubicación</label>
-										{!!Form::text('detalle[Ubicac]', null, array("class"=>"form-control","placeholder"=>"Fecha Alta"))!!}
+										{!!Form::text('detalle[Ubicac]', null, array("class"=>"form-control","placeholder"=>"Fecha Alta", 'id'=>"idubicacion"))!!}
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-8">
 										<label>Edificio</label>
-										<select name="detalle[Ubicac]" id="oficina" class="form-control">
+										<select id="ubicacion" class="form-control">
 											<option value="">--Seleccione--</option>
 											@foreach ($oficinas as $of)	
 											<option value="{{$of->IdOfna }}">{{ $of->IdOfna." -- ".$of->DescOfna }}</option>
@@ -66,10 +54,18 @@
 								<br>
 
 								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-									<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+									<button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAceptar">Aceptar</button>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
+@section('script')
+@parent
+<script type="text/javascript">
+	var oficinas={!! json_encode($oficinasemp) !!}
+</script>
+ <script src="{{ asset('/js/activo_modal.js') }}"></script>
+@endsection	

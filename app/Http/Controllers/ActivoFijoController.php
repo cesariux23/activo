@@ -1,5 +1,6 @@
 <?php namespace ActivoFijo\Http\Controllers;
 
+use DB;
 use ActivoFijo\Http\Requests;
 use ActivoFijo\Http\Controllers\Controller;
 
@@ -54,7 +55,9 @@ class ActivoFijoController extends Controller {
 		$activofijo->TpoBien=
 		$tipo= $request->segment(1);
 		$activofijo->TpoBien=strtoupper(substr($tipo,0,1));
-		$empleados=Empleado::where('Baja',0)->get();
+		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
+		$empleados=$this->empleados();
+		 	//->get();
 		$oficinas=Oficina::all();
 		$proveedores = Proveedor::all();
 		$adquisicion = TipoAdquisicion::all();
@@ -64,13 +67,23 @@ class ActivoFijoController extends Controller {
 		$detalle=new MovtosDetalle;
 		//asigna valores por defecto
 		$detalle->FecMovto=date('Y-m-d');
-		$detalle->IdEmp='123456';
-		$detalle->Ubicac='1111';
+		$detalle->IdEmp='G439';
+		$detalle->Ubicac='300C5';
 		//crea un arreglo
 		$detalles=[$detalle];
 		$activofijo->detalle=$detalle;
 
-		return view('activofijo.create', compact('detalles','activofijo', 'tipo','proveedores','adquisicion','rubro', 'empleados','oficinas'));
+		return view('activofijo.create', compact(
+			'detalles',
+			'activofijo',
+			'tipo',
+			'proveedores',
+			'adquisicion',
+			'rubro',
+			'empleados',
+			'oficinas',
+			'oficinasemp'
+			));
 	}
 
 	/**
@@ -121,6 +134,19 @@ class ActivoFijoController extends Controller {
         //guarda los datos
         $o->save();
 
+        //Guarda el detalle
+        $d=$actest->input('detalle');
+
+        $detalle=new MovtosDetalle;
+
+        $detalle->Movto=$o->Movto;
+        $detalle->FecMovto=$d['FecMovto'];
+        $detalle->Ubicac=$d['Ubicac'];
+        $detalle->IdEmp=$d['IdEmp'];
+        $detalle->save();
+        
+
+
 		//se notifica
         flash()->success('Se ha registrado correctamente.');
 
@@ -140,10 +166,11 @@ class ActivoFijoController extends Controller {
 		$tipo= $request->segment(1);
 		$proveedores = Proveedor::all();
 		$adquisicion = TipoAdquisicion::all();
-		$empleados=Empleado::where('Baja',0)->get();
+		$empleados=$this->empleados();
+		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
 		$oficinas=Oficina::all();
 		$rubro = Rubro::all();
-		return view('activofijo.show',compact('tipo','bien','proveedores','adquisicion','rubro','empleados','oficinas'));
+		return view('activofijo.show',compact('tipo','bien','proveedores','adquisicion','rubro','empleados','oficinas','oficinasemp'));
 	}
 
 	/**
@@ -193,6 +220,18 @@ class ActivoFijoController extends Controller {
 
 		flash()->success('Se ha eleminado correctamente el bien.');
 		return redirect()->route($tipo.'.activofijo.index');
+	}
+
+
+
+	//metodo que devuelve el catalogo de empleados
+
+	public function empleados()
+	{
+		return DB::table('02empleados')
+			->select(DB::raw("IdEmp, concat(idemp,' -- ',descEmp)as DescEmp, IdOfna"))
+		 	->where('Baja',0)
+		 	->lists('DescEmp','IdEmp');
 	}
 
 }
