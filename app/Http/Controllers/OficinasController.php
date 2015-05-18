@@ -93,6 +93,7 @@ class OficinasController extends Controller {
         //$o = Oficina::find();        
         $input = array_except($of->Input(),array('_token','_method','IdOfna'));
         Oficina::where('IdOfna',$of->input('IdOfna'))->update($input);
+        
         flash()->success('Se ha guardado los cambios correctamente.');
         return redirect()->route('adscripciones.index');
     }

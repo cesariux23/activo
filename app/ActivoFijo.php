@@ -53,6 +53,13 @@ class ActivoFijo extends Model {
     {
         return $this->hasMany('ActivoFijo\MovtosDetalle', 'Movto','Movto');
     }
+
+     public function scopeClave($query, $clave)
+    {
+        # busca por clave
+        if($clave!="")
+            $query->where('Clave','LIKE','%'.$clave.'%');
+    }
 }
 
 

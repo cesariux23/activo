@@ -33,15 +33,19 @@ class ActivoFijoController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-		$tipo= $request->segment(1);
+		$clave = $request->get('Clave');
+
+		$tipo = $request->segment(1);
+
 		$t=strtoupper(substr($tipo,0,1));
-		$activoestatal = ActivoFijo::where('TpoBien',$t)->paginate();
+		$activoestatal = ActivoFijo::where('TpoBien',$t)->clave($clave)->paginate();
 		$activoestatal->setPath('activofijo');
+
 		$proveedores = Proveedor::all();
 		
 		$urlCreate='/'.strtolower($tipo).'/activofijo/create';
-		return view('activofijo.index', compact('activoestatal', 'proveedores','tipo','urlCreate'));
-		//
+
+		return view('activofijo.index', compact('clave','activoestatal', 'proveedores','tipo','urlCreate'));
 	}
 
 	/**
@@ -170,7 +174,12 @@ class ActivoFijoController extends Controller {
 		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
 		$oficinas=Oficina::all();
 		$rubro = Rubro::all();
+<<<<<<< HEAD
 		return view('activofijo.show',compact('tipo','bien','proveedores','adquisicion','rubro','empleados','oficinas','oficinasemp'));
+=======
+
+		return view('activofijo.show',compact('tipo','bien','proveedores','adquisicion','rubro','empleados','oficinas'));
+>>>>>>> bdee42e20c396932843c56f19d490e228a0e7fd6
 	}
 
 	/**
@@ -189,8 +198,7 @@ class ActivoFijoController extends Controller {
 		$adquisicion = TipoAdquisicion::all();
 		$rubro = Rubro::all();
 
-		return view('activofijo.edit', compact('post','ActivoFijos','tipo','proveedores','adquisicion','rubro'));
-		//
+		return view('activofijo.edit', compact('post','activofijos','tipo','proveedores','adquisicion','rubro'));
 	}
 
 	/**
@@ -199,9 +207,13 @@ class ActivoFijoController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(ActivoFijos $ac)
 	{
-		//
+		$input = array_except($ac->Input(),array('_token','_method','Movto'));
+    	ActivoFijo::where('Movto',$ac->input('Movto'))->update($input);
+
+   		flash()->success('Se ha guardado los cambios correctamente.');
+    	return redirect()->route('activofijo.index');
 	}
 
 	/**
