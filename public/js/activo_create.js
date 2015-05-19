@@ -68,3 +68,42 @@ $("#FecAlta").datepicker({
 				buttonImageOnly: true,
 				showButtonPanel: true,
 			});
+
+
+$('#btnAceptar').click(function () {
+	llenaDetalle();
+	llenaTabla();
+})
+
+$('#btnCerrar').click(function () {
+	cargaResponsable();
+	llenaTabla();
+})
+
+
+function llenaTabla () {
+	// Carga los valores a la tabla
+	$('#fecha').text($('#fechaAlta').val());
+	$('#nombre').text($('#descemp option:selected').text());
+	$('#nombreubicacion').text($('#ubicacion option:selected').text());
+}
+
+function cargaResponsable () {
+	// body...
+	$("#descemp").val(detalle.IdEmp);
+	//validaqueexista oficina
+	console.log(typeof detalle.oficina);
+	if(typeof detalle.oficina === 'undefined')
+	{
+		detalle.oficina=$("#nombreubicacion").text();
+	}
+	$("#departamento").text(detalle.oficina);
+	$("#idemp").val(detalle.IdEmp);
+	$('#oficina').val(detalle.Ubicac);
+	$('#ubicacion').val(detalle.Ubicac);
+	$('#idubicacion').val(detalle.Ubicac);
+}
+
+$('#btnCambiar').click( function () {
+	cargaResponsable();
+})

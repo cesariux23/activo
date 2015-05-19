@@ -10,9 +10,9 @@
 
 @include('forms.errores')
 
+{{$activofijo->detalle}}
 {!!Form::model($activofijo,array('url' =>$tipo.'/activofijo'))!!}
 
-{{$activofijo->detalle}}
 
 @include('activofijo.forms')
 @include('activofijo.tablaresponsable',['detalles'=>$detalles, 'nuevo'=>true])
@@ -21,5 +21,9 @@
 @endsection
 
 @section('script')
+<script type="text/javascript">
+	var detalle={!! json_encode($activofijo->detalle) !!};
+	console.log(detalle)
+</script>
   <script src="{{ asset('/js/activo_create.js') }}"></script>
 @stop
