@@ -174,12 +174,12 @@ class ActivoFijoController extends Controller {
 		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
 		$oficinas=Oficina::all();
 		$rubro = Rubro::all();
-<<<<<<< HEAD
+
 		return view('activofijo.show',compact('tipo','bien','proveedores','adquisicion','rubro','empleados','oficinas','oficinasemp'));
-=======
+
 
 		return view('activofijo.show',compact('tipo','bien','proveedores','adquisicion','rubro','empleados','oficinas'));
->>>>>>> bdee42e20c396932843c56f19d490e228a0e7fd6
+
 	}
 
 	/**
