@@ -33,18 +33,19 @@ class ActivoFijoController extends Controller {
 	public function index(Request $request)
 	{
 		$clave = $request->get('Clave');
+		$numinv = $request->get('NumInv');
 
 		$tipo = $request->segment(1);
 
 		$t=strtoupper(substr($tipo,0,1));
-		$activoestatal = ActivoFijo::where('TpoBien',$t)->clave($clave)->paginate();
+		$activoestatal = ActivoFijo::where('TpoBien',$t)->clave($clave)->numinv($numinv)->paginate();
 		$activoestatal->setPath('activofijo');
 
 		$proveedores = Proveedor::all();
 		
 		$urlCreate='/'.strtolower($tipo).'/activofijo/create';
 
-		return view('activofijo.index', compact('clave','activoestatal', 'proveedores','tipo','urlCreate'));
+		return view('activofijo.index', compact('clave','numinv','activoestatal', 'proveedores','tipo','urlCreate'));
 	}
 
 	/**

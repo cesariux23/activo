@@ -60,6 +60,13 @@ class ActivoFijo extends Model {
         if($clave!="")
             $query->where('Clave','LIKE','%'.$clave.'%');
     }
+
+     public function scopeNumInv($query, $numinv)
+    {
+        # busca por Número de Inventario
+        if($numinv!="")
+            $query->where('NumInv','LIKE','%'.$numinv.'%');
+    }
 }
 
 

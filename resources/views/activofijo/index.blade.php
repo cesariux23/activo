@@ -15,9 +15,12 @@
 	<div class="form-group">
 		{!!Form::text('Clave', null, ['class'=>'form-control','placeholder'=>'Clave'])!!}
 	</div>
+	<div class="form-group">
+		{!!Form::text('NumInv', null, ['class'=>'form-control','placeholder'=>'Número de Inventario'])!!}
+	</div>
 
 	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
-	@if (isset($clave))
+	@if (isset($clave)||isset($numinv))
 	{{-- true expr --}}
 	<a href="{{ route($tipo.'.activofijo.index') }}" class="btn btn-warning">
 		<span class="glyphicon glyphicon-remove"></span> Limpiar</a>
@@ -40,14 +43,14 @@
 				<th>Estado</th>
 				<th>Localización</th>
 
-				<th width="250px">Acciones</th>
+				<th width="210px">Acciones</th>
 			</tr>
 		</thead>
 
 		@foreach($activoestatal as $o)
 		<tr>
 			<td>{{$o->numeroInventario}}</td>
-			
+
 			<td>{{$o->Denomin}}</td>
 			<td>{{$o->DescArt}}</td>
 
