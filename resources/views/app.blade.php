@@ -62,7 +62,7 @@
 								<li><a href="{{ url('/proveedores') }}">Provedores</a></li>
 							</ul>
 						</li>
-						<li><a href="{{ url('/empleados') }}">Reportes</a></li>
+						<li><a href="{{ url('/reportes') }}">Reportes</a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
