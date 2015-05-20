@@ -13,9 +13,11 @@
 	<link href="{{ asset('/css/ivea.css') }}" rel="stylesheet">
 	<!-- El CSS del Calendario -->
 	<link href="{{ asset('/css/calendario.css') }}" rel="stylesheet">
-
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<!-- Calendario boodstrap-->
+	<link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -113,6 +115,24 @@
 				})
 			})
 		</script>
+
+<script type="text/javascript" src="{{ asset('/js/jquery/jquery-1.8.3.min.js') }}" charset="UTF-8"></script>
+<script type="text/javascript" src="{{ asset('/js/bootstrap-datetimepicker.js') }}" charset="UTF-8"></script>
+<script type="text/javascript" src="{{ asset('/js/locales/bootstrap-datetimepicker.es.js') }}" charset="UTF-8"></script>
+<script type="text/javascript">
+        //language:  'es',
+	$('.form_date').datetimepicker({
+        language:  'es',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+
+</script>
 		@yield('script')
 	</body>
 	</html>

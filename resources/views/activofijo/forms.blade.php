@@ -1,7 +1,7 @@
 <fieldset>
 	<legend>Recurso {{ucfirst($tipo)}}</legend> 
 	<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-1">
 			<label>Grupo</label>
 			{!!Form::text('Gpo', old('Gpo'), array("class"=>"form-control","placeholder"=>"Grupo"))!!}
 		</div>
@@ -21,13 +21,18 @@
 			<label>Tipo</label>
 			{!!Form::text('TpoBien', @$TpoBien, array("class"=>"form-control","placeholder"=>"Tipo", 'disabled' => 'disabled'))!!}
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<label>Denominación</label>
 			{!!Form::text('Denomin', @$Denomin, array("class"=>"form-control","placeholder"=>"Denominación"))!!}
 		</div>
-		<div class="col-md-2">
+
+		<div class="form-group col-md-2">
 			<label>Fecha Alta</label>
-			{!!Form::text('FecAlta', @$FecAlta, array("id"=>"FecAlta", "class"=>"form-control","placeholder"=>"AÑO/MES/DIA"))!!}
+			<div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+				<input class="form-control" size="16" type="text" value="" readonly>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+			<input type="hidden" id="dtp_input2" value="" /><br/>
 		</div>
 	</div>
 </fieldset>
@@ -68,7 +73,7 @@
 			{!!Form::text('Costo', @$Costo, array("class"=>"form-control","placeholder"=>"Costo"))!!}
 		</div>
 	</div>
-</fieldset>
+</fieldset><br>
 
 <fieldset>
 	<legend>Tipo de Adquisición y Rubro</legend>
@@ -103,10 +108,9 @@
 			<label>Estado</label>
 			{!!Form::text('Edo', @$Edo, array("class"=>"form-control","placeholder"=>"Estado","style"=>"text-transform:uppercase;", "onkeyup"=>"javascript:this.value=this.value.toUpperCase();"))!!}
 		</div>
-	</div>
-</fieldset>
+	</div><br>
 
-<fieldset>
+<div class="row">
 	<div class="col-md-6">¿El bien está actualmente localizado físicamente?
 		<label class="radio-inline">
 			<input type="radio" name="inlineRadioOptions" id="inlineRadio1"> S
@@ -115,8 +119,10 @@
 			<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="N"> N
 		</label>
 	</div>
-</fieldset>
-<br>
+</div>
+</fieldset><br>
+
+
 
 
 

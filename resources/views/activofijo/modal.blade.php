@@ -67,12 +67,11 @@
 		</div>
 	</div>
 
-
-@section('script')
-@parent
-<script type="text/javascript">
-	var oficinas={!! json_encode($oficinasemp) !!}
-</script>
-<script src="{{ asset('/js/activo_modal.js') }}"></script>
-@endsection	
+	@section('script')
+	@parent
+	<script type="text/javascript">
+		var oficinas={!! json_encode($oficinasemp) !!}
+	</script>
+	<script src="{{ asset('/js/activo_modal.js') }}"></script>
+	@endsection	
 
