@@ -3,3 +3,4 @@
 	<a class="btn btn-sm btn-default btn-sm" href="{{ url('/'.$tipo.'/activofijo/'.$o->Movto) }}"> Movimentos</a>
 	<button type="submit" class="btn btn-danger btn-sm">Baja</button>
 {!! Form::close() !!}
+

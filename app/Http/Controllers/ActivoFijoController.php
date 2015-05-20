@@ -176,7 +176,6 @@ class ActivoFijoController extends Controller {
 		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
 		$oficinas=Oficina::all();
 		$rubro = Rubro::all();
-
 		return view('activofijo.show',compact('tipo','bien','proveedores','adquisicion','rubro','empleados','oficinas','oficinasemp'));
 	}
 

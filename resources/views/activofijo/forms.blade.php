@@ -29,6 +29,23 @@
 			<label>Fecha Alta</label>
 			{!!Form::text('FecAlta', @$FecAlta, array("id"=>"FecAlta", "class"=>"form-control","placeholder"=>"AÑO/MES/DIA"))!!}
 		</div>
+
+		<div class="row">
+			<div id="datetimepicker1" class="input-append date">
+				<input data-format="yyyy-MM-dd" type="text"></input>
+				<span class="add-on">
+					<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+				</span>
+			</div>
+
+		<script type="text/javascript">
+			$(function() {
+				$('#datetimepicker1').datetimepicker({
+					language: 'pt-BR'
+				});
+			});
+		</script>
+		</div>
 	</div>
 </fieldset>
 
