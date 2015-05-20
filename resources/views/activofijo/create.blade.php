@@ -25,5 +25,5 @@
 	var detalle={!! json_encode($activofijo->detalle) !!};
 	console.log(detalle)
 </script>
-  <script src="{{ asset('/js/activo_create.js') }}"></script>
+ <script src="{{ asset('/js/activo_create.js') }}">  </script>
 @stop
