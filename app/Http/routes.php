@@ -35,6 +35,7 @@ Route::resource('movimientos', 'MovimientosController');
 
 
 Route::resource('rubros','RubrosController');
+Route::resource('reportes','ReportesController');
 
 Route::resource('tipoadquisiciones','TipoAdquisicionController');
 
