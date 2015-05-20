@@ -38,11 +38,8 @@
 	<legend>Descripción del Artículo:</legend>
 	<div class="form-group">
 		{!!Form::textarea('DescArt', @$DescArt, array("class"=>"form-control", "rows"=>"3","placeholder"=>"Descripción","style"=>"text-transform:uppercase;", "onkeyup"=>"javascript:this.value=this.value.toUpperCase();"))!!}
-
 	</div>
-</fieldset>
-
-<br>
+</fieldset><br>
 
 <fieldset>
 	<legend>Información del Proveedor</legend>
@@ -114,6 +111,7 @@
 	</div>
 </fieldset>
 <br>
+
 <fieldset>
 
 		<div class="col-md-6">¿El bien está actualmente localizado físicamente?

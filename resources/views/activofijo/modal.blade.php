@@ -7,7 +7,6 @@
 				<h3 class="modal-title" id="myModalLabel">Movimiento Histórico</h3>
 			</div>
 			<div class="modal-body">
-				
 				<fieldset>
 					<legend>Usuario responsable/resguardo del Bien</legend>
 					<div class="row">
@@ -15,20 +14,11 @@
 							<label>Fecha movimiento</label>
 							{!!Form::text('detalle[FecMovto]', null, array("class"=>"form-control","placeholder"=>"Fecha Alta"))!!}
 						</div>
-<<<<<<< HEAD
 						<div class="col-md-2">
 							<label>Clave</label>
 							{!!Form::text('detalle[IdEmp]', null, array("class"=>"form-control","placeholder"=>"Fecha Alta"))!!}
 						</div>
-						<div class="col-md-4">
-							<label>Nombre Usuario</label>
-							<select name="detalle[IdEmp]2" id="usuario" class="form-control">
-								<option value="">--Seleccione--</option>
-								@foreach ($empleados as $emp)	
-								<option value="{{$emp->IdEmp }}">{{ $emp->IdEmp." -- ".$emp->DescEmp }}</option>
-								@endforeach
-							</select>
-						</div>
+						
 						<div class="col-md-4">
 							<label>Departamento</label>
 							<select  id="departamentoEmpleado" class="form-control">
@@ -57,10 +47,10 @@
 								'8.BAJA(TRANSFER)' => '8.BAJA(TRANSFER)',
 								'9.BAJA(SINIESTRO)' => '9.BAJA(SINIESTRO)',
 								'10.BAJA(RECLASIFIC)' => '10.BAJA(RECLASIFIC)'],null,['class'=>'form-control'])!!}
+						</div>
+						</div>
 								
-=======
 						<div class="modal-body">
-							
 							<fieldset>
 								<legend>Usuario responsable/resguardo del Bien</legend>
 								<div class="row">
@@ -79,8 +69,7 @@
 										<span id="departamento"></span>
 									</div>
 								</div>		
-							</fieldset>
-							<br>
+							</fieldset><br>
 							<fieldset>
 								<legend>Estado y Ubicación del Bien</legend>
 								<div class="row">
@@ -101,16 +90,12 @@
 											@endforeach
 										</select>
 									</div>
-
 								</div>
-								</fieldset>
-								<br>
-
+								</fieldset><br>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar">Cerrar</button>
 									<button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAceptar">Aceptar</button>
 								</div>
->>>>>>> 57480616ad89dbe9499fc4c77349675a15385f1a
 							</div>
 							<div class="col-md-2">
 								<label>Ubicación</label>
@@ -125,21 +110,17 @@
 									@endforeach
 								</select>
 							</div>
-
 						</div>
-					</fieldset>
-					<br>
-
+					</fieldset><br>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 						<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
 					</div>
 				</div>
-<<<<<<< HEAD
+
 			</div>
 		</div>
 	</div>
-=======
 
 @section('script')
 @parent
@@ -148,4 +129,4 @@
 </script>
  <script src="{{ asset('/js/activo_modal.js') }}"></script>
 @endsection	
->>>>>>> 57480616ad89dbe9499fc4c77349675a15385f1a
+

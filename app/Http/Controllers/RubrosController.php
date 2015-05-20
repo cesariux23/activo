@@ -46,11 +46,12 @@ class RubrosController extends Controller {
 	public function store(Rubros $rub)
 	{
 		 //Se guardan los valores nuevos
-        $o= new Rubro();
-        $o->IdRub=$rub->input('IdRub');
-        $o->DescRub=$rub->input('DescRub');
-        $o->save();
-
+        //$o= new Rubro();
+        //$o->IdRub=$rub->input('IdRub');
+        //$o->DescRub=$rub->input('DescRub');
+        //$o->save();
+        //dd($rub->only('IdRub','DescRub'));
+		Rubro::create($rub->only('IdRub','DescRub'));
     	//se notifica
     	flash()->success('Se ha registrado correctamente.');
         return redirect()->route('rubros.index');
