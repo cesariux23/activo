@@ -35,11 +35,12 @@ class ActivoFijoController extends Controller {
 	{
 		$clave = $request->get('Clave');
 		$numinv = $request->get('NumInv');
+		$desc = $request->get('desc');
 
 		$tipo = $request->segment(1);
 
 		$t=strtoupper(substr($tipo,0,1));
-		$activoestatal = ActivoFijo::where('TpoBien',$t)->clave($clave)->numinv($numinv)->paginate();
+		$activoestatal = ActivoFijo::where('TpoBien',$t)->clave($clave)->descripcion($desc)->numinv($numinv)->paginate();
 		$activoestatal->setPath('activofijo');
 
 		$proveedores = Proveedor::all();

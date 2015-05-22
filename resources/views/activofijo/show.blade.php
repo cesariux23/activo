@@ -3,7 +3,7 @@
 
 
 <div>
-	<div class="pull-right">
+	<div class="pull-right hidden-print">
 		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"> Regresar</a>
 		<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-modal-lg"><i class="fa fa-plus"></i> Nuevo movimiento</button>
 	</div>
@@ -12,31 +12,31 @@
 
 	<legend>Recurso {{ucfirst($tipo)}}</legend> 
 	<div class="row">
-		<div class="col-md-1">
+		<div class="col-xs-1">
 			<label>Grupo</label>
 			<p>{{$bien->Gpo}}</p>
 		</div>
-		<div class="col-md-2">
+		<div class="col-xs-2">
 			<label>Clave</label>
 			<p>{{$bien->Clave}}</p>
 		</div>
-		<div class="col-md-2">
+		<div class="col-xs-2">
 			<label>Número Inv.</label>
 			<p>{{$bien->NumInv}}</p>
 		</div>
-		<div class="col-md-1">
+		<div class="col-xs-1">
 			<label>Año P.</label>
 			<p>{{$bien->AnoPrg}}</p>
 		</div>
-		<div class="col-md-1">
+		<div class="col-xs-1">
 			<label>Tipo</label>
 			<p>{{$bien->TpoBien}}</p>
 		</div>
-		<div class="col-md-3">
+		<div class="col-xs-3">
 			<label>Denominación</label>
 			<p>{{$bien->Denomin}}</p>
 		</div>
-		<div class="col-md-2">
+		<div class="col-xs-2">
 			<label>Fecha Alta</label>
 			<p>{{$bien->FecAlta}}</p>
 		</div>

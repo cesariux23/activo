@@ -5,6 +5,7 @@
 			<th width="180px">Fecha Movimiento</th>
 			<th>Usuario Responsable</th>
 			<th>Ubicación</th>
+			<th>Estado</th>
 			@if(isset($nuevo))
 			<th width="150px">Acciones</th>
 			@endif
@@ -13,13 +14,22 @@
 	<tbody>
 		@foreach($detalles as $detalle)
 		<tr>
-			<td id="fecha">{{$detalle->FecMovto}}</td>
+			<td id="fecha">
+				{{$detalle->FecMovto}}
+				@if($detalle->Ultimo==1)
+				<br>
+				<span class="label label-success">Último</span>
+				@endif
+			</td>
 			<td id="nombre">
 				{{$detalle->empleado->IdEmp.' -- '.$detalle->empleado->DescEmp}}
 				<br>
 			</td>
 			<td id="nombreubicacion">
 				{{$detalle->Ubicac.' -- '.$detalle->ubicacion->DescOfna}}
+			</td>
+			<td id="estado">
+				{{$detalle->EdoDelBien}}
 			</td>
 			@if(isset($nuevo))
 			<td>

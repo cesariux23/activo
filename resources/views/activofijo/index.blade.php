@@ -18,6 +18,9 @@
 	<div class="form-group">
 		{!!Form::text('NumInv', null, ['class'=>'form-control','placeholder'=>'Número de Inventario'])!!}
 	</div>
+	<div class="form-group">
+		{!!Form::text('desc', null, ['class'=>'form-control','placeholder'=>'Descripción'])!!}
+	</div>
 
 	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
 	@if (isset($clave)||isset($numinv))

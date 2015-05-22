@@ -47,18 +47,41 @@ class ActivoFijo extends Model {
     public function getNumeroInventarioAttribute()
     {
         # Concatena el numero de inventario
-        return 'INEA-'.$this->Gpo.'-'.$this->Clave.'-'.sprintf('%05d', $this->NumInv).'-'.substr($this->AnoPrg, 2,2) ;
+       # code...
+        switch ($this->TpoBien) {
+            case 'E':
+                # code...
+                $tipo= "IVEA";
+                break;
+            case 'F':
+                # code...
+                $tipo=  "INEA";
+                break;
+            
+            default:
+                # code...
+                $tipo=  "OTRO";
+                break;
+        }
+        return $tipo.'-'.$this->Gpo.'-'.$this->Clave.'-'.sprintf('%05d', $this->NumInv).'-'.substr($this->AnoPrg, 2,2) ;
     }
     public function detalles()
     {
-        return $this->hasMany('ActivoFijo\MovtosDetalle', 'Movto','Movto');
+        return $this->hasMany('ActivoFijo\MovtosDetalle', 'Movto','Movto')->orderBy('FecMovto','DESC');
     }
 
-     public function scopeClave($query, $clave)
+    public function scopeClave($query, $clave)
     {
         # busca por clave
         if($clave!="")
             $query->where('Clave','LIKE','%'.$clave.'%');
+    }
+
+    public function scopeDescripcion($query, $desc)
+    {
+        # busca por scopeDescripcion
+        if($desc!="")
+            $query->where('DescArt','LIKE','%'.$desc.'%');
     }
 
      public function scopeNumInv($query, $numinv)
