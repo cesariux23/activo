@@ -97,24 +97,8 @@
 			$('#flash-overlay-modal').modal();
 		</script>
 		
-		<script type="text/javascript" src="{{ asset('/js/calendario.js') }}"></script>
-		<script type="text/javascript">
-			$(function(){
-				$("#fecha1").datepicker();
-				$("#fecha2").datepicker({
-					changeMonth:true,
-					changeYear:true,
-				});
-				$("#fecha3").datepicker({
-					changeMonth:true,
-					changeYear:true,
-					showOn: "button",
-					buttonImage: "{{ asset('css/images/ico.png') }}",
-					buttonImageOnly: true,
-					showButtonPanel: true,
-				})
-			})
-		</script>
+		
+		
 
 <script type="text/javascript" src="{{ asset('/js/jquery/jquery-1.8.3.min.js') }}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{ asset('/js/bootstrap-datetimepicker.js') }}" charset="UTF-8"></script>

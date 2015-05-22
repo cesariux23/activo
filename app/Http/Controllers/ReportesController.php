@@ -1,7 +1,19 @@
 <?php namespace ActivoFijo\Http\Controllers;
 
+use DB;
 use ActivoFijo\Http\Requests;
 use ActivoFijo\Http\Controllers\Controller;
+
+//modelo para Proveedor
+use ActivoFijo\Proveedor;
+//modelo Adquisicion
+use ActivoFijo\TipoAdquisicion;
+//modelo Rubro
+use ActivoFijo\Rubro;
+//modelo Empleado
+use ActivoFijo\Empleado;
+//modelo Oficina
+use ActivoFijo\Oficina;
 
 use Illuminate\Http\Request;
 
@@ -15,7 +27,14 @@ class ReportesController extends Controller {
 	public function index()
 	{
 		//
-		return view('reportes.consultas');
+		$proveedores = Proveedor::all();
+		$adquisicion = TipoAdquisicion::all();
+		$empleados=$this->empleados();
+		
+		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
+		$oficinas=Oficina::all();
+		$rubro = Rubro::all();
+		return view('reportes.consultas', compact('proveedores','oficinasemp','empleados','oficinas','adquisicion','rubro'));
 	}
 
 	/**
@@ -80,6 +99,16 @@ class ReportesController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function empleados()
+	{
+		$default=[''=>"-- Seleccione --"];
+		$opciones=DB::table('02empleados')
+			->select(DB::raw("IdEmp, concat(idemp,' -- ',descEmp)as DescEmp, IdOfna"))
+		 	->where('Baja',0)
+		 	->lists('DescEmp','IdEmp');
+		return $default+$opciones;
 	}
 
 }

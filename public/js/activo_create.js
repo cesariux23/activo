@@ -60,15 +60,6 @@ $("#rubdesc").on("change", function () {
 	$("#idrub").val($("#rubdesc").val());
 });
 
-$("#FecAlta").datepicker({
-				changeMonth:true,
-				changeYear:true,
-				showOn: "button",
-				buttonImage: "/activo/public/css/images/ico.png",
-				buttonImageOnly: true,
-				showButtonPanel: true,
-			});
-
 
 $('#btnAceptar').click(function () {
 	llenaDetalle();
