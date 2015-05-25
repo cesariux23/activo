@@ -67,7 +67,7 @@ class ActivoFijo extends Model {
     }
     public function detalles()
     {
-        return $this->hasMany('ActivoFijo\MovtosDetalle', 'Movto','Movto')->orderBy('FecMovto','DESC');
+        return $this->hasMany('ActivoFijo\MovtosDetalle', 'Movto','Movto')->orderBy('FecMovto','DESC')->orderBy('IdDet','desc');
     }
 
     public function scopeClave($query, $clave)

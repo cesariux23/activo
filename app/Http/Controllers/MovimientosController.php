@@ -4,6 +4,7 @@ use ActivoFijo\Http\Requests;
 use ActivoFijo\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use ActivoFijo\MovtosDetalle;
 
 class MovimientosController extends Controller {
 
@@ -32,9 +33,32 @@ class MovimientosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
 		//
+		//Guarda el detalle
+        $d=$request->input('detalle');
+        $detalle=new MovtosDetalle;
+        $detalle->Movto=$d['Movto'];
+        $detalle->FecMovto=$d['FecMovto'];
+        $detalle->Ubicac=$d['Ubicac'];
+        $detalle->IdEmp=$d['IdEmp'];
+        $detalle->EdoDelBien=$d['EdoDelBien'];
+        $detalle->Ultimo=1;
+
+        //limpiar el ultimo
+
+        MovtosDetalle::where('Ultimo',1)
+        	->where('Movto',$d['Movto'])
+        	->update(['Ultimo'=>0]);
+
+
+        $detalle->save();
+        flash()->success('Se ha registrado correctamente.');
+        $tipo=$request->input('tipo');
+
+        //redirecciona al index
+        return redirect()->route($tipo.'.activofijo.show',$detalle->Movto);
 	}
 
 	/**

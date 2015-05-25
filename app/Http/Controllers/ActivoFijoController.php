@@ -149,6 +149,14 @@ class ActivoFijoController extends Controller {
         $detalle->FecMovto=$d['FecMovto'];
         $detalle->Ubicac=$d['Ubicac'];
         $detalle->IdEmp=$d['IdEmp'];
+        $detalle->EdoDelBien=$d['EdoDelBien'];
+        $detalle->Ultimo=1;
+        //limpiar el ultimo
+
+        MovtosDetalle::where('Ultimo',1)
+        	->where('Movto',$o->Movto)
+        	->update(['Ultimo'=>0]);
+
         $detalle->save();
         
 

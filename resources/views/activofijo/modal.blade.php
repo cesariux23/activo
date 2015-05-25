@@ -32,7 +32,7 @@
 					<div class="row">
 						<div class="col-md-2">
 							<label>Estado del Bien</label>
-							{!!Form::select('FecAlta',['1.BUENO'=>'1.BUENO',
+							{!!Form::select('detalle[EdoDelBien]',['1.BUENO'=>'1.BUENO',
 								'2.MALO'=>'2.MALO',
 								'3.REGULAR'=>'3.REGULAR',
 								'4.DESUSO' => '5.DESUSO',
@@ -59,8 +59,14 @@
 						</div>
 					</fieldset><br>
 					<div class="modal-footer">
+						
+						@if(isset($guardar))
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Guardar</button>
+						@else
 						<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar">Cerrar</button>
 						<button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAceptar">Aceptar</button>
+						@endif
 					</div>
 				</div>
 			</div>

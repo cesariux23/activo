@@ -49,6 +49,16 @@
 
 
 @include('activofijo.tablaresponsable',['detalles'=>$bien->detalles])
-@include('activofijo.modal')
+
+{!!Form::open(array('action' => 'MovimientosController@store'))!!}
+{!!form::hidden('tipo',$tipo)!!}
+{!!form::hidden('detalle[Movto]',$bien->Movto)!!}
+@include('activofijo.modal',array('guardar'=>true))
+{!!Form::close()!!}
 
 @stop
+
+@section('scripts')
+@parent
+	<script src="{{ asset('/js/activo_create.js') }}"></script>
+@endsection
