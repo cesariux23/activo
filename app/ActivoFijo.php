@@ -65,6 +65,7 @@ class ActivoFijo extends Model {
         }
         return $tipo.'-'.$this->Gpo.'-'.$this->Clave.'-'.sprintf('%05d', $this->NumInv).'-'.substr($this->AnoPrg, 2,2) ;
     }
+    
     public function detalles()
     {
         return $this->hasMany('ActivoFijo\MovtosDetalle', 'Movto','Movto')->orderBy('FecMovto','DESC');

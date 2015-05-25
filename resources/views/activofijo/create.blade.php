@@ -13,7 +13,6 @@
 {{$activofijo->detalle}}
 {!!Form::model($activofijo,array('url' =>$tipo.'/activofijo'))!!}
 
-
 @include('activofijo.forms')
 @include('activofijo.tablaresponsable',['detalles'=>$detalles, 'nuevo'=>true])
 @include('activofijo.modal')
