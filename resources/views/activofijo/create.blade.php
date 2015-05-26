@@ -12,9 +12,8 @@
 
 {!!Form::model($activofijo,array('url' =>$tipo.'/activofijo'))!!}
 
-
 <section ng-init='detalle={{$activofijo->detalle}};' ng-controller="createActivoController">
-	@include('activofijo.forms')
+@include('activofijo.forms')
 @include('activofijo.tablaresponsable',['detalles'=>$detalles, 'nuevo'=>true])
 @include('activofijo.modal')
 @include('forms.botones',['txt_btn' => 'Guardar', 'path'=>'activofijo'])

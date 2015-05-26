@@ -64,10 +64,15 @@
 			<label>Número Factura</label>
 			{!!Form::text('NumFact', @$NumFact, array("class"=>"form-control","placeholder"=>"# Factura"))!!}
 		</div>
-		<div class="col-md-2">
+		<div class="form-group col-md-2">
 			<label>Fecha Factura</label>
-			{!!Form::text('FecFact', @$FecFact, array("class"=>"form-control","placeholder"=>"ID"))!!}
+			<div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+				<input class="form-control" size="16" type="text" value="" readonly>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+			<input type="hidden" id="dtp_input2" value="" /><br/>
 		</div>
+
 		<div class="col-md-2">
 			<label>Costo</label>
 			{!!Form::text('Costo', @$Costo, array("class"=>"form-control","placeholder"=>"Costo"))!!}
@@ -104,19 +109,33 @@
 				@endforeach
 			</select>
 		</div>
-	</div><br>
 
-<div class="row">
-	<div class="col-md-6">¿El bien está actualmente localizado físicamente?
-		<label class="radio-inline">
-			<input type="radio" name="inlineRadioOptions" id="inlineRadio1"> S
-		</label>
-		<label class="radio-inline">
-			<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="N"> N
-		</label>
-	</div>
-</div>
-</fieldset><br>
+		<div class="col-md-2">
+			<label>Estado del Bien</label>
+			{!!Form::select('FecAlta',['1.BUENO'=>'1.BUENO',
+				'2.MALO'=>'2.MALO',
+				'3.REGULAR'=>'3.REGULAR',
+				'4.DESUSO' => '5.DESUSO',
+				'5.EXTRAVIO' => '5.EXTRAVIO',
+				'6.BAJA(INSERVIBLE)' => '6.BAJA(INSERVIBLE)',
+				'7.BAJA(ROBO)' => '7.BAJA(ROBO)',
+				'8.BAJA(TRANSFER)' => '8.BAJA(TRANSFER)',
+				'9.BAJA(SINIESTRO)' => '9.BAJA(SINIESTRO)',
+				'10.BAJA(RECLASIFIC)' => '10.BAJA(RECLASIFIC)'],null,['class'=>'form-control'])!!}
+			</div>
+		</div><br>
+
+		<div class="row">
+			<div class="col-md-6">¿El bien está actualmente localizado físicamente?
+				<label class="radio-inline">
+					<input type="radio" name="inlineRadioOptions" id="inlineRadio1"> S
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="N"> N
+				</label>
+			</div>
+		</div>
+	</fieldset><br>
 
 
 

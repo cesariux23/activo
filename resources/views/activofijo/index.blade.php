@@ -35,7 +35,7 @@
 	<table class="table table-bordered table-striped">
 		<thead> 
 			<tr>
-				<th width="180px">Número Inventario</th>
+				<th width="200px">Número Inventario</th>
 				<th>Denominación</th>
 				<th>Descripción del Artículo</th>
 

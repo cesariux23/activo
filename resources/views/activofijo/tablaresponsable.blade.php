@@ -1,4 +1,4 @@
-<legend>Histórico de movimientos</legend>
+<legend>Histórico de Movimientos</legend>
 <table class="table table-bordered table-striped">
 	<thead> 
 		<tr>
