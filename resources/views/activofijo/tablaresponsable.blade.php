@@ -12,6 +12,29 @@
 		</tr>
 	</thead>
 	<tbody>
+	@if(isset($nuevo))
+	<tr>
+			<td id="fecha">
+				<%detalle.FecMovto%>
+				<br>
+				<span class="label label-success">Último</span>
+			</td>
+			<td id="nombre">
+				<%detalle.IdEmp%> -- <%(empleados | filter:{IdEmp:detalle.IdEmp})[0].DescEmp%>
+				<br>
+			</td>
+			<td id="nombreubicacion">
+				<%detalle.Ubicac%> -- <%(oficinas | filter:{IdOfna:detalle.Ubicac})[0].DescOfna%>
+			</td>
+			<td id="estado">
+				<%detalle.EdoDelBien%>
+			</td>
+			
+			<td>
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-modal-lg" ng-click="llena()"><i class="fa fa-refresh"></i> Cambiar</button>
+			</td>
+		</tr>
+	@else
 		@foreach($detalles as $detalle)
 		<tr>
 			<td id="fecha">
@@ -31,12 +54,9 @@
 			<td id="estado">
 				{{$detalle->EdoDelBien}}
 			</td>
-			@if(isset($nuevo))
-			<td>
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-modal-lg" id="btnCambiar"><i class="fa fa-refresh"></i> Cambiar</button>
-			</td>
-			@endif
+			
 		</tr>
 		@endforeach
+		@endif
 	</tbody>
 </table>

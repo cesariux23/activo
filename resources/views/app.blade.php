@@ -26,7 +26,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
+	<body ng-app="activofijo">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -96,11 +96,12 @@
 		<script>
 			$('#flash-overlay-modal').modal();
 		</script>
-		
+		<script type="text/javascript" src="{{ asset('/js/angular.min.js') }}" charset="UTF-8"></script>
+		<script type="text/javascript" src="{{ asset('/js/app.js') }}" charset="UTF-8"></script>
 		
 		
 
-<script type="text/javascript" src="{{ asset('/js/jquery/jquery-1.8.3.min.js') }}" charset="UTF-8"></script>
+
 <script type="text/javascript" src="{{ asset('/js/bootstrap-datetimepicker.js') }}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{ asset('/js/locales/bootstrap-datetimepicker.es.js') }}" charset="UTF-8"></script>
 <script type="text/javascript">
@@ -115,7 +116,6 @@
 		minView: 2,
 		forceParse: 0
     });
-
 </script>
 		@yield('script')
 	</body>

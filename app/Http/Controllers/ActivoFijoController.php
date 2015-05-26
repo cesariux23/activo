@@ -58,11 +58,10 @@ class ActivoFijoController extends Controller {
 	public function create(Request $request)
 	{
 		$activofijo=new ActivoFijo;
-		$activofijo->TpoBien=
 		$tipo= $request->segment(1);
 		$activofijo->TpoBien=strtoupper(substr($tipo,0,1));
 		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
-		$empleados=$this->empleados();
+		$empleados=Empleado::where('Baja',0)->get();
 		 	//->get();
 		$oficinas=Oficina::all();
 		$proveedores = Proveedor::all();
@@ -75,6 +74,7 @@ class ActivoFijoController extends Controller {
 		$detalle->FecMovto=date('Y-m-d');
 		$detalle->IdEmp='G439';
 		$detalle->Ubicac='300C5';
+		$detalle->EdoDelBien="1.BUENO";
 		//crea un arreglo
 		$detalles=[$detalle];
 		$activofijo->detalle=$detalle;
@@ -180,7 +180,7 @@ class ActivoFijoController extends Controller {
 		$tipo= $request->segment(1);
 		$proveedores = Proveedor::all();
 		$adquisicion = TipoAdquisicion::all();
-		$empleados=$this->empleados();
+		$empleados=Empleado::where('Baja',0)->get();
 		
 		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
 		$oficinas=Oficina::all();

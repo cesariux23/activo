@@ -10,20 +10,18 @@
 
 @include('forms.errores')
 
-{{$activofijo->detalle}}
 {!!Form::model($activofijo,array('url' =>$tipo.'/activofijo'))!!}
 
 
-@include('activofijo.forms')
+<section ng-init='detalle={{$activofijo->detalle}};' ng-controller="createActivoController">
+	@include('activofijo.forms')
 @include('activofijo.tablaresponsable',['detalles'=>$detalles, 'nuevo'=>true])
 @include('activofijo.modal')
 @include('forms.botones',['txt_btn' => 'Guardar', 'path'=>'activofijo'])
+</section>
+
 @endsection
 
 @section('script')
-<script type="text/javascript">
-	var detalle={!! json_encode($activofijo->detalle) !!};
-	console.log(detalle)
-</script>
  <script src="{{ asset('/js/activo_create.js') }}">  </script>
 @stop

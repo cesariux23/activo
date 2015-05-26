@@ -3,19 +3,19 @@
 	<div class="row">
 		<div class="col-md-1">
 			<label>Grupo</label>
-			{!!Form::text('Gpo', old('Gpo'), array("class"=>"form-control","placeholder"=>"Grupo"))!!}
+			{!!Form::text('Gpo', old('Gpo'), array("class"=>"form-control","placeholder"=>"Grupo",'mayus','ng-model'=>"bien.Gpo"))!!}
 		</div>
 		<div class="col-md-2">
 			<label>Clave</label>
-			{!!Form::text('Clave', @$Clave, array("class"=>"form-control","placeholder"=>"Clave"))!!}
+			{!!Form::text('Clave', @$Clave, array("class"=>"form-control","placeholder"=>"Clave", 'mayus','ng-model'=>"bien.Clave"))!!}
 		</div>
 		<div class="col-md-2">
 			<label>Número Inv.</label>
-			{!!Form::text('NumInv', @$NumInv, array("class"=>"form-control","placeholder"=>"# Inventario"))!!}
+			{!!Form::text('NumInv', @$NumInv, array("class"=>"form-control","placeholder"=>"# Inventario", 'mayus','ng-model'=>"bien.NumInv"))!!}
 		</div>
 		<div class="col-md-1">
 			<label>Año P.</label>
-			{!!Form::text('AnoPrg', @$AnoPrg, array("class"=>"form-control","placeholder"=>"Año P."))!!}
+			{!!Form::text('AnoPrg', @$AnoPrg, array("class"=>"form-control","placeholder"=>"Año P.", 'mayus','ng-model'=>"bien.AnoProg"))!!}
 		</div>
 		<div class="col-md-1">
 			<label>Tipo</label>
@@ -23,7 +23,7 @@
 		</div>
 		<div class="col-md-3">
 			<label>Denominación</label>
-			{!!Form::text('Denomin', @$Denomin, array("class"=>"form-control","placeholder"=>"Denominación"))!!}
+			{!!Form::text('Denomin', @$Denomin, array("class"=>"form-control","placeholder"=>"Denominación", 'mayus','ng-model'=>"bien.Denomin"))!!}
 		</div>
 
 		<div class="form-group col-md-2">
@@ -49,11 +49,11 @@
 	<div class="row">
 		<div class="col-md-2">
 			<label>Id</label>
-			<input type="text" id="prov" class="form-control">
+			<input type="text" id="prov" class="form-control txt" ng-model="prov">
 		</div>
 		<div class="col-md-4">
 			<label>Nombre</label>
-			<select name="IdProv" id="idprov" class="form-control">
+			<select name="IdProv" id="idprov" class="form-control" ng-model="prov">
 				<option value="">--Seleccione--</option>
 				@foreach ($proveedores as $prov)	
 				<option value="{{$prov->IdProv }}">{{ $prov->IdProv." -- ".$prov->DescProv}}</option>
@@ -80,11 +80,11 @@
 	<div class="row">
 		<div class="col-md-2">
 			<label>Id</label>
-			<input type="text" id="idadq" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+			<input type="text" id="adq" class="form-control txt" ng-model="adq" mayus>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<label>Nombre</label>
-			<select name="IdTipAdq" id="adq" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">	
+			<select name="IdTipAdq" id="idadq" class="form-control" ng-model="adq">	
 				<option value="">--Seleccione--</option>
 				@foreach ($adquisicion as $adq)	
 				<option value="{{$adq->IdTipAdq }}">{{ $adq->IdTipAdq." -- ".$adq->DescAdq }}</option>
@@ -93,20 +93,16 @@
 		</div>
 		<div class="col-md-2">
 			<label>Id Rubro</label>
-			<input type="text" id="idrub" class="form-control" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+			<input type="text" id="rub" class="form-control txt" ng-model="rub" mayus style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<label>Rubro</label>
-			<select name="IdRub" id="rubdesc" class="form-control">
+			<select name="IdRub" id="idrub" class="form-control" ng-model="rub">
 				<option value="">--Seleccione--</option>
 				@foreach ($rubro as $rubdesc)	
 				<option value="{{$rubdesc->IdRub }}">{{ $rubdesc->IdRub." -- ".$rubdesc->DescRub }}</option>
 				@endforeach
 			</select>
-		</div>
-		<div class="col-md-2">
-			<label>Estado</label>
-			{!!Form::text('Edo', @$Edo, array("class"=>"form-control","placeholder"=>"Estado","style"=>"text-transform:uppercase;", "onkeyup"=>"javascript:this.value=this.value.toUpperCase();"))!!}
 		</div>
 	</div><br>
 
