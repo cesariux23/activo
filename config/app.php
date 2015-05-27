@@ -149,6 +149,11 @@ return [
 		'ActivoFijo\Providers\EventServiceProvider',
 		'ActivoFijo\Providers\RouteServiceProvider',
 
+		/*
+		*codigo de barras
+		*/
+		'Dinesh\Barcode\BarcodeServiceProvider',
+
 	],
 
 	/*
@@ -199,6 +204,10 @@ return [
 		'Form'		=> 'Illuminate\Html\FormFacade', 
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 		'Flash' 	=> 'Laracasts\Flash\Flash',
+
+		//codigo de barras
+		'DNS1D' => 'Dinesh\Barcode\Facades\DNS1DFacade',
+    	'DNS2D' => 'Dinesh\Barcode\Facades\DNS2DFacade',
 
 	],
 

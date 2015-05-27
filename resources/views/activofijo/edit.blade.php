@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-<div>
+<div ng-init="bien={{$post}}">
 	<div class="pull-right">
 		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"> Regresar</a>
 	</div>

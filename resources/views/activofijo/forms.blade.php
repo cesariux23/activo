@@ -29,7 +29,7 @@
 		<div class="form-group col-md-2">
 			<label>Fecha Alta</label>
 			<div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-				<input class="form-control" size="16" type="text" value="" readonly>
+				<input class="form-control" size="16" type="text" value="{{Input::old('FecAlta')}}" readonly ng-model="bien.FecAlta" ng-change="detalle.FecMovto=bien.FecAlta">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 			</div>
 			<input type="hidden" id="dtp_input2" value="" /><br/>
@@ -49,11 +49,11 @@
 	<div class="row">
 		<div class="col-md-2">
 			<label>Id</label>
-			<input type="text" id="prov" class="form-control txt" ng-model="prov">
+			<input type="text" id="prov" class="form-control txt" ng-model="bien.IdProv">
 		</div>
 		<div class="col-md-4">
 			<label>Nombre</label>
-			<select name="IdProv" id="idprov" class="form-control" ng-model="prov">
+			<select name="IdProv" id="idprov" class="form-control" ng-model="bien.IdProv">
 				<option value="">--Seleccione--</option>
 				@foreach ($proveedores as $prov)	
 				<option value="{{$prov->IdProv }}">{{ $prov->IdProv." -- ".$prov->DescProv}}</option>
@@ -67,7 +67,7 @@
 		<div class="form-group col-md-2">
 			<label>Fecha Factura</label>
 			<div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-				<input class="form-control" size="16" type="text" value="" readonly>
+				<input class="form-control" size="16" type="text" value="" readonly ng-model="bien.FecFact">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 			</div>
 			<input type="hidden" id="dtp_input2" value="" /><br/>
@@ -85,11 +85,11 @@
 	<div class="row">
 		<div class="col-md-2">
 			<label>Id</label>
-			<input type="text" id="adq" class="form-control txt" ng-model="adq" mayus>
+			<input type="text" id="adq" class="form-control txt" ng-model="bien.IdTipAdq" mayus>
 		</div>
 		<div class="col-md-4">
 			<label>Nombre</label>
-			<select name="IdTipAdq" id="idadq" class="form-control" ng-model="adq">	
+			<select name="IdTipAdq" id="idadq" class="form-control" ng-model="bien.IdTipAdq">	
 				<option value="">--Seleccione--</option>
 				@foreach ($adquisicion as $adq)	
 				<option value="{{$adq->IdTipAdq }}">{{ $adq->IdTipAdq." -- ".$adq->DescAdq }}</option>
@@ -98,33 +98,19 @@
 		</div>
 		<div class="col-md-2">
 			<label>Id Rubro</label>
-			<input type="text" id="rub" class="form-control txt" ng-model="rub" mayus style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+			<input type="text" id="rub" class="form-control txt" ng-model="bien.IdRub" mayus style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
 		</div>
 		<div class="col-md-4">
 			<label>Rubro</label>
-			<select name="IdRub" id="idrub" class="form-control" ng-model="rub">
+			<select name="IdRub" id="idrub" class="form-control" ng-model="bien.IdRub">
 				<option value="">--Seleccione--</option>
 				@foreach ($rubro as $rubdesc)	
 				<option value="{{$rubdesc->IdRub }}">{{ $rubdesc->IdRub." -- ".$rubdesc->DescRub }}</option>
 				@endforeach
 			</select>
 		</div>
-
-		<div class="col-md-2">
-			<label>Estado del Bien</label>
-			{!!Form::select('FecAlta',['1.BUENO'=>'1.BUENO',
-				'2.MALO'=>'2.MALO',
-				'3.REGULAR'=>'3.REGULAR',
-				'4.DESUSO' => '5.DESUSO',
-				'5.EXTRAVIO' => '5.EXTRAVIO',
-				'6.BAJA(INSERVIBLE)' => '6.BAJA(INSERVIBLE)',
-				'7.BAJA(ROBO)' => '7.BAJA(ROBO)',
-				'8.BAJA(TRANSFER)' => '8.BAJA(TRANSFER)',
-				'9.BAJA(SINIESTRO)' => '9.BAJA(SINIESTRO)',
-				'10.BAJA(RECLASIFIC)' => '10.BAJA(RECLASIFIC)'],null,['class'=>'form-control'])!!}
-			</div>
-		</div><br>
-
+		</div>
+		<br>
 		<div class="row">
 			<div class="col-md-6">¿El bien está actualmente localizado físicamente?
 				<label class="radio-inline">

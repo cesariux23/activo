@@ -35,26 +35,27 @@
 	<table class="table table-bordered table-striped">
 		<thead> 
 			<tr>
-				<th width="200px">Número Inventario</th>
-				<th>Denominación</th>
+				<th width="250px">Número Inventario</th>
 				<th>Descripción del Artículo</th>
 
-				<th>Id Tipo de Adquisición</th>
+				<th>Tipo de Adquisición</th>
 
-				<th>Id Rubro</th>
+				<th>Rubro</th>
 
 				<th>Estado</th>
-				<th>Localización</th>
+				<th>Localizado</th>
 
-				<th width="210px">Acciones</th>
+				<th width="180px">Acciones</th>
 			</tr>
 		</thead>
 
 		@foreach($activoestatal as $o)
 		<tr>
-			<td>{{$o->numeroInventario}}</td>
-
-			<td>{{$o->Denomin}}</td>
+			<td>
+				<b>{{$o->numeroInventario}}</b>
+				<br>
+				<span class="text-muted">{{$o->Denomin}}</span>
+			</td>
 			<td>{{$o->DescArt}}</td>
 
 			<td>{{$o->IdTipAdq}}</td>

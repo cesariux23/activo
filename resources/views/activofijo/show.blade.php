@@ -45,7 +45,13 @@
 	<label>Descripción del Artículo</label>
 	<p>{{$bien->DescArt}}</p>
 </div>
-
+<div>
+	{!!DNS2D::getBarcodeSVG($bien->numeroInventario, "QRCODE",3,3)!!}
+	<br>
+	<br>
+	<br>
+	{!!DNS1D::getBarcodeSVG($bien->numeroInventario, "C128",0.7,30)!!}
+</div>
 
 @include('activofijo.tablaresponsable',['detalles'=>$bien->detalles])
 

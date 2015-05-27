@@ -1,25 +1,13 @@
 <?php namespace ActivoFijo\Http\Controllers;
 
-use DB;
 use ActivoFijo\Http\Requests;
 use ActivoFijo\Http\Controllers\Controller;
-
-//modelo para Proveedor
-use ActivoFijo\Proveedor;
-//modelo Adquisicion
-use ActivoFijo\TipoAdquisicion;
-//modelo Rubro
-use ActivoFijo\Rubro;
-//modelo Empleado
-use ActivoFijo\Empleado;
-//modelo Oficina
-use ActivoFijo\Oficina;
 
 use ActivoFijo\ActivoFijo;
 
 use Illuminate\Http\Request;
 
-class ReportesController extends Controller {
+class CodigoController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -29,14 +17,9 @@ class ReportesController extends Controller {
 	public function index()
 	{
 		//
-		$proveedores = Proveedor::all();
-		$adquisicion = TipoAdquisicion::all();
-		$empleados=$this->empleados();
-		
-		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
-		$oficinas=Oficina::all();
-		$rubro = Rubro::all();
-		return view('reportes.consultas', compact('proveedores','oficinasemp','empleados','oficinas','adquisicion','rubro'));
+		//
+		$bienes = ActivoFijo::where('Clave','450400108')->get();
+		return view('codigo.bloque',compact('bienes'));
 	}
 
 	/**
@@ -68,8 +51,8 @@ class ReportesController extends Controller {
 	public function show($id)
 	{
 		//
-		
-
+		$bien = ActivoFijo::find($id);
+		return view('codigo.plantilla',compact('bien'));
 	}
 
 	/**
@@ -103,16 +86,6 @@ class ReportesController extends Controller {
 	public function destroy($id)
 	{
 		//
-	}
-
-	public function empleados()
-	{
-		$default=[''=>"-- Seleccione --"];
-		$opciones=DB::table('02empleados')
-			->select(DB::raw("IdEmp, concat(idemp,' -- ',descEmp)as DescEmp, IdOfna"))
-		 	->where('Baja',0)
-		 	->lists('DescEmp','IdEmp');
-		return $default+$opciones;
 	}
 
 }

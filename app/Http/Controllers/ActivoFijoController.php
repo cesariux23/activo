@@ -196,8 +196,9 @@ class ActivoFijoController extends Controller {
 	 */
 	public function edit($id, Request $request)
 	{
+		
 		$post = ActivoFijo::find($id);
-		$activofijos = ActivoFijo::all()->lists('Movto','Gpo');
+		//$activofijos = ActivoFijo::all()->lists('Movto','Gpo');
 		$tipo= $request->segment(1);
 
 		$proveedores = Proveedor::all();

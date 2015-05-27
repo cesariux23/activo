@@ -10,10 +10,10 @@
 				<fieldset>
 					<legend>Usuario responsable/resguardo del Bien</legend>
 					<div class="row">
-						<div class="form-group col-md-2">
+						<div class="form-group col-md-3">
 							<label>Fecha Alta</label>
 							<div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-								<input class="form-control" size="16" type="text" value="" readonly>
+								<input class="form-control" size="16" type="text" value="" readonly name="FecMovto" ng-model="temp.FecMovto">
 								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 							</div>
 							<input type="hidden" id="dtp_input2" value="" /><br/>
