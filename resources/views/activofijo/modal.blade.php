@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade bs-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
-		<div class="modal-content" ng-init='empleados={{$empleados}}; oficinas={{$oficinas}}'>
+		<div class="modal-content" ng-init='empleados={{$empleados}}; oficinas={{$oficinas}}; temp=detalle;'>
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h3 class="modal-title" id="myModalLabel">Movimiento Histórico</h3>
@@ -13,7 +13,7 @@
 						<div class="form-group col-md-3">
 							<label>Fecha Alta</label>
 							<div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-								<input class="form-control" size="16" type="text" value="" readonly name="FecMovto" ng-model="temp.FecMovto">
+								<input class="form-control" size="16" type="text" value="" name="detalle[FecMovto]" readonly name="FecMovto" ng-model="temp.FecMovto">
 								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 							</div>
 							<input type="hidden" id="dtp_input2" value="" /><br/>
@@ -40,19 +40,14 @@
 				<fieldset>
 					<legend>Estado y Ubicación del Bien</legend>
 					<div class="row">
+						@if(isset($guardar))
 						<div class="col-md-3">
 							<label>Estado del Bien</label>
-							{!!Form::select('detalle[EdoDelBien]',['1.BUENO'=>'1.BUENO',
-								'2.MALO'=>'2.MALO',
-								'3.REGULAR'=>'3.REGULAR',
-								'4.DESUSO' => '5.DESUSO',
-								'5.EXTRAVIO' => '5.EXTRAVIO',
-								'6.BAJA(INSERVIBLE)' => '6.BAJA(INSERVIBLE)',
-								'7.BAJA(ROBO)' => '7.BAJA(ROBO)',
-								'8.BAJA(TRANSFER)' => '8.BAJA(TRANSFER)',
-								'9.BAJA(SINIESTRO)' => '9.BAJA(SINIESTRO)',
-								'10.BAJA(RECLASIFIC)' => '10.BAJA(RECLASIFIC)'],null,['class'=>'form-control', 'ng-model'=>"temp.EdoDelBien" ])!!}
+							{!!Form::select('detalle[EdoDelBien]',config('opciones.estados'),null,['class'=>'form-control', 'ng-model'=>"temp.EdoDelBien" ])!!}
 							</div>
+						@else
+						<input type="hidden" name="detalle[EdoDelBien]" value='<%temp.EdoDelBien%>'>
+						@endif
 							<div class="col-md-2">
 								<label>Ubicación</label>
 								{!!Form::text('detalle[Ubicac]', null, array("class"=>"form-control txt","placeholder"=>"Clave ubicación", 'id'=>"ubic",'ng-model'=>"temp.Ubicac" ))!!}

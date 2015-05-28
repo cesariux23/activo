@@ -72,9 +72,11 @@ class ActivoFijoController extends Controller {
 		$detalle=new MovtosDetalle;
 		//asigna valores por defecto
 		$detalle->FecMovto=date('Y-m-d');
+		$activofijo->FecAlta=date('Y-m-d');
 		$detalle->IdEmp='G439';
 		$detalle->Ubicac='300C5';
-		$detalle->EdoDelBien="1.BUENO";
+		$detalle->EdoDelBien="1. BUENO";
+		$activofijo->Edo="1. BUENO";
 		//crea un arreglo
 		$detalles=[$detalle];
 		$activofijo->detalle=$detalle;
@@ -99,66 +101,58 @@ class ActivoFijoController extends Controller {
 	 */
 	public function store(ActivoFijos $actest)
 	{
-		/*
-		 //Se guardan los valores nuevos
-        $o= new ActivoEstatal();
-        $o->Movto=$actest->input('Movto');
-        $o->Gpo=$actest->input('Gpo');
-        $o->Clave=$actest->input('Clave');
-        $o->save();
+		//numero inicial
+		$inicio=$actest->input('NumInv');
+		//valida que sea un registro masivo
+		if($actest->input('masivo')==1)
+			$fin=$actest->input('NumInvfinal');
+		else
+			$fin=$actest->input('NumInv');
+		
+		//guarda todos los numeros indicados
+		for ($i=$inicio; $i <=$fin ; $i++) { 
+	        $o= new ActivoFijo();
+	        $tipo=$actest->segment(1);
+	        $o->Gpo=$actest->input('Gpo');
+	        $o->Clave=$actest->input('Clave');
+	        //asigna el numero de inventario consecutivo
+	        $o->NumInv=$i;
+	        $o->AnoPrg=$actest->input('AnoPrg');
+	        $o->Denomin=$actest->input('Denomin');
+	        $o->FecAlta=$actest->input('FecAlta');
+	        $o->DescArt=$actest->input('DescArt');
+	        $o->Clave=$actest->input('Clave');
+	        $o->IdProv=$actest->input('IdProv');
+	        $o->NumFact=$actest->input('NumFact');
+	        $o->FecFact=$actest->input('FecFact');
+	        $o->Costo=$actest->input('Costo');
+	        $o->IdTipAdq=$actest->input('IdTipAdq');
+	        $o->IdRub=$actest->input('IdRub');
+	        $o->Edo=$actest->input('Edo');
+	        $o->Localiz=$actest->input('Localiz');
 
-    	//se notifica
-    	flash()->success('Se ha registrado correctamente.');
-        return redirect()->route('activoestatal.index');
-        */
-        $o= new ActivoFijo();
-        //$o->Movto=$actest->input('Movto');
-        $tipo=$actest->segment(1);
-        $o->TpoBien=substr($tipo,0,1);
-        $o->Gpo=$actest->input('Gpo');
-        $o->Clave=$actest->input('Clave');
-        $o->NumInv=$actest->input('NumInv');
-        $o->AnoPrg=$actest->input('AnoPrg');
-        $o->Denomin=$actest->input('Denomin');
-        $o->FecAlta=$actest->input('FecAlta');
-        $o->DescArt=$actest->input('DescArt');
-        $o->Clave=$actest->input('Clave');
+	        //guarda los datos
+	        $o->save();
 
-        $o->IdProv=$actest->input('IdProv');
+	        //Guarda el detalle
+	        $d=$actest->input('detalle');
 
-        $o->NumFact=$actest->input('NumFact');
-        $o->FecFact=$actest->input('FecFact');
-        $o->Costo=$actest->input('Costo');
+	        $detalle=new MovtosDetalle;
 
-        $o->IdTipAdq=$actest->input('IdTipAdq');
+	        $detalle->Movto=$o->Movto;
+	        $detalle->FecMovto=$d['FecMovto'];
+	        $detalle->Ubicac=$d['Ubicac'];
+	        $detalle->IdEmp=$d['IdEmp'];
+	        $detalle->EdoDelBien=$d['EdoDelBien'];
+	        $detalle->Ultimo=1;
+	        //limpiar el ultimo
 
-        $o->IdRub=$actest->input('IdRub');
+	        MovtosDetalle::where('Ultimo',1)
+	        	->where('Movto',$o->Movto)
+	        	->update(['Ultimo'=>0]);
 
-        $o->Edo=$actest->input('Edo');
-        $o->Localiz=$actest->input('Localiz');
-
-        //guarda los datos
-        $o->save();
-
-        //Guarda el detalle
-        $d=$actest->input('detalle');
-
-        $detalle=new MovtosDetalle;
-
-        $detalle->Movto=$o->Movto;
-        $detalle->FecMovto=$d['FecMovto'];
-        $detalle->Ubicac=$d['Ubicac'];
-        $detalle->IdEmp=$d['IdEmp'];
-        $detalle->EdoDelBien=$d['EdoDelBien'];
-        $detalle->Ultimo=1;
-        //limpiar el ultimo
-
-        MovtosDetalle::where('Ultimo',1)
-        	->where('Movto',$o->Movto)
-        	->update(['Ultimo'=>0]);
-
-        $detalle->save();
-        
+	        $detalle->save();
+        }
 
 
 		//se notifica
@@ -166,6 +160,7 @@ class ActivoFijoController extends Controller {
 
         //redirecciona al index
         return redirect()->route($tipo.'.activofijo.index');
+        
     }
 
 	/**
@@ -197,7 +192,7 @@ class ActivoFijoController extends Controller {
 	public function edit($id, Request $request)
 	{
 		
-		$post = ActivoFijo::find($id);
+		$activofijo = ActivoFijo::find($id);
 		//$activofijos = ActivoFijo::all()->lists('Movto','Gpo');
 		$tipo= $request->segment(1);
 
@@ -205,7 +200,7 @@ class ActivoFijoController extends Controller {
 		$adquisicion = TipoAdquisicion::all();
 		$rubro = Rubro::all();
 
-		return view('activofijo.edit', compact('post','activofijos','tipo','proveedores','adquisicion','rubro'));
+		return view('activofijo.edit', compact('activofijo','activofijos','tipo','proveedores','adquisicion','rubro'));
 	}
 
 	/**

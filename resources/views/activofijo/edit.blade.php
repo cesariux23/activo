@@ -1,16 +1,16 @@
 @extends('app')
 
 @section('content')
-<div ng-init="bien={{$post}}">
+<div>
 	<div class="pull-right">
 		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"> Regresar</a>
 	</div>
-	<h1>Actualizar Movimientos <b>{{$post->Movto}}</b></h1>	
+	<h1>Actualizar Movimientos <b>{{$activofijo->Movto}}</b></h1>	
 </div>
 
 @include('forms.errores')
 
-{!!Form::model($post,array('action' => 'ActivoFijoController@update', 'method' => 'put'))!!}
+{!!Form::model($activofijo,array('action' => 'ActivoFijoController@update', 'method' => 'put'))!!}
 
 {!!Form::hidden('Movto')!!}
 
