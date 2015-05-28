@@ -1,6 +1,7 @@
 <?php namespace ActivoFijo;
 
 use Illuminate\Database\Eloquent\Model;
+//use DB;
 
 class Empleado extends Model {
 
@@ -19,14 +20,26 @@ class Empleado extends Model {
      //regresa los valores relacionados
     public function bienes()
     {
-        return $this->hasMany('ActivoFijo\MovtosDetalle','IdEmp','IdEmp');
+        return $this->hasMany('ActivoFijo\MovtosDetalle','IdEmp','IdEmp')
+        ->where('ultimo',1)
+        ->whereRaw("NOT EdodelBien like '%BAJA%'")
+        ->get();
+    }
+
+    public function getTotalmovimientosAttribute()
+    {
+        # code...
+        return \DB::table('movtosdetal')->where('IdEmp',$this->IdEmp)->count();
+        //return 1;
     }
 
     public function getNumeroBienesAttribute()
     {
         # Regresa el numero de bienes en la adscripcion
         return $this->bienes()->count();
-    } 
+    }
+
+
 
     //Busqueda
 

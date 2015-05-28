@@ -2,7 +2,9 @@
 	<a class="btn btn-sm btn-info" href="{{ url('/adscripciones/'.$o->IdOfna.'/edit') }}"> Editar</a>
 	@if($o->numeroEmpleados || $o->numeroBienes)
 		<a class="btn btn-sm btn-default" href="{{ url('/adscripciones/'.$o->IdOfna) }}"> Detalles</a>
-	@else
+	@else		
+		@if($o->totalmovimientos==0)
 		<button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+		@endif
 	@endif
 {!! Form::close() !!}

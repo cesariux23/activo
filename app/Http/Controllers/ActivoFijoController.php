@@ -40,7 +40,12 @@ class ActivoFijoController extends Controller {
 		$tipo = $request->segment(1);
 
 		$t=strtoupper(substr($tipo,0,1));
-		$activoestatal = ActivoFijo::where('TpoBien',$t)->clave($clave)->descripcion($desc)->numinv($numinv)->paginate();
+		$activoestatal = ActivoFijo::where('TpoBien',$t)
+			->whereRaw("NOT Edo like '%BAJA%'")
+			->clave($clave)
+			->descripcion($desc)
+			->numinv($numinv)
+			->paginate();
 		$activoestatal->setPath('activofijo');
 
 		$proveedores = Proveedor::all();
@@ -117,6 +122,7 @@ class ActivoFijoController extends Controller {
 	        $o->Clave=$actest->input('Clave');
 	        //asigna el numero de inventario consecutivo
 	        $o->NumInv=$i;
+	        $o->TpoBien=strtoupper(substr($tipo,0,1));
 	        $o->AnoPrg=$actest->input('AnoPrg');
 	        $o->Denomin=$actest->input('Denomin');
 	        $o->FecAlta=$actest->input('FecAlta');

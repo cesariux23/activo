@@ -42,8 +42,7 @@
 
 				<th>Rubro</th>
 
-				<th>Estado</th>
-				<th>Localizado</th>
+				<th width="100px">Estado</th>
 
 				<th width="180px">Acciones</th>
 			</tr>
@@ -63,12 +62,11 @@
 			<td>{{$o->IdRub}}</td>
 
 			<td>{{$o->Edo}}</td>
-			<td>{{$o->Localiz}}</td>
 
 			<td>@include('activofijo.acciones')</td>
 		</tr>
 		@endforeach
 	</table>
 
-	{!! $activoestatal->render() !!}
+	{!! $activoestatal->appends(Request::only('Clave','NumInv','desc'))->render() !!}
 	@endsection
