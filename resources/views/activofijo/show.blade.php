@@ -3,8 +3,10 @@
 
 <div>
 	<div class="pull-right hidden-print">
-		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"> Regresar</a>
-		<a href="{{ route('codigos.show',$bien->Movto) }}" class="btn btn-default"> Imprimir código QR</a>
+		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"><i class="fa fa-chevron-left"></i> Regresar</a>
+		<a href="{{ route('vales.show',$bien->Movto) }}" class="btn btn-primary" target="blanck_"><i class="fa fa-file"></i> Vale de resguardo</a>
+		<a href="{{ route('codigos.show',$bien->Movto) }}" class="btn btn-default" target="blanck_"><i class="fa fa-qrcode text-success"></i> QR</a>
+		<button type="button" class="btn btn-default" click="window.print();"><i class="fa fa-print"></i></button>
 		<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-modal-lg"><i class="fa fa-plus"></i> Nuevo Movimiento</button>
 	</div>
 	<h1>{{$bien->numeroInventario}}</h1>

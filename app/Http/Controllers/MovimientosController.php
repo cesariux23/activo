@@ -5,6 +5,8 @@ use ActivoFijo\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use ActivoFijo\MovtosDetalle;
+//modelo para Activo Fijo
+use ActivoFijo\ActivoFijo;
 
 class MovimientosController extends Controller {
 
@@ -51,9 +53,12 @@ class MovimientosController extends Controller {
         MovtosDetalle::where('Ultimo',1)
         	->where('Movto',$d['Movto'])
         	->update(['Ultimo'=>0]);
-
-
+        //guarda en la base de datos
         $detalle->save();
+         //actualiza el estado del bien al que esta ligado
+        $bien=ActivoFijo::find($d['Movto']);
+        $bien->Edo=$d['EdoDelBien'];
+        $bien->save();
         flash()->success('Se ha registrado correctamente.');
         $tipo=$request->input('tipo');
 

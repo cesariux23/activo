@@ -68,7 +68,7 @@ class ActivoFijo extends Model {
     
     public function detalles()
     {
-        return $this->hasMany('ActivoFijo\MovtosDetalle', 'Movto','Movto')->orderBy('FecMovto','DESC')->orderBy('IdDet','desc');
+        return $this->hasMany('ActivoFijo\MovtosDetalle', 'Movto','Movto')->orderBy('IdDet','desc');
     }
 
     public function scopeClave($query, $clave)
@@ -90,6 +90,13 @@ class ActivoFijo extends Model {
         # busca por Número de Inventario
         if($numinv!="")
             $query->where('NumInv','LIKE','%'.$numinv.'%');
+    }
+    public function getUltimoAttribute()
+    {
+        return MovtosDetalle::where('ultimo',1)
+        ->where('Movto',$this->Movto)
+        ->whereRaw("NOT EdodelBien like '%BAJA%'")
+        ->first();
     }
 }
 

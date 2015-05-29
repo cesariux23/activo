@@ -65,9 +65,11 @@ class ActivoFijoController extends Controller {
 		$activofijo=new ActivoFijo;
 		$tipo= $request->segment(1);
 		$activofijo->TpoBien=strtoupper(substr($tipo,0,1));
-		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
+		//$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
 		$empleados=Empleado::where('Baja',0)->get();
+		//$empleados=\DB::table('02empleados')->where('Baja',0)->get();
 		 	//->get();
+		//dd($empleados);
 		$oficinas=Oficina::all();
 		$proveedores = Proveedor::all();
 		$adquisicion = TipoAdquisicion::all();
