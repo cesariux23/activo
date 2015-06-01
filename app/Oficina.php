@@ -20,8 +20,8 @@ class Oficina extends Model {
     {
         return $this->hasMany('ActivoFijo\MovtosDetalle','Ubicac','IdOfna')
         ->where('ultimo',1)
-        ->whereRaw("NOT EdodelBien like '%BAJA%'")
-        ->get();
+        ->whereRaw("NOT EdodelBien like '%BAJA%'");
+        //->get();
     }
 
     public function getNumeroEmpleadosAttribute()

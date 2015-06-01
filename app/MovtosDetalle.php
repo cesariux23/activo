@@ -11,9 +11,9 @@ class MovtosDetalle extends Model {
 	protected $fillable = ['DescEmp'];
 
 
-	public function movimiento()
+	public function bien()
     {
-        return $this->belongsTo('ActivoFijo\Movimiento', 'Movto','Movto');
+        return $this->belongsTo('ActivoFijo\ActivoFijo', 'Movto','Movto');
     }
 
     public function empleado()

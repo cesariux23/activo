@@ -22,8 +22,8 @@ class Empleado extends Model {
     {
         return $this->hasMany('ActivoFijo\MovtosDetalle','IdEmp','IdEmp')
         ->where('ultimo',1)
-        ->whereRaw("NOT EdodelBien like '%BAJA%'")
-        ->get();
+        ->whereRaw("NOT EdodelBien like '%BAJA%'");
+        //->get();
     }
 
     public function getTotalmovimientosAttribute()
