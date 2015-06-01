@@ -91,6 +91,19 @@ class ActivoFijo extends Model {
         if($numinv!="")
             $query->where('NumInv','LIKE','%'.$numinv.'%');
     }
+    public function scopeDescemp($query, $descemp)
+    {
+        # busca por clave
+        if($descemp!="")
+            $query->where('DescEmp','LIKE','%'.$descemp.'%');
+    }
+
+    public function scopeDescOfna($query, $descofna)
+    {
+        # busca por scopeDescripcion
+        if($descofna!="")
+            $query->where('DescOfna','LIKE','%'.$descofna.'%');
+    }
     public function getUltimoAttribute()
     {
         return MovtosDetalle::where('ultimo',1)

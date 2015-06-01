@@ -21,9 +21,16 @@
 	<div class="form-group">
 		{!!Form::text('desc', null, ['class'=>'form-control','placeholder'=>'Descripción'])!!}
 	</div>
+	<div class="form-group">
+		{!!Form::text('DescEmp', null, ['class'=>'form-control','placeholder'=>'Nombre'])!!}
+	</div>
+	<div class="form-group">
+		{!!Form::text('DescOfna', null, ['class'=>'form-control','placeholder'=>'Ubicación'])!!}
+	</div>
+
 
 	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
-	@if (isset($clave)||isset($numinv))
+	@if (isset($clave)||isset($numinv)||isset($descemp)||isset($descofna))
 	{{-- true expr --}}
 	<a href="{{ route($tipo.'.activofijo.index') }}" class="btn btn-warning">
 		<span class="glyphicon glyphicon-remove"></span> Limpiar</a>

@@ -38,10 +38,13 @@ class ActivoFijoController extends Controller {
 		$clave = $request->get('Clave');
 		$numinv = $request->get('NumInv');
 		$desc = $request->get('desc');
-
+		$descemp=$request->get('DescEmp');
+		$descofna=$request->get('DescOfna');
 		$tipo = $request->segment(1);
 
 		$t=strtoupper(substr($tipo,0,1));
+
+		
 		/*
 		$activoestatal = ActivoFijo::where('TpoBien',$t)
 			->whereRaw("NOT Edo like '%BAJA%'")
@@ -54,6 +57,9 @@ class ActivoFijoController extends Controller {
 		->clave($clave)
 		->descripcion($desc)
 		->numinv($numinv)
+		->descemp($descemp)
+		->descofna($descofna)
+		
 		->paginate();
 		$activoestatal->setPath('activofijo');
 

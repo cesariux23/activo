@@ -49,6 +49,7 @@ class ValesController extends Controller {
 	public function show($id)
 	{
 		$bien=ActivoFijo::find($id);
+		//dd($bien);
 		return view('vales.plantilla',compact('bien'));
 	}
 
