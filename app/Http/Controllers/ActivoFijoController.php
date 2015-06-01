@@ -50,7 +50,11 @@ class ActivoFijoController extends Controller {
 			->numinv($numinv)
 			->paginate();
 		*/
-		$activoestatal = Detalles::paginate();
+		$activoestatal = Detalles::where('TpoBien',$t)
+		->clave($clave)
+		->descripcion($desc)
+		->numinv($numinv)
+		->paginate();
 		$activoestatal->setPath('activofijo');
 
 		$proveedores = Proveedor::all();

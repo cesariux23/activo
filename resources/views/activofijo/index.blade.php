@@ -6,12 +6,12 @@
 		<a  href="" class="btn btn-default"> <span class="glyphicon glyphicon-print"></span> Imprimir</a>
 		<a  href="{{ url($urlCreate) }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 	</div>
-	<h1>Listado de Activo {{ucfirst($tipo)}}</h1>	
+	<h1>Listado de Activo {{ucfirst($tipo)}}</h1>
 </div>
 
 <div class="well">
 	{!! Form::model(Request::all(),array('route' => $tipo.'.activofijo.index', 'method' => 'GET','class' => 'form-inline')) !!}
-	
+
 	<div class="form-group">
 		{!!Form::text('Clave', null, ['class'=>'form-control','placeholder'=>'Clave'])!!}
 	</div>
@@ -33,16 +33,14 @@
 
 	<p><b>{{$activoestatal->total()}}</b> activo(s).</p>
 	<table class="table table-bordered table-striped">
-		<thead> 
+		<thead>
 			<tr>
 				<th width="250px">Número Inventario</th>
 				<th>Descripción del Artículo</th>
 
-				<th>Tipo de Adquisición</th>
+				<th>Responsable / Ubicación </th>
 
-				<th>Rubro</th>
-
-				<th width="100px">Estado</th>
+				<th width="80px">Estado</th>
 
 				<th width="180px">Acciones</th>
 			</tr>
@@ -57,10 +55,11 @@
 			</td>
 			<td>{{$o->DescArt}}</td>
 
-			<td>{{$o->IdTipAdq}}</td>
-
-			<td>{{$o->IdRub}}</td>
-
+			<td>
+				<b>{{$o->DescEmp}}</b>
+				<br>
+				<span class="text-muted">{{$o->DescOfna}}</span>
+			</td>
 			<td>{{$o->Edo}}</td>
 
 			<td>@include('activofijo.acciones')</td>

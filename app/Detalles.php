@@ -32,4 +32,25 @@ class Detalles extends Model {
 			return $tipo.'-'.$this->Gpo.'-'.$this->Clave.'-'.sprintf('%05d', $this->NumInv).'-'.substr($this->AnoPrg, 2,2) ;
 	}
 
+	public function scopeClave($query, $clave)
+	{
+			# busca por clave
+			if($clave!="")
+					$query->where('Clave','LIKE','%'.$clave.'%');
+	}
+
+	public function scopeDescripcion($query, $desc)
+	{
+			# busca por scopeDescripcion
+			if($desc!="")
+					$query->where('DescArt','LIKE','%'.$desc.'%');
+	}
+
+	public function scopeNumInv($query, $numinv)
+	{
+			# busca por Número de Inventario
+			if($numinv!="")
+					$query->where('NumInv','LIKE','%'.$numinv.'%');
+	}
+
 }
