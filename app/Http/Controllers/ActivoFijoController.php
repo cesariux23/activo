@@ -19,6 +19,8 @@ use ActivoFijo\Empleado;
 //modelo Oficina
 use ActivoFijo\Oficina;
 
+use ActivoFijo\Detalles;
+
 //modelo MovtosDetalle
 use ActivoFijo\MovtosDetalle;
 //Request Validator
@@ -40,16 +42,19 @@ class ActivoFijoController extends Controller {
 		$tipo = $request->segment(1);
 
 		$t=strtoupper(substr($tipo,0,1));
+		/*
 		$activoestatal = ActivoFijo::where('TpoBien',$t)
 			->whereRaw("NOT Edo like '%BAJA%'")
 			->clave($clave)
 			->descripcion($desc)
 			->numinv($numinv)
 			->paginate();
+		*/
+		$activoestatal = Detalles::paginate();
 		$activoestatal->setPath('activofijo');
 
 		$proveedores = Proveedor::all();
-		
+
 		$urlCreate='/'.strtolower($tipo).'/activofijo/create';
 
 		return view('activofijo.index', compact('clave','numinv','activoestatal', 'proveedores','tipo','urlCreate'));
@@ -115,9 +120,9 @@ class ActivoFijoController extends Controller {
 			$fin=$actest->input('NumInvfinal');
 		else
 			$fin=$actest->input('NumInv');
-		
+
 		//guarda todos los numeros indicados
-		for ($i=$inicio; $i <=$fin ; $i++) { 
+		for ($i=$inicio; $i <=$fin ; $i++) {
 	        $o= new ActivoFijo();
 	        $tipo=$actest->segment(1);
 	        $o->Gpo=$actest->input('Gpo');
@@ -168,7 +173,7 @@ class ActivoFijoController extends Controller {
 
         //redirecciona al index
         return redirect()->route($tipo.'.activofijo.index');
-        
+
     }
 
 	/**
@@ -184,7 +189,7 @@ class ActivoFijoController extends Controller {
 		$proveedores = Proveedor::all();
 		$adquisicion = TipoAdquisicion::all();
 		$empleados=Empleado::where('Baja',0)->get();
-		
+
 		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
 		$oficinas=Oficina::all();
 		$rubro = Rubro::all();
@@ -199,7 +204,7 @@ class ActivoFijoController extends Controller {
 	 */
 	public function edit($id, Request $request)
 	{
-		
+
 		$activofijo = ActivoFijo::find($id);
 		//$activofijos = ActivoFijo::all()->lists('Movto','Gpo');
 		$tipo= $request->segment(1);
@@ -238,7 +243,7 @@ class ActivoFijoController extends Controller {
 		echo $tipo;
 		$o = ActivoFijo::findOrFail($id);
 		$o->delete();
-		
+
 
 		flash()->success('Se ha eleminado correctamente el bien.');
 		return redirect()->route($tipo.'.activofijo.index');

@@ -1,0 +1,6 @@
+create view detalles as
+select IdDet,movtosdetal.IdEmp,FecMovto,EdoDelBien,Ubicac,Comenta,Ultimo, movimientos.* , DescEmp, DescOfna from movtosdetal
+join movimientos on movimientos.movto=movtosdetal.movto
+join 02empleados on 02empleados.idemp=movtosdetal.idemp
+join 01ofnas on 01ofnas.idofna=ubicac
+where edodelbien not like "%BAJA%"
