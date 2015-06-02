@@ -1,5 +1,5 @@
 <fieldset ng-init="bien={{$activofijo}}">
-	<legend>Recurso {{ucfirst($tipo)}}</legend> 
+	<legend>Recurso {{ucfirst($tipo)}}</legend>
 	<div class="row">
 		<div class="col-md-1">
 			<label>Grupo</label>
@@ -23,6 +23,7 @@
 			<label>Número Inventario<span ng-show="masivo"> inicial</span></label>
 			{!!Form::text('NumInv', @$NumInv, array("class"=>"form-control","placeholder"=>"# Inventario", 'mayus','ng-model'=>"bien.NumInv"))!!}
 		</div>
+		@if(null==$activofijo->Movto)
 		<div class="col-md-2" ng-show="masivo">
 			<label>Número Inventario final</label>
 			{!!Form::text('NumInvfinal', @$NumInv, array("class"=>"form-control","placeholder"=>"# Inventario", 'mayus','ng-model'=>"final", 'ng-change'=>"nuevos=final-bien.NumInv+1"))!!}
@@ -38,6 +39,7 @@
 				<i class="fa fa-warning fa-2x"></i> El número final debe ser mayor al inicial.
 			</div>
 		</div>
+		@endif
 		</div>
 	<div class="row">
 		<div class="col-md-1">
@@ -82,7 +84,7 @@
 			<label>Nombre</label>
 			<select name="IdProv" id="idprov" class="form-control" ng-model="bien.IdProv">
 				<option value="">--Seleccione--</option>
-				@foreach ($proveedores as $prov)	
+				@foreach ($proveedores as $prov)
 				<option value="{{$prov->IdProv }}">{{ $prov->IdProv." -- ".$prov->DescProv}}</option>
 				@endforeach
 			</select>
@@ -116,9 +118,9 @@
 		</div>
 		<div class="col-md-4">
 			<label>Nombre</label>
-			<select name="IdTipAdq" id="idadq" class="form-control" ng-model="bien.IdTipAdq">	
+			<select name="IdTipAdq" id="idadq" class="form-control" ng-model="bien.IdTipAdq">
 				<option value="">--Seleccione--</option>
-				@foreach ($adquisicion as $adq)	
+				@foreach ($adquisicion as $adq)
 				<option value="{{$adq->IdTipAdq }}">{{ $adq->IdTipAdq." -- ".$adq->DescAdq }}</option>
 				@endforeach
 			</select>
@@ -131,13 +133,14 @@
 			<label>Rubro</label>
 			<select name="IdRub" id="idrub" class="form-control" ng-model="bien.IdRub">
 				<option value="">--Seleccione--</option>
-				@foreach ($rubro as $rubdesc)	
+				@foreach ($rubro as $rubdesc)
 				<option value="{{$rubdesc->IdRub }}">{{ $rubdesc->IdRub." -- ".$rubdesc->DescRub }}</option>
 				@endforeach
 			</select>
 		</div>
 		</div>
 		<br>
+		@if(null==$activofijo->Movto)
 		<div class="row">
 		<div class="col-md-3">
 							<label>Estado del Bien</label>
@@ -152,12 +155,5 @@
 				</label>
 			</div>
 		</div>
+		@endif
 	</fieldset><br>
-
-
-
-
-
-
-
-

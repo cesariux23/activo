@@ -44,7 +44,7 @@ class ActivoFijoController extends Controller {
 
 		$t=strtoupper(substr($tipo,0,1));
 
-		
+
 		/*
 		$activoestatal = ActivoFijo::where('TpoBien',$t)
 			->whereRaw("NOT Edo like '%BAJA%'")
@@ -53,21 +53,21 @@ class ActivoFijoController extends Controller {
 			->numinv($numinv)
 			->paginate();
 		*/
-		$activoestatal = Detalles::where('TpoBien',$t)
+		$activofijo = Detalles::where('TpoBien',$t)
 		->clave($clave)
 		->descripcion($desc)
 		->numinv($numinv)
 		->descemp($descemp)
 		->descofna($descofna)
-		
+
 		->paginate();
-		$activoestatal->setPath('activofijo');
+		$activofijo->setPath('activofijo');
 
 		$proveedores = Proveedor::all();
 
 		$urlCreate='/'.strtolower($tipo).'/activofijo/create';
 
-		return view('activofijo.index', compact('clave','numinv','activoestatal', 'proveedores','tipo','urlCreate'));
+		return view('activofijo.index', compact('clave','numinv','activofijo', 'proveedores','tipo','urlCreate'));
 	}
 
 	/**

@@ -32,10 +32,10 @@
 							</select>
 							<span id="departamento" ng-show="temp.Ubicac"><% (oficinas | filter:{IdOfna:IdOfna})[0].IdOfna %> -- <% (oficinas | filter:{IdOfna:IdOfna})[0].DescOfna%></span>
 							<br>
-							
+
 						</div>
-					</div>	
-				</fieldset><br>	
+					</div>
+				</fieldset><br>
 
 				<fieldset>
 					<legend>Estado y Ubicación del Bien</legend>
@@ -56,7 +56,7 @@
 								<label>Edificio</label>
 								<select id="idubic" class="form-control" ng-model="temp.Ubicac">
 									<option value="">--Seleccione--</option>
-									@foreach ($oficinas as $of)	
+									@foreach ($oficinas as $of)
 									<option value="{{$of->IdOfna }}">{{ $of->IdOfna." -- ".$of->DescOfna }}</option>
 									@endforeach
 								</select>
@@ -65,12 +65,12 @@
 					</fieldset>
 					<br>
 					<div class="modal-footer">
-						
+
 						@if(isset($guardar))
 						<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar">Cancelar</button>
 						<button type="submit" class="btn btn-primary">Guardar</button>
 						@else
-						<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar">Cerrar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar" ng-click="temp=detalle">Cerrar</button>
 						<button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAceptar" ng-click="detalle=temp">Aceptar</button>
 						@endif
 					</div>
@@ -78,5 +78,3 @@
 			</div>
 		</div>
 	</div>
-
-

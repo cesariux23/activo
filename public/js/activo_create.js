@@ -10,6 +10,7 @@ $(".txt").on("focusout", function () {
 
 app.controller('createActivoController', ['$scope', function($scope) {
 	$scope.temp={};
+	$scope.masivo=false;
   $scope.llena = function () {
   	$scope.temp=angular.copy($scope.detalle);
   	$scope.IdOfna=$scope.detalle.Ubicac;

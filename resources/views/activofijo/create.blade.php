@@ -3,9 +3,9 @@
 @section('content')
 <div>
 	<div class="pull-right">
-		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"> Regresar</a>
+		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"><i class="fa fa-chevron-left"></i>  Regresar</a>
 	</div>
-	<h1>Nuevo Activo {{ucfirst($tipo)}}</h1>	
+	<h1>Nuevo Activo {{ucfirst($tipo)}}</h1>
 </div>
 
 @include('forms.errores')

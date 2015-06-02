@@ -1,3 +1,16 @@
+#cover {
+    background: url("35.GIF") no-repeat scroll center center #FFF;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+		z-index: 1000;
+		opacity: 0.8;
+}
+
 .container{
 	padding-bottom: 30px !important;
+}
+
+.borde{
+	border-bottom: 1px solid #000 !important;
 }

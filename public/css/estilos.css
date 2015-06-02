@@ -28,3 +28,7 @@ body{
 	-webkit-box-shadow: 2px 2px 6px #666;
 	-o-box-shadow: 2px 2px 6px #666;
 }
+
+.borde{
+	border-bottom: 1px solid #000 !important;
+}

@@ -4,48 +4,52 @@
 <div>
 	<div class="pull-right hidden-print">
 		<a  href="{{ url('/'.$tipo.'/activofijo') }}" class="btn btn-info"><i class="fa fa-chevron-left"></i> Regresar</a>
-		<a href="{{ route('vales.show',$bien->Movto) }}" class="btn btn-primary" target="blanck_"><i class="fa fa-file"></i> Vale de resguardo</a>
+		<a href="{{ route('vales.show',$bien->Movto) }}" class="btn btn-primary" target="blanck_"><i class="fa fa-newspaper-o"></i> Vale de resguardo</a>
 		<a href="{{ route('codigos.show',$bien->Movto) }}" class="btn btn-default" target="blanck_"><i class="fa fa-qrcode text-success"></i> QR</a>
-		<button type="button" class="btn btn-default" click="window.print();"><i class="fa fa-print"></i></button>
-		<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-modal-lg"><i class="fa fa-plus"></i> Nuevo Movimiento</button>
+		<button type="button" class="btn btn-default" click="window.print();"><i class="fa fa-print"></i> Imprimir</button>
 	</div>
 	<h1>{{$bien->numeroInventario}}</h1>
 </div>
 
-<legend>Recurso {{ucfirst($tipo)}}</legend> 
+<legend>
+	<div class="pull-right">
+		<a class="btn btn-warning" href="{{ url('/'.$tipo.'/activofijo/'.$bien->Movto.'/edit') }}" title="Editar información del bien"><i class="fa fa-edit"></i> Editar</a>
+	</div>
+	Recurso {{ucfirst($tipo)}}
+</legend>
 <div class="row">
 	<div class="col-xs-1">
-		<label>Grupo</label>
+		<label><b>Grupo</b></label>
 		<p>{{$bien->Gpo}}</p>
 	</div>
 	<div class="col-xs-2">
-		<label>Clave</label>
+		<label> <b>Clave</b></label>
 		<p>{{$bien->Clave}}</p>
 	</div>
 	<div class="col-xs-2">
-		<label>Número Inv.</label>
+		<label> <b>Número Inv.</b></label>
 		<p>{{$bien->NumInv}}</p>
 	</div>
 	<div class="col-xs-1">
-		<label>Año P.</label>
+		<label> <b>Año P.</b></label>
 		<p>{{$bien->AnoPrg}}</p>
 	</div>
 	<div class="col-xs-1">
-		<label>Tipo</label>
+		<label> <b>Tipo</b></label>
 		<p>{{$bien->TpoBien}}</p>
 	</div>
 	<div class="col-xs-3">
-		<label>Denominación</label>
+		<label> <b>Denominación</b></label>
 		<p>{{$bien->Denomin}}</p>
 	</div>
 	<div class="col-xs-2">
-		<label>Fecha Alta</label>
+		<label> <b>Fecha Alta</b></label>
 		<p>{{$bien->FecAlta}}</p>
 	</div>
 </div>
 
 <div class="form-group">
-	<label>Descripción del Artículo</label>
+	<label><b>Descripción del Artículo</b></label>
 	<p>{{$bien->DescArt}}</p>
 </div>
 

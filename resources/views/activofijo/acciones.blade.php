@@ -1,4 +1,3 @@
-	<a class="btn btn-sm btn-info btn-sm" href="{{ url('/'.$tipo.'/activofijo/'.$o->Movto.'/edit') }}"> Editar</a>
-	<a class="btn btn-sm btn-default btn-sm" href="{{ url('/'.$tipo.'/activofijo/'.$o->Movto) }}"> Movimentos</a>
-	<a href="{{ route('vales.show',$o->Movto) }}" class="btn btn-primary" target="blanck_"><i class="fa fa-file"></i> Vale de resguardo</a>
-
+	<a class="btn btn-warning" href="{{ url('/'.$tipo.'/activofijo/'.$af->Movto.'/edit') }}" title="Editar información del bien"><i class="fa fa-edit"></i> </a>
+	<a class="btn btn-info" href="{{ url('/'.$tipo.'/activofijo/'.$af->Movto) }}" title="Detalles del bien"> <i class="fa fa-file"></i></a>
+	<a href="{{ route('vales.show',$af->Movto) }}" class="btn btn-primary" target="blanck_" title="Imprimir vale de resguardo"><i class="fa fa-newspaper-o"></i></a>

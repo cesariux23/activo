@@ -24,6 +24,15 @@ class Oficina extends Model {
         //->get();
     }
 
+		//regresa los valores relacionados
+    public function movimientos()
+    {
+        return $this->hasMany('ActivoFijo\Detalles','Ubicac','IdOfna')
+        ->where('ultimo',1)
+        ->whereRaw("NOT EdodelBien like '%BAJA%'");
+        //->get();
+    }
+
     public function getNumeroEmpleadosAttribute()
     {
     	# Regresa el numero de empleados

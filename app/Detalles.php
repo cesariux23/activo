@@ -10,6 +10,25 @@ class Detalles extends Model {
 	protected $primaryKey = 'IdDet';
 
 
+	public function getTipobAttribute()
+	{
+			# code...
+			switch ($this->TpoBien) {
+					case 'E':
+							# code...
+							return "ESTATAL";
+							break;
+					case 'F':
+							# code...
+									return "FEDERAL";
+							break;
+
+					default:
+							# code...
+									return "OTRO";
+							break;
+			}
+	}
 	public function getNumeroInventarioAttribute()
 	{
 			# Concatena el numero de inventario
