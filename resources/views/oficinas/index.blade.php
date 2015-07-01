@@ -5,6 +5,7 @@
 	<div class="pull-right">
 		<a  href="{{ url('/adscripciones/create') }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus">	</span> Nuevo</a>
 	</div>
+	
 	<h1>Listado de Adscripciones</h1>	
 
 	<div class="well">
