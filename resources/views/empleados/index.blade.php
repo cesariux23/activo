@@ -1,5 +1,4 @@
 @extends('app')
-
 @section('content')
 <div>
 	<div class="pull-right">
@@ -39,7 +38,6 @@
 				<th width="200px">Acciones</th>
 			</tr>
 		</thead>
-
 		@foreach($empleados as $e)
 		<tr>
 			<td>{{$e->IdEmp}}</td>

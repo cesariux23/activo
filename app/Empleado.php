@@ -39,26 +39,23 @@ class Empleado extends Model {
         return $this->bienes()->count();
     }
 
-
-
     //Busqueda
-
     public function scopeNombre($query, $nombre)
     {
-    	# busca por nombre
+    	# busca por descripcion empleado
     	if($nombre!="")
     		$query->where('DescEmp','LIKE','%'.$nombre.'%');
     }
 
     public function scopeId($query, $id)
     {
-    	# busca por id
+    	# busca por id EMPLEADO
     	if($id!="")
     		$query->where('IdEmp',$id);
     }
     public function scopeOficina($query, $id)
     {
-    	# busca por id
+    	# busca por id OFICINA
     	if($id!="")
     		$query->where('IdOfna',$id);
     }

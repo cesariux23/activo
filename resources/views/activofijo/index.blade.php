@@ -8,7 +8,8 @@
 		<a href="{{ route($tipo.'.activofijo.index') }}" class="btn btn-default" ng-show="txtBuscar">
 			<span class="fa fa-trash text-info"></span> Limpiar
 			</a>
-		<a  href="" class="btn btn-default" ng-show="!buscar"  title="Imprimir"> <span class="glyphicon glyphicon-print"></span> Imprimir</a>
+			
+		<a  href="{{url('imprime').'?'.http_build_query(Request::all())}}" class="btn btn-default" ng-show="!buscar"  title="Imprimir" target="_blank"> <span class="glyphicon glyphicon-print"></span> Imprimir</a>
 		<a  href="" class="btn btn-default" ng-show="!buscar"  title="Exportar"> <span class="fa fa-cloud-download text-success"></span> Exportar..</a>
 		<a  href="{{ url($urlCreate) }}" class="btn btn-success" ng-show="!buscar"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 	</div>

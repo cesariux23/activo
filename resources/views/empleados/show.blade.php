@@ -9,17 +9,16 @@
 			<th>Ubicación</th>
 			<th>Estado</th>
 			<th>Acciones</th>
-		
 			<th width="150px">Acciones</th>
-			@endif
+
 		</tr>
 	</thead>
 	@foreach($movimientos as $mov)
 	<tr>
 		<td>{{$mov->Movto}}</td>
 		<td>{{$mov->Ubicac}}</td>
-		<td>{{$mov->EdoDelBien}</td>
-		<td>{{$mov->Acciones</td>
+		<td>{{$mov->EdoDelBien}}</td>
+		<td>{{$mov->Acciones}}</td>
 		<td>
 			@if ($o->numeroEmpleados>0)
 			<a href="{{ route('empleados.index').'?IdOfna='.$o->IdOfna}}">{{$o->numeroEmpleados}}</a>

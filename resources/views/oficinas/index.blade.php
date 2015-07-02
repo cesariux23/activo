@@ -7,21 +7,26 @@
 	</div>
 	
 	<h1>Listado de Adscripciones</h1>	
-
-	<div class="well">
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Nombre Adscripción">
-					<span class="input-group-btn">
-						<button type="submit" class="btn btn-default" type="button">Buscar</button>
-					</span>
-				</div>
-			</div>
-		</div>
-	</div>	
 </div>
+<div class="well">
+		{!! Form::model(Request::all(),array('route' => 'adscripciones.index', 'method' => 'GET','class' => 'form-inline')) !!}
+		
+			<div class="form-group">
+				{!!Form::text('IdOfna', null, ['class'=>'form-control','placeholder'=>'ID'])!!}
+			</div>
 
+			<div class="form-group">
+				{!!Form::text('DescOfna', null, ['class'=>'form-control','placeholder'=>'Adscripción'])!!}
+			</div>
+
+			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+			@if (isset($oficina)||isset($nombre))
+				{{-- true expr --}}
+				<a href="{{ route('adscripciones.index') }}" class="btn btn-warning"><span class="glyphicon glyphicon-remove">
+				</span> Limpiar</a>
+			@endif
+	{!! Form::close() !!}
+</div>
 
 <table class="table table-bordered">
 	<thead class="well">

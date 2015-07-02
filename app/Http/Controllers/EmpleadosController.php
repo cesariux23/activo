@@ -58,12 +58,13 @@ class EmpleadosController extends Controller {
     $o->IdEmp=$emp->input('IdEmp');
     $o->DescEmp=$emp->input('DescEmp');
     $o->IdOfna=$emp->input('oficina');
-        //guarda los datos
+    //guarda los datos
     $o->save();
 
-        //se notifica
+    //se notifica
     flash()->success('Se ha registrado correctamente.');
-        //redirecciona al index
+
+    //redirecciona al index
     return redirect()->route('empleados.index');
   }
 
@@ -83,8 +84,8 @@ class EmpleadosController extends Controller {
     $movimientos = Empleado::all();
 
     return view('empleados.show', compact('post','empleados','activofijo','detalles','movimientos'));
+    
     $empleado = Empleado::findOrFail($id);
-
     return view('empleados.show', compact('empleado','empleados','activofijo','detalles','movimientos'));
   }
 

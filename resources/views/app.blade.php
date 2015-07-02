@@ -63,7 +63,13 @@
 								<li><a href="{{ url('/proveedores') }}">Provedores</a></li>
 							</ul>
 						</li>
-						<li><a href="{{ url('/reportes') }}">Reportes</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ url('/reportes') }}">Reporte General</a></li>
+								<li><a href="{{ url('/especifico') }}">Reporte Especifico</a></li>
+							</ul>
+						</li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">

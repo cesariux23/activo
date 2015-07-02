@@ -6,10 +6,6 @@ use ActivoFijo\Http\Controllers\Controller;
 
 //modelo para Proveedor
 use ActivoFijo\Proveedor;
-
-//modelo para Detalles
-use ActivoFijo\Detalles;
-
 //modelo Adquisicion
 use ActivoFijo\TipoAdquisicion;
 //modelo Rubro
@@ -23,7 +19,7 @@ use ActivoFijo\ActivoFijo;
 
 use Illuminate\Http\Request;
 
-class ReportesController extends Controller {
+class EspecificosController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -40,7 +36,8 @@ class ReportesController extends Controller {
 		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
 		$oficinas=Oficina::all();
 		$rubro = Rubro::all();
-		return view('reportes.consultas', compact('proveedores','oficinasemp','empleados','oficinas','adquisicion','rubro'));
+		
+		return view('especifico.panel', compact('proveedores','oficinasemp','empleados','oficinas','adquisicion','rubro'));
 	}
 
 	/**
@@ -117,30 +114,6 @@ class ReportesController extends Controller {
 		 	->where('Baja',0)
 		 	->lists('DescEmp','IdEmp');
 		return $default+$opciones;
-	}
-
-
-	//funcion que imprime el reporte
-
-	public function imprime(Request $request)
-	{
-		# code...
-
-		$clave = $request->get('Clave');
-		$numinv = $request->get('NumInv');
-		$desc = $request->get('desc');
-		$descemp=$request->get('DescEmp');
-		$descofna=$request->get('DescOfna');
-		$tipo = $request->segment(1);
-
-		$activofijo = Detalles:://where('TpoBien',$t)
-		clave($clave)
-		->descripcion($desc)
-		->numinv($numinv)
-		->descemp($descemp)
-		->descofna($descofna)
-		->get();
-		dd($activofijo);
 	}
 
 }

@@ -15,9 +15,7 @@
       <th>Estado</th>
       <th>Adq.</th>
       <th>Rubro</th>
-      <th>
-        Costo
-      </th>
+      <th>Costo</th>
     </tr>
   </thead>
 

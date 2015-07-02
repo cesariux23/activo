@@ -51,4 +51,19 @@ class Oficina extends Model {
         //return 1;
     }
 
+    //Busqueda
+    public function scopeNombre($query, $nombre)
+    {
+        # busca por nombre
+        if($nombre!="")
+            $query->where('DescOfna','LIKE','%'.$nombre.'%');
+    }
+
+    public function scopeId($query, $id)
+    {
+        # busca por id
+        if($id!="")
+            $query->where('IdOfna',$id);
+    }
+    
 }

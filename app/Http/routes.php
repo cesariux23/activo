@@ -38,6 +38,10 @@ Route::resource('rubros','RubrosController');
 Route::resource('codigos','CodigoController');
 
 Route::resource('reportes','ReportesController');
+
+Route::get('imprime','ReportesController@imprime');
+
+Route::resource('especifico','EspecificosController');
 Route::resource('vales','ValesController');
 
 Route::resource('tipoadquisiciones','TipoAdquisicionController');

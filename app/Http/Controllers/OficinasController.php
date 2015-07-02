@@ -17,12 +17,15 @@ class OficinasController extends Controller {
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $oficinas = Oficina::paginate();
+        $nombre=$request->get('DescOfna');
+        $oficina=$request->get('IdOfna');
+
+        $oficinas = Oficina::nombre($nombre)->id($oficina)->paginate();
         $oficinas->setPath('adscripciones');
 
-        return view('oficinas.index', compact('oficinas'));
+        return view('oficinas.index', compact('oficinas','oficina','nombre'));
     }
 
     /**

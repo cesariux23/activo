@@ -43,8 +43,7 @@ class ActivoFijoController extends Controller {
 		$tipo = $request->segment(1);
 
 		$t=strtoupper(substr($tipo,0,1));
-
-
+		
 		/*
 		$activoestatal = ActivoFijo::where('TpoBien',$t)
 			->whereRaw("NOT Edo like '%BAJA%'")

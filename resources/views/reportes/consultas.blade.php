@@ -148,8 +148,8 @@
 	</fieldset>	
 
 	<td>
-				<button type="button" class="btn btn-info"  id="btnCambiar"><i class="fa fa-refresh"></i> Exportar a Excel</button>
-			</td>
+		<button type="button" class="btn btn-info"  id="btnCambiar"><i class="fa fa-refresh"></i> Exportar a Excel</button>
+	</td>
 	@stop
 
 	@section('script')
