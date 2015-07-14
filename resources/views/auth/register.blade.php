@@ -22,14 +22,14 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Id</label>
+							<label class="col-md-4 control-label">ID de Usuario</label>
 							<div class="col-md-6">
 								<input type="text" class="form-control" name="name" value="{{ old('Idtfcn') }}">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Nombre</label>
+							<label class="col-md-4 control-label">Nombre de Usuario</label>
 							<div class="col-md-6">
 								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
 							</div>

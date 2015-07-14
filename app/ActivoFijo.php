@@ -100,15 +100,16 @@ class ActivoFijo extends Model {
 
     public function scopeDescOfna($query, $descofna)
     {
-        # busca por scopeDescripcion
+        # busca por Descripcion
         if($descofna!="")
             $query->where('DescOfna','LIKE','%'.$descofna.'%');
     }
+
     public function getUltimoAttribute()
     {
         return MovtosDetalle::where('ultimo',1)
         ->where('Movto',$this->Movto)
-        ->whereRaw("NOT EdodelBien like '%BAJA%'")
+        ->whereRaw("NOT edo like '%BAJA%' and NOT edodelbien like '%BAJA%'")
         ->first();
     }
 }

@@ -58,9 +58,28 @@ class Detalles extends Model {
 					$query->where('Clave','LIKE','%'.$clave.'%');
 	}
 
+	public function scopeBaja($query, $baja)
+    {
+        # busca por scopeDescripcion
+        switch ($baja) {
+            case '0':
+                # quitas las bajas
+                $query->whereRaw("NOT edo like '%BAJA%' and NOT edodelbien like '%BAJA%'");
+                break;
+            case '1':
+            	# code...
+            $query->whereRaw("edo like '%BAJA%' or edodelbien like '%BAJA%'");
+            	break;
+            case '2':
+                # agrega bajas definitivas
+                 $query->where('OUT','1');
+                break;
+        }
+    }
+
 	public function scopeDescripcion($query, $desc)
 	{
-			# busca por scopeDescripcion
+			# busca por Descripcion
 			if($desc!="")
 					$query->where('DescArt','LIKE','%'.$desc.'%');
 	}
@@ -81,7 +100,7 @@ class Detalles extends Model {
 
     public function scopeDescOfna($query, $descofna)
     {
-        # busca por scopeDescripcion
+        # busca por Descripcion
         if($descofna!="")
             $query->where('DescOfna','LIKE','%'.$descofna.'%');
     }

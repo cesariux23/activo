@@ -20,7 +20,7 @@ class Empleado extends Model {
      //regresa los valores relacionados
     public function bienes()
     {
-        return $this->hasMany('ActivoFijo\MovtosDetalle','IdEmp','IdEmp')
+        return $this->hasMany('ActivoFijo\Detalles','IdEmp','IdEmp')
         ->where('ultimo',1)
         ->whereRaw("NOT EdodelBien like '%BAJA%'");
         //->get();

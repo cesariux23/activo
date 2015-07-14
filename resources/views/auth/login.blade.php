@@ -26,9 +26,9 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Correo Electrónico</label>
+							<label class="col-md-4 control-label">ID de Acceso al Sistema</label>
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder='Id de usuario'>
+								<input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder='Id de Usuario'>
 							</div>
 						</div>
 

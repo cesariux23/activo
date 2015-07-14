@@ -6,7 +6,6 @@
       <th width="180px" class="hidden-print" rowspan="2">Acciones</th>
     </tr>
     <tr>
-
       <th>Responsable
         @if(!isset($oficina))
         / Ubicación
@@ -15,9 +14,7 @@
       <th>Estado</th>
       <th>Adq.</th>
       <th>Rubro</th>
-      <th>
-        Costo
-      </th>
+      <th>Costo</th>
     </tr>
   </thead>
 
@@ -30,7 +27,6 @@
     </td>
     <td colspan="5">{{$af->DescArt}}</td>
     <td rowspan="2" class="hidden-print borde">@include('activofijo.acciones',['tipo'=>strtolower($af->tipob)])</td>
-
   </tr>
   <tr>
     <td class="borde">

@@ -18,9 +18,8 @@ use ActivoFijo\Rubro;
 use ActivoFijo\Empleado;
 //modelo Oficina
 use ActivoFijo\Oficina;
-
+//modelo Detalles
 use ActivoFijo\Detalles;
-
 //modelo MovtosDetalle
 use ActivoFijo\MovtosDetalle;
 //Request Validator
@@ -35,14 +34,30 @@ class ActivoFijoController extends Controller {
 	 */
 	public function index(Request $request)
 	{
+				
+		//manejo de bajas
+		$segmento1=$request->segment(1);
+		$baja=0;
+
+		if($segmento1=="baja"){
+			$tipo = $request->segment(2);
+			$baja=1;
+		}
+		elseif($segmento1=="bajadefinitiva"){
+			$tipo = $request->segment(2);
+			$baja=2;
+		}
+		else{
+			$tipo=$segmento1;
+		}
+
+		$t=strtoupper(substr($tipo,0,1));
+
 		$clave = $request->get('Clave');
 		$numinv = $request->get('NumInv');
 		$desc = $request->get('desc');
 		$descemp=$request->get('DescEmp');
 		$descofna=$request->get('DescOfna');
-		$tipo = $request->segment(1);
-
-		$t=strtoupper(substr($tipo,0,1));
 		
 		/*
 		$activoestatal = ActivoFijo::where('TpoBien',$t)
@@ -53,20 +68,23 @@ class ActivoFijoController extends Controller {
 			->paginate();
 		*/
 		$activofijo = Detalles::where('TpoBien',$t)
+		//ambos estado para evitar las inconsistencias
+		->where('ultimo',1)
+		->baja($baja)
 		->clave($clave)
 		->descripcion($desc)
 		->numinv($numinv)
 		->descemp($descemp)
 		->descofna($descofna)
-
 		->paginate();
+		
 		$activofijo->setPath('activofijo');
 
 		$proveedores = Proveedor::all();
 
 		$urlCreate='/'.strtolower($tipo).'/activofijo/create';
 
-		return view('activofijo.index', compact('clave','numinv','activofijo', 'proveedores','tipo','urlCreate'));
+		return view('activofijo.index', compact('clave','numinv','activofijo', 'proveedores','tipo','urlCreate','t','baja'));
 	}
 
 	/**

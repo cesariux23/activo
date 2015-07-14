@@ -125,7 +125,7 @@ class ReportesController extends Controller {
 	public function imprime(Request $request)
 	{
 		# code...
-
+		$t=$request->get('tipo');
 		$clave = $request->get('Clave');
 		$numinv = $request->get('NumInv');
 		$desc = $request->get('desc');
@@ -133,14 +133,17 @@ class ReportesController extends Controller {
 		$descofna=$request->get('DescOfna');
 		$tipo = $request->segment(1);
 
-		$activofijo = Detalles:://where('TpoBien',$t)
-		clave($clave)
+		$activofijo = Detalles::where('TpoBien',$t)
+		->where('ultimo',1)
+		->whereRaw("NOT EdoDelBien like '%BAJA%'")
+		->clave($clave)
 		->descripcion($desc)
 		->numinv($numinv)
 		->descemp($descemp)
 		->descofna($descofna)
 		->get();
-		dd($activofijo);
+		
+		return view('reportes.imprime',compact('activofijo'));
 	}
 
 }

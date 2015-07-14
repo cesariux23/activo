@@ -1,0 +1,2 @@
+//nu mero de inconsistencias en el estado
+SELECT count(*) FROM `detalles` WHERE ultimo=1 and (edo like '%BAJA%' or edodelbien like '%BAJA%')

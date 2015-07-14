@@ -14,7 +14,7 @@ use ActivoFijo\Rubro;
 use ActivoFijo\Empleado;
 //modelo Oficina
 use ActivoFijo\Oficina;
-
+//modelo Activo Fijo
 use ActivoFijo\ActivoFijo;
 
 use Illuminate\Http\Request;
@@ -37,7 +37,7 @@ class EspecificosController extends Controller {
 		$oficinas=Oficina::all();
 		$rubro = Rubro::all();
 		
-		return view('especifico.panel', compact('proveedores','oficinasemp','empleados','oficinas','adquisicion','rubro'));
+		return view('especifico.panel', compact('proveedores','oficinasemp','empleados','oficinas','adquisicion','rubro','activofijo'));
 	}
 
 	/**

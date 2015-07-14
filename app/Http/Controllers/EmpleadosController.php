@@ -76,14 +76,6 @@ class EmpleadosController extends Controller {
 	 */
   public function show($id)
   {
-
-    $post = Empleado::findOrFail($id);
-    $empleados = Empleado::all();
-    $activofijo = Empleado::all();
-    $detalles = Empleado::all();
-    $movimientos = Empleado::all();
-
-    return view('empleados.show', compact('post','empleados','activofijo','detalles','movimientos'));
     
     $empleado = Empleado::findOrFail($id);
     return view('empleados.show', compact('empleado','empleados','activofijo','detalles','movimientos'));

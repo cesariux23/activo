@@ -19,6 +19,9 @@
 
     <link href="{{ asset('/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
 
+    <!-- imprime -->
+    <link href="{{ asset('/css/imprime.css') }}" rel="stylesheet" media="print">
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -37,7 +40,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Activo Fijo</a>
+					<a class="navbar-brand" href="../">Activo Fijo</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -47,6 +50,12 @@
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/federal/activofijo') }}">Federal</a></li>
 								<li><a href="{{ url('/estatal/activofijo') }}">Estatal</a></li>
+								<li class="divider"></li>
+								<li><a href="{{ url('/baja/federal/activofijo') }}">Baja Federal</a></li>
+								<li><a href="{{ url('/baja/estatal/activofijo') }}">Baja Estatal</a></li>
+								<li class="divider"></li>
+								<li><a href="{{ url('/bajadefinitiva/federal/activofijo') }}">Baja Definitiva Federal</a></li>
+								<li><a href="{{ url('/bajadefinitiva/estatal/activofijo') }}">Baja Definitiva Estatal</a></li>
 								<li class="divider"></li>
 								<li><a href="#">Consultas</a></li>
 							</ul>

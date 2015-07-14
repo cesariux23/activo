@@ -55,3 +55,23 @@ Route::group(['prefix' => 'federal'], function()
 {
     Route::resource('activofijo', 'ActivoFijoController');
 });
+
+//bajas
+Route::group(['prefix' => 'baja/federal'], function()
+{
+    Route::resource('activofijo', 'ActivoFijoController');
+});
+Route::group(['prefix' => 'baja/estatal'], function()
+{
+    Route::resource('activofijo', 'ActivoFijoController');
+});
+
+//bajas definitivas
+Route::group(['prefix' => 'bajadefinitiva/federal'], function()
+{
+    Route::resource('activofijo', 'ActivoFijoController');
+});
+Route::group(['prefix' => 'bajadefinitiva/estatal'], function()
+{
+    Route::resource('activofijo', 'ActivoFijoController');
+});
