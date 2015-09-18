@@ -1,13 +1,16 @@
 <!-- Modal -->
 <div class="modal fade bs-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
-		<div class="modal-content" ng-init='empleados={{$empleados}}; oficinas={{$oficinas}}; temp=detalle;'>
+		<div class="modal-content" ng-init='empleados={{$empleados}}; oficinas={{$oficinas}}; temp=detalle; confirmar=false'>
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h3 class="modal-title" id="myModalLabel">Movimiento Histórico</h3>
 			</div>
 			<div class="modal-body">
-				<fieldset>
+				<!-- este es el div para registrar-->
+
+				<div ng-show="!confirmar">
+					<fieldset>
 					<legend>Usuario responsable/resguardo del Bien</legend>
 					<div class="row">
 						<div class="form-group col-md-3">
@@ -43,7 +46,7 @@
 						@if(isset($guardar))
 						<div class="col-md-3">
 							<label>Estado del Bien</label>
-							{!!Form::select('detalle[EdoDelBien]',config('opciones.estados'),null,['class'=>'form-control', 'ng-model'=>"temp.EdoDelBien" ])!!}
+							{!!Form::select('detalle[EdoDelBien]',config('opciones.estados'),null ,['class'=>'form-control', 'ng-model'=>"temp.EdoDelBien" ])!!}
 							</div>
 						@else
 						<input type="hidden" name="detalle[EdoDelBien]" value='<%temp.EdoDelBien%>'>
@@ -63,15 +66,22 @@
 							</div>
 						</div>
 					</fieldset>
+				</div>
+				<!-- Este es el div  de confirmacion -->
+					<div ng-show="confirmar">
+						<h1>Guardar movimiento</h1>
+					</div>
 					<br>
 					<div class="modal-footer">
 
 						@if(isset($guardar))
-						<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar">Cancelar</button>
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar" ng-click="confirmar=false; temp={}">Cancelar</button>
+						<button type="button" class="btn btn-warning"  id="btnVolver" ng-show="confirmar" ng-click="confirmar=false">Volver</button>
+						<button type="button" class="btn btn-info" id="btnConfirmar" ng-show="!confirmar" ng-click="confirmar=true" ng-disabled="!temp.EdoDelBien || !temp.Ubicac || !temp.IdEmp">Siguiente</button>
+						<button type="submit" class="btn btn-primary" ng-disabled="!temp.EdoDelBien || !temp.Ubicac || !temp.IdEmp" ng-show="confirmar">Guardar</button>
 						@else
-						<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar" ng-click="temp=detalle">Cerrar</button>
-						<button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAceptar" ng-click="detalle=temp">Aceptar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrar" ng-click="temp=detalle">Cancelar</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" id="btnAceptar" ng-click="detalle=temp" ng-disabled="!temp.Ubicac || !temp.IdEmp">Aceptar</button>
 						@endif
 					</div>
 				</div>
