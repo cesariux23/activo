@@ -16,6 +16,12 @@ use ActivoFijo\Http\Requests\Empleados;
 
 class EmpleadosController extends Controller {
 
+  //autenticacion
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
 	/**
 	 * Display a listing of the resource.
 	 *

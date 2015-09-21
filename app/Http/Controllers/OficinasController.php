@@ -12,6 +12,12 @@ use ActivoFijo\Http\Requests\Oficinas;
 
 class OficinasController extends Controller {
 
+    //autenticacion
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 	/**
      * Display a listing of oficinas
      *

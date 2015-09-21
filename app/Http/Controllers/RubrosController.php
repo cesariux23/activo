@@ -13,6 +13,12 @@ use ActivoFijo\Http\Requests\Rubros;
 
 class RubrosController extends Controller {
 
+	//autenticacion
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+	
 	/**
 	 * Display a listing of the resource.
 	 *

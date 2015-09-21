@@ -27,6 +27,13 @@ use ActivoFijo\Http\Requests\ActivoFijos;
 
 class ActivoFijoController extends Controller {
 
+
+	//autenticacion
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

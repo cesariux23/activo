@@ -13,6 +13,12 @@ use ActivoFijo\Http\Requests\TipoAdquisiciones;
 
 class TipoAdquisicionController extends Controller {
 
+	//autenticacion
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *		
