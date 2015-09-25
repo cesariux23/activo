@@ -2,6 +2,7 @@
 
 @section('content')
 
+{{Auth::guest()}}
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -15,7 +16,7 @@
 							Tus datos no han sido encontrados, por favor verifica la siguente información.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
-									<li>[[ $error ]]</li>
+									<li>{{$error}}</li>
 								@endforeach
 							</ul>
 						</div>
@@ -28,7 +29,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">ID de Acceso al Sistema</label>
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder='Id de Usuario'>
+								<input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder='Id de Usuario'>
 							</div>
 						</div>
 

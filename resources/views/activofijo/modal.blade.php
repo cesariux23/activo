@@ -70,6 +70,18 @@
 				<!-- Este es el div  de confirmacion -->
 					<div ng-show="confirmar">
 						<h1>Guardar movimiento</h1>
+
+						
+
+						<div class="alert alert-warning">
+						    <p>Al momento de guardar no podra borrar los datos guardados. Favor de verificar esta informacion.</p>
+						</div>
+						<%temp.FecMovto%><br>
+						<%temp.IdEmp%><br>
+						<%temp.EdoDelBien%><br>
+						<%temp.temp.Ubicac%>
+
+
 					</div>
 					<br>
 					<div class="modal-footer">
