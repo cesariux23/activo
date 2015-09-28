@@ -69,17 +69,45 @@
 				</div>
 				<!-- Este es el div  de confirmacion -->
 					<div ng-show="confirmar">
-						<h1>Guardar movimiento</h1>
+						<h1></h1>
+						<table class="table table-bordered">
+							<thead>
+								<tr class="well">
+									<th class="text-center" colspan="2"><h3>confirmación del movimiento</h3></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><b>Fecha</b></td>
+									<td><%temp.FecMovto%></td>
+								</tr>
+								<tr>
+									<td><b>Responsable</b></td>
+									<td><%temp.IdEmp%> -- <% (empleados | filter:{IdEmp:temp.IdEmp})[0].DescEmp %></td>
+								</tr>
+								<tr>
+									<td><b>Ubicación</b></td>
+									<td><% (oficinas | filter:{IdOfna:IdOfna})[0].IdOfna %> -- <% (oficinas | filter:{IdOfna:IdOfna})[0].DescOfna%></td>
+								</tr>
+								<tr>
+									<td><b>Estado del bien</b></td>
+									<td><%temp.EdoDelBien%></td>
+								</tr>
+							</tbody>
+						</table>
 
-						
-
+						<br>
 						<div class="alert alert-warning">
-						    <p>Al momento de guardar no podra borrar los datos guardados. Favor de verificar esta informacion.</p>
+							<div class="row">
+								<div class="col-md-1"><i class="fa fa-info-circle fa-4x"></i></div>
+						    <div class="col-md-11">
+						    	<b>Importante:</b>
+						    	<rb>
+						    	<p>Al momento de guardar no podra borrar los datos guardados. Favor de verificar esta informacion.</p>
+						    </div>
+							</div>
 						</div>
-						<%temp.FecMovto%><br>
-						<%temp.IdEmp%><br>
-						<%temp.EdoDelBien%><br>
-						<%temp.temp.Ubicac%>
+						
 
 
 					</div>
