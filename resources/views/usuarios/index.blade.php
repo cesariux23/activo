@@ -32,7 +32,7 @@
 		@foreach($usuarios as $u)
 		<tr>
 			<td>{{$u->NombreUsr}}</td>
-			<td>{{$u->llave}}</td>
+			<td>{{$u->password}}</td>
 		</tr>
 	</tbody>
 	@endforeach

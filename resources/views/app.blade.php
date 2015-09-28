@@ -9,7 +9,7 @@
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<!-- El CSS del Font Awesome-->
 	<link href="{{ asset('/css/font-awesome.css') }}" rel="stylesheet">
-	<!-- El CSS del Font Awesome-->
+	<!-- El CSS del IVEA-->
 	<link href="{{ asset('/css/ivea.css') }}" rel="stylesheet">
 	<!-- El CSS del Calendario -->
 	<link href="{{ asset('/css/calendario.css') }}" rel="stylesheet">
@@ -30,7 +30,9 @@
 		<![endif]-->
 	</head>
 	<body ng-app="activofijo">
-		<div id="cover"></div>
+		<div id="cover">
+			<div class="cargando">Esto tomará un segundo <b>:)</b></div>
+		</div>
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -40,13 +42,13 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="../">Activo Fijo</a>
+					<a class="navbar-brand" href="../"><i class="fa fa-archive"></i> Activo Fijo</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Procesos<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cogs"></i> Procesos<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/federal/activofijo') }}">Federal</a></li>
 								<li><a href="{{ url('/estatal/activofijo') }}">Estatal</a></li>
@@ -61,7 +63,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catálogos<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-book"></i> Catálogos<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/adscripciones') }}">Oficinas y Departamentos</a></li>
 								<li><a href="{{ url('/usuarios') }}">Usuarios</a></li>
@@ -73,7 +75,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-print"></i> Reportes<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/reportes') }}">Reporte General</a></li>
 								<li><a href="{{ url('/especifico') }}">Reporte Especifico</a></li>
@@ -83,13 +85,13 @@
 
 					<ul class="nav navbar-nav navbar-right">
 						@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Iniciar sesión</a></li>
-						<li><a href="{{ url('/auth/register') }}">Registrar</a></li>
+						<li><a href="{{ url('/auth/login') }}"><i class="fa fa-key"></i> Iniciar sesión</a></li>
+						<li><a href="{{ url('/auth/register') }}"><i class="fa fa-keyboard-o"></i> Registrar</a></li>
 						@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-unlock"></i> {{ Auth::user()->username }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Salir</a></li>
+								<li><a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Salir</a></li>
 							</ul>
 						</li>
 						@endif
