@@ -6,11 +6,10 @@
 		<a  href="" class="btn btn-primary" ng-click="buscar=true" ng-show="!buscar" title="Buscar"><span class="glyphicon glyphicon-search"></span> <%txtBuscar? txtBuscar: 'Buscar'%></a>
 		<a  href="" class="btn btn-default" ng-click="buscar=false" ng-show="buscar">
 			<span class="fa fa-times text-danger"></span> Cerrar panel</a>
-
 			<a  href="{{ url('/usuarios/create') }}" class="btn btn-success" ng-show="!buscar" title="Nuevo"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
-		</div>
-		<h1>Listado de Usuarios</h1>
-		<hr>
+	</div>
+	<h1>Listado de Usuarios</h1>
+	<hr>
 
 		<div class="well hidden-print" ng-show="buscar">
 			{!! Form::model(Request::all(),array('route' =>'usuarios.index', 'method' => 'GET','class' => 'form-inline')) !!}
@@ -22,7 +21,7 @@
 				</div>
 			{!! Form::close() !!}
 		</div>	
-	</div>
+</div>
 
 	<table class="table table-bordered">
 		<thead class="well">

@@ -60,6 +60,7 @@ class ActivoFijoController extends Controller {
 
 		$t=strtoupper(substr($tipo,0,1));
 
+		//Busqueda
 		$clave = $request->get('Clave');
 		$numinv = $request->get('NumInv');
 		$desc = $request->get('desc');

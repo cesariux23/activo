@@ -8,7 +8,7 @@
 		<a  href="" class="btn btn-default" ng-click="buscar=false" ng-show="buscar">
 			<span class="fa fa-times text-danger"></span> Cerrar panel</a>
 
-			<a href="{{ route($tipo.'.activofijo.index') }}" class="btn btn-default" ng-show="txtBuscar">
+			<a href="{{ route($tipo.'.activofijo.index') }}" class="btn btn-warning" ng-show="txtBuscar">
 				<span class="fa fa-trash text-info "></span> Limpiar</a>
 
 				<a  href="{{url('imprime').'?'.'tipo='.$t.'&'.http_build_query(Request::all())}}" class="btn btn-info" ng-show="!buscar"  title="Imprimir" target="_blank"> <span class="glyphicon glyphicon-print"></span> Imprimir</a>
@@ -50,22 +50,22 @@
 			</div>
 			{!! Form::close() !!}
 		</div>
-		@if (isset($clave)||isset($numinv)||isset($descemp)||isset($descofna))
-		<span ng-init="txtBuscar='Modificar busqueda';"></span>
-		@if ($activofijo->total()>0)
 
-		<div class="alert alert-info">
-			<h3>Resultados</h3>
-			<b>{{$activofijo->total()}}</b> activo(s) encontrados.
-		</div>
+		@if (isset($clave)||isset($numinv)||isset($descemp)||isset($descofna))
+			<span ng-init="txtBuscar='Modificar busqueda';"></span>
+		@if ($activofijo->total()>0)
+			<div class="alert alert-info">
+				<h3>Resultados</h3>
+				<b>{{$activofijo->total()}}</b> activo(s) encontrados.
+			</div>
 		@else
-		<div class="alert alert-warning">
-			<h3>Resultados</h3>
-			No se encontraron resultados.
-		</div>
+			<div class="alert alert-warning">
+				<h3>Resultados</h3>
+				No se encontraron resultados.
+			</div>
 		@endif
-		@else
-		<p><b>{{$activofijo->total()}}</b> activo(s) en total.</p>
+			@else
+			<p><b>{{$activofijo->total()}}</b> activo(s) en total.</p>
 		@endif
 
 		@if($activofijo->total()>0)
