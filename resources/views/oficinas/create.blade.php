@@ -3,7 +3,7 @@
 @section('content')
 <div>
 	<div class="pull-right">
-		<a  href="{{ url('/adscripciones') }}" class="btn btn-info" title="Hola"> Regresar</a>
+		<a  href="{{ url('/adscripciones') }}" class="btn btn-info" title="Regresar"><i class="fa fa-chevron-left"></i> Regresar</a>
 	</div>
 	<h1>Nueva Adscripción</h1>	
 </div>

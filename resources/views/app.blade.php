@@ -86,7 +86,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						@if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}"><i class="fa fa-key"></i> Iniciar sesión</a></li>
-						<li><a href="{{ url('/auth/register') }}"><i class="fa fa-keyboard-o"></i> Registrar</a></li>
+						<li><a href="{{ url('/auth/register') }}"><i class="fa fa-user-plus"></i> Registrar</a></li>
 						@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-unlock"></i> {{ Auth::user()->username }} <span class="caret"></span></a>

@@ -2,7 +2,7 @@
 @section('content')
 <div>
 	<div class="pull-right">
-		<a  href="{{ url('/empleados/create') }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+		<a  href="{{ url('/empleados/create') }}" class="btn btn-success" title="Nuevo"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 	</div>
 	<h1>Listado de Empleados</h1>	
 </div>
@@ -17,7 +17,7 @@
 			<div class="form-group">
 				{!!Form::select('IdOfna', $oficinas, null, array("class"=>"form-control" ))!!}
 			</div>
-			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+			<button type="submit" class="btn btn-primary" title="Buscar"><span class="glyphicon glyphicon-search" title="Buscar"></span> Buscar</button>
 			@if (isset($nombre)||isset($oficina)||isset($empleado))
 				{{-- true expr --}}
 				<a href="{{ route('empleados.index') }}" class="btn btn-warning"><span class="glyphicon glyphicon-remove">

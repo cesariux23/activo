@@ -4,7 +4,7 @@
 <div>
 
 	<div class="pull-right">
-		<a  href="{{ url('/rubros/create') }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+		<a  href="{{ url('/rubros/create') }}" class="btn btn-success" title="Nuevo"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 	</div>
 	<h1>Listado de Rubros</h1>	
 
@@ -19,7 +19,8 @@
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="Rubro">
 					<span class="input-group-btn">
-						<button type="submit" class="btn btn-default" type="button">Buscar</button>
+						<button class="btn btn-primary" type="button" title="Buscar"><span class="glyphicon glyphicon-search"></span> Buscar</
+					</span>
 					</span>
 				</div>
 			</div>

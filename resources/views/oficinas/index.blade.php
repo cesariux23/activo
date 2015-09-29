@@ -3,7 +3,7 @@
 @section('content')
 <div>	
 	<div class="pull-right">
-		<a  href="{{ url('/adscripciones/create') }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus">	</span> Nuevo</a>
+		<a  href="{{ url('/adscripciones/create') }}" class="btn btn-success" title="Nuevo"> <span class="glyphicon glyphicon-plus">	</span> Nuevo</a>
 	</div>
 	
 	<h1>Listado de Adscripciones</h1>	
@@ -19,7 +19,7 @@
 				{!!Form::text('DescOfna', null, ['class'=>'form-control','placeholder'=>'Adscripción'])!!}
 			</div>
 
-			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+			<button type="submit" class="btn btn-primary" title="Buscar"><span class="glyphicon glyphicon-search"></span> Buscar</button>
 			@if (isset($oficina)||isset($nombre))
 				{{-- true expr --}}
 				<a href="{{ route('adscripciones.index') }}" class="btn btn-warning"><span class="glyphicon glyphicon-remove">

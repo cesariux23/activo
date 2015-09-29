@@ -19,9 +19,10 @@ class UsuarioController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		return view('usuarios/index')->with('usuarios',Usuario::all());
+		$nombreusr = $request->get('NombreUsr');
+		return view('usuarios/index')->with('usuarios', Usuario::all(), compact('nombreusr'));
 	}
 
 	/**
