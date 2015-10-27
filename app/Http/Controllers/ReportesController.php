@@ -42,7 +42,7 @@ class ReportesController extends Controller {
 		$proveedores = Proveedor::all();
 		$adquisicion = TipoAdquisicion::all();
 		$empleados=$this->empleados();
-		
+
 		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
 		$oficinas=Oficina::all();
 		$rubro = Rubro::all();
@@ -78,7 +78,7 @@ class ReportesController extends Controller {
 	public function show($id)
 	{
 		//
-		
+
 
 	}
 
@@ -119,9 +119,9 @@ class ReportesController extends Controller {
 	{
 		$default=[''=>"-- Seleccione --"];
 		$opciones=DB::table('02empleados')
-			->select(DB::raw("IdEmp, concat(idemp,' -- ',descEmp)as DescEmp, IdOfna"))
-		 	->where('Baja',0)
-		 	->lists('DescEmp','IdEmp');
+		->select(DB::raw("IdEmp, concat(idemp,' -- ',descEmp)as DescEmp, IdOfna"))
+		->where('Baja',0)
+		->lists('DescEmp','IdEmp');
 		return $default+$opciones;
 	}
 
@@ -130,7 +130,6 @@ class ReportesController extends Controller {
 
 	public function imprime(Request $request)
 	{
-		# code...
 		$t=$request->get('tipo');
 		$clave = $request->get('Clave');
 		$numinv = $request->get('NumInv');
@@ -146,10 +145,34 @@ class ReportesController extends Controller {
 		->descripcion($desc)
 		->numinv($numinv)
 		->descemp($descemp)
-		->descofna($descofna)
-		->get();
-		
+		->descofna($descofna)->get();
+
 		return view('reportes.imprime',compact('activofijo'));
 	}
 
+
+	//funcion que exporta en CSV el contenido del activo.
+	public function exportar()
+	{	
+		
+		//desabilita el log
+		//DB::connection()->disableQueryLog();
+		//Recupera TODOS los objetos de la coleccion
+		$activo = Detalles::where('ultimo',1)->get();
+
+		//crea el archivo CSV
+		$csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
+
+		//encabezados del CSV
+		$csv->insertOne(\Schema::getColumnListing('detalles'));
+
+		//recorre todos los elementos del arreglo
+		foreach ($activo as $bien) {
+			//escribe el elemento en el archivo CSV
+			$csv->insertOne($bien->toArray());
+		}
+
+		//regresa el archivo CSV
+		$csv->output('ActivoFijo.csv');
+	}
 }

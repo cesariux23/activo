@@ -58,6 +58,14 @@ class Detalles extends Model {
 					$query->where('Clave','LIKE','%'.$clave.'%');
 	}
 
+	//tipobien
+	public function scopeTipo($query, $tipo)
+	{
+			# busca por clave
+			if($tipo!="")
+					$query->where('TpoBien',$tipo);
+	}
+
 	public function scopeBaja($query, $baja)
     {
         # busca por scopeDescripcion

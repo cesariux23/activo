@@ -24,13 +24,17 @@ class ProveedoresController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
+		//Busqueda
+		$nombre=$request->get('DescProv');
+        $proveedor=$request->get('IdProv');
+
 		//$proveedores = Proveedor::all();
 		$proveedores = Proveedor::paginate();
 		$proveedores->setPath('proveedores');
 
-		return view('proveedores.index',compact('proveedores'));
+		return view('proveedores.index',compact('proveedores','proveedor','nombre'));
 	}
 
 	/**

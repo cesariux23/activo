@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 //modelo para Activo Fijo
 use ActivoFijo\ActivoFijo;
+//modelo para Movimiento
+use ActivoFijo\Movimiento;
 //modelo para Proveedor
 use ActivoFijo\Proveedor;
 //modelo Adquisicion
@@ -24,6 +26,8 @@ use ActivoFijo\Detalles;
 use ActivoFijo\MovtosDetalle;
 //Request Validator
 use ActivoFijo\Http\Requests\ActivoFijos;
+//Excel
+use Maatwebsite\Excel\Facades\Excel;
 
 class ActivoFijoController extends Controller {
 
@@ -128,17 +132,7 @@ class ActivoFijoController extends Controller {
 		$detalles=[$detalle];
 		$activofijo->detalle=$detalle;
 
-		return view('activofijo.create', compact(
-			'detalles',
-			'activofijo',
-			'tipo',
-			'proveedores',
-			'adquisicion',
-			'rubro',
-			'empleados',
-			'oficinas',
-			'oficinasemp'
-			));
+		return view('activofijo.create', compact('detalles','activofijo','tipo','proveedores','adquisicion','rubro','empleados','oficinas','oficinasemp'));
 	}
 
 	/**
@@ -296,4 +290,66 @@ class ActivoFijoController extends Controller {
 		 	->lists('DescEmp','IdEmp');
 	}
 
+	/*public function excel(LSSReportExport $export){
+
+        return $export->sheet('sheetName', function($sheet)
+        {
+
+            $issues = ActivoFijo::get();
+
+            foreach ($issues as $issue) {
+                $LSSReport[$issue->id] = [
+
+                    //$issue->do is a carbon instance 
+                    'Date Opened' => PHPExcel_Shared_Date::PHPToExcel($issue->do->timestamp), 
+
+                    //$issue->date_closed is a string: January 13, 2005
+                    'Date Closed' => $issue->date_closed,
+                ];
+            }
+
+           $sheet->setColumnFormat(array(
+                'A' => 'yyyy-mm-dd',
+                'B' => 'mmmm d, yyyy'
+            ))->with($LSSReport);
+
+        })->export('xlsx');
+}*/
+
+	public function excel(Request $request)
+	{	
+		//se crea una array con los parametros necesarios para crear el excel con el request
+		$data =Detalles::
+				tipo($request->get('tipo'))
+				->clave($request->get('Clave'))
+				->descemp($request->get('DescEmp'))
+				->descOfna($request->get('DescOfna'))
+				->where('ultimo',1)->get();
+
+		//Exportar Excel y el use es para pasar variables en el interior
+		Excel::create('ActivoFijo',function($excel) use ($data)
+		{
+			//se crea la hoja de excel y el use es para pasar variables en el interior
+			$excel->sheet('Sheetname', function($sheet) use ($data)
+			{	
+				//se crea una array con los parametros necesarios para crear el excel
+					// $data=Detalles::
+					// tipo($request->get('tipo'))
+					// ->clave($request->get('Clave'))
+					// ->descemp($request->get('DescEmp'))
+					// ->get();
+					//$data=ActivoFijo::where('TpoBien',0)->get();
+
+				//carga los datos al array
+				//array_push($data, array('Kevin','Arnold'));
+
+				//se imprime el array con el from
+				$sheet->fromArray($data);
+			});
+			//return redirect()->route($tipo.'.activofijo.index');
+			//return View::make('index');
+			return view('activofijo.index');
+		})->download('csv');
+	}
 }
+

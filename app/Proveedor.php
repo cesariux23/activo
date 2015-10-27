@@ -1,6 +1,8 @@
 <?php namespace ActivoFijo;
 
 use Illuminate\Database\Eloquent\Model;
+//modelo Movimiento
+use ActivoFijo\Movimiento;
 
 class Proveedor extends Model {
 

@@ -31,7 +31,7 @@ Route::resource('proveedores', 'ProveedoresController');
 
 Route::resource('movimientos', 'MovimientosController');
 
- Route::resource('activofijo', 'ActivoFijoController');
+Route::resource('activofijo', 'ActivoFijoController');
 
 
 Route::resource('rubros','RubrosController');
@@ -39,9 +39,17 @@ Route::resource('codigos','CodigoController');
 
 Route::resource('reportes','ReportesController');
 
+//exportar a excel
+Route::get('/excel', 'ActivoFijoController@excel');
+
+//ruta para imprimir
 Route::get('imprime','ReportesController@imprime');
 
+//ruta para exportar
+Route::get('exportar','ReportesController@exportar');
+
 Route::resource('especifico','EspecificosController');
+
 Route::resource('vales','ValesController');
 
 Route::resource('tipoadquisiciones','TipoAdquisicionController');

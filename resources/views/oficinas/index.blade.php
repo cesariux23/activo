@@ -7,7 +7,7 @@
 		<a  href="" class="btn btn-default" ng-click="buscar=false" ng-show="buscar">
 			<span class="fa fa-times text-danger"></span> Cerrar panel</a>
 		<a href="{{ route('adscripciones.index') }}" class="btn btn-warning" ng-show="txtBuscar">
-		<span class="glyphicon glyphicon-remove"></span> Limpiar</a>
+			<span class="glyphicon glyphicon-remove"></span> Limpiar</a>
 		<a  href="{{ url('/adscripciones/create') }}" class="btn btn-success" ng-show="!buscar" title="Nuevo"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 	</div>
 	<h1>Listado de Adscripciones</h1>
@@ -25,10 +25,9 @@
 		</div>
 
 		<button type="submit" class="btn btn-primary" title="Buscar"><span class="glyphicon glyphicon-search"></span> Buscar</button>
-		@if (isset($oficina)||isset($nombre))
-			<span ng-init="txtBuscar='Modificar busqueda';"></span>
-		
-		@endif
+			@if (isset($oficina)||isset($nombre))
+				<span ng-init="txtBuscar='Modificar busqueda';"></span>
+			@endif
 		{!! Form::close() !!}
 	</div>
 </div>

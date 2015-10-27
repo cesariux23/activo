@@ -154,6 +154,11 @@ return [
 		*/
 		'Dinesh\Barcode\BarcodeServiceProvider',
 
+		/*
+		*Exportar a Excel
+		*/
+		'Maatwebsite\Excel\ExcelServiceProvider',
+
 	],
 
 	/*
@@ -209,6 +214,10 @@ return [
 		'DNS1D' => 'Dinesh\Barcode\Facades\DNS1DFacade',
     	'DNS2D' => 'Dinesh\Barcode\Facades\DNS2DFacade',
 
+    	/*
+		*Exportar a Excel
+		*/
+    	'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 	],
 
 ];

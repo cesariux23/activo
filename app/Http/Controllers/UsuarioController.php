@@ -21,8 +21,12 @@ class UsuarioController extends Controller {
 	 */
 	public function index(Request $request)
 	{
+		//Busqueda
 		$nombreusr = $request->get('NombreUsr');
-		return view('usuarios/index')->with('usuarios', Usuario::all(), compact('nombreusr'));
+
+		$usuarios = Usuario::paginate();
+
+		return view('usuarios/index',compact('nombreusr','usuarios'));
 	}
 
 	/**

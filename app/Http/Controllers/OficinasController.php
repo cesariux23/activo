@@ -25,6 +25,7 @@ class OficinasController extends Controller {
      */
     public function index(Request $request)
     {
+        //Busqueda
         $nombre=$request->get('DescOfna');
         $oficina=$request->get('IdOfna');
 

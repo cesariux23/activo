@@ -42,54 +42,54 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="../"><i class="fa fa-archive"></i> Activo Fijo</a>
+					<a class="navbar-brand" href="../" title="Activo Fijo"><i class="fa fa-archive"></i> Activo Fijo</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cogs"></i> Procesos<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Procesos"><i class="fa fa-cogs"></i> Procesos<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/federal/activofijo') }}">Federal</a></li>
-								<li><a href="{{ url('/estatal/activofijo') }}">Estatal</a></li>
+								<li><a href="{{ url('/federal/activofijo') }}" title="Federal"> Federal</a></li>
+								<li><a href="{{ url('/estatal/activofijo') }}" title="Estatal"> Estatal</a></li>
 								<li class="divider"></li>
-								<li><a href="{{ url('/baja/federal/activofijo') }}">Baja Federal</a></li>
-								<li><a href="{{ url('/baja/estatal/activofijo') }}">Baja Estatal</a></li>
+								<li><a href="{{ url('/baja/federal/activofijo') }}" title="Baja Federal"> Baja Federal</a></li>
+								<li><a href="{{ url('/baja/estatal/activofijo') }}" title="Baja Estatal"> Baja Estatal</a></li>
 								<li class="divider"></li>
-								<li><a href="{{ url('/bajadefinitiva/federal/activofijo') }}">Baja Definitiva Federal</a></li>
-								<li><a href="{{ url('/bajadefinitiva/estatal/activofijo') }}">Baja Definitiva Estatal</a></li>
+								<li><a href="{{ url('/bajadefinitiva/federal/activofijo') }}" title="Baja Definitiva Federal"> Baja Definitiva Federal</a></li>
+								<li><a href="{{ url('/bajadefinitiva/estatal/activofijo') }}" title="Baja Definitiva Estatal"> Baja Definitiva Estatal</a></li>
 								<li class="divider"></li>
-								<li><a href="#">Consultas</a></li>
+								<li><a href="#" title="Consultas"> Consultas</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-book"></i> Catálogos<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Catálogos"><i class="fa fa-book"></i> Catálogos<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/adscripciones') }}">Oficinas y Departamentos</a></li>
-								<li><a href="{{ url('/usuarios') }}">Usuarios</a></li>
-								<li><a href="{{ url('/empleados') }}">Empledos</a></li>
-								<li><a href="{{ url('/tipoadquisiciones') }}">Tipos de Adquisición</a></li>
-								<li><a href="{{ url('/rubros') }}">Rubros</a></li>
+								<li><a href="{{ url('/adscripciones') }}" title="Oficinas y Departamentos"> Oficinas y Departamentos</a></li>
+								<li><a href="{{ url('/usuarios') }}" title="Usuarios"> Usuarios</a></li>
+								<li><a href="{{ url('/empleados') }}" title="Empledos"> Empledos</a></li>
+								<li><a href="{{ url('/tipoadquisiciones') }}" title="Tipos de Adquisición"> Tipos de Adquisición</a></li>
+								<li><a href="{{ url('/rubros') }}" title="Rubros"> Rubros</a></li>
 								<li class="divider"></li>
-								<li><a href="{{ url('/proveedores') }}">Provedores</a></li>
+								<li><a href="{{ url('/proveedores') }}" title="Provedores"> Provedores</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-print"></i> Reportes<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Reportes"><i class="fa fa-print"></i> Reportes<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/reportes') }}">Reporte General</a></li>
-								<li><a href="{{ url('/especifico') }}">Reporte Especifico</a></li>
+								<li><a href="{{ url('/reportes') }}" title="Reporte General"> Reporte General</a></li>
+								<li><a href="{{ url('/especifico') }}" title="Reporte Especifico"> Reporte Especifico</a></li>
 							</ul>
 						</li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
 						@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}"><i class="fa fa-key"></i> Iniciar sesión</a></li>
-						<li><a href="{{ url('/auth/register') }}"><i class="fa fa-user-plus"></i> Registrar</a></li>
+						<li><a href="{{ url('/auth/login') }}" title="Iniciar sesión"><i class="fa fa-key"></i> Iniciar sesión</a></li>
+						<li><a href="{{ url('/auth/register') }}" title="Registrar"><i class="fa fa-user-plus"></i> Registrar</a></li>
 						@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-unlock"></i> {{ Auth::user()->username }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Salir"><i class="fa fa-unlock"></i> {{ Auth::user()->username }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Salir</a></li>
 							</ul>

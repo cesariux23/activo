@@ -2,24 +2,28 @@
 
 @section('content')
 <div>
+
+<form action="<? echo $ruta;?> exportar/toExcel_activo" name="frmExcel" id="frmExcel" method="post">
 	<div class="pull-right hidden-print">
 		<a  href="" class="btn btn-primary" ng-click="buscar=true" ng-show="!buscar" title="Buscar"><span class="glyphicon glyphicon-search"></span> <%txtBuscar? txtBuscar: 'Buscar'%></a>
 
 		<a  href="" class="btn btn-default" ng-click="buscar=false" ng-show="buscar">
 			<span class="fa fa-times text-danger"></span> Cerrar panel</a>
+			
+		<a href="{{ route($tipo.'.activofijo.index') }}" class="btn btn-warning" ng-show="txtBuscar">
+			<span class="fa fa-trash text-info "></span> Limpiar</a>
 
-			<a href="{{ route($tipo.'.activofijo.index') }}" class="btn btn-warning" ng-show="txtBuscar">
-				<span class="fa fa-trash text-info "></span> Limpiar</a>
+		<a  href="{{ url('imprime').'?'.'tipo='.$t.'&'.http_build_query(Request::all())}}" class="btn btn-info" ng-show="!buscar"  title="Imprimir" target="_blank"> <span class="glyphicon glyphicon-print"></span> Imprimir</a>
+		
 
-				<a  href="{{url('imprime').'?'.'tipo='.$t.'&'.http_build_query(Request::all())}}" class="btn btn-info" ng-show="!buscar"  title="Imprimir" target="_blank"> <span class="glyphicon glyphicon-print"></span> Imprimir</a>
-
-				<a  href="" class="btn btn-default" ng-show="!buscar"  title="Exportar"> <span class="fa fa-cloud-download text-success"></span> Exportar..</a>
+		<a  href="{{ url('excel').'?'.'tipo='.$t.'&'.http_build_query(Request::all())}}" class="btn btn-default" ng-show="!buscar"  title="Exportar"> <span class="fa fa-cloud-download text-success"></span> Exportar..</a>
 				
-				<a  href="{{ url($urlCreate) }}" class="btn btn-success" ng-show="!buscar" title="Nuevo"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
-			</div>
-			<h1>Listado de Activo {{ucfirst($tipo)}}</h1>
+		<a  href="{{ url($urlCreate) }}" class="btn btn-success" ng-show="!buscar" title="Nuevo"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+			</form>
+	</div>
+		<h1>Listado de Activo {{ucfirst($tipo)}}</h1>
 			@if ($baja>0)
-			<h3 class="text-danger">Bajas {{$baja==2?'definitivas':''}}</h3>
+				<h3 class="text-danger">Bajas {{$baja==2?'definitivas':''}}</h3>
 			@endif
 		</div>
 		<hr>
@@ -45,6 +49,7 @@
 				</div>
 			</div>
 			<br>
+			
 			<div>
 				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
 			</div>
@@ -71,7 +76,7 @@
 		@if($activofijo->total()>0)
 		@include('activofijo.tablabienes');
 
-		{!! $activofijo->appends(Request::only('Clave','NumInv','desc'))->render() !!}
+		{!! $activofijo->appends(Request::only('Clave','NumInv','desc','DescEmp','DescOfna'))->render() !!}
 		@endif
 
 		@endsection

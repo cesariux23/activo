@@ -1,12 +1,12 @@
 <legend>
-@if(isset($nuevo))
-Movimiento inicial
-@else
-<div class="pull-right">
-	<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-modal-lg"><i class="fa fa-plus"></i> Nuevo Movimiento</button>
-</div>
-Histórico de Movimientos
-@endif
+	@if(isset($nuevo))
+	Movimiento inicial
+	@else
+	<div class="pull-right">
+		<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-modal-lg"><i class="fa fa-plus"></i> Nuevo Movimiento</button>
+	</div>
+	Histórico de Movimientos
+	@endif
 </legend>
 <table class="table table-bordered table-striped">
 	<thead>
@@ -21,8 +21,8 @@ Histórico de Movimientos
 		</tr>
 	</thead>
 	<tbody>
-	@if(isset($nuevo))
-	<tr>
+		@if(isset($nuevo))
+		<tr>
 			<td id="fecha">
 				<%detalle.FecMovto%>
 				<br>
@@ -43,7 +43,7 @@ Histórico de Movimientos
 				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-modal-lg" ng-click="llena()"><i class="fa fa-refresh"></i> Cambiar</button>
 			</td>
 		</tr>
-	@else
+		@else
 		@foreach($detalles as $detalle)
 		<tr>
 			<td id="fecha">
