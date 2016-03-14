@@ -16,7 +16,6 @@
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<!-- Calendario boodstrap-->
-
     <link href="{{ asset('/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
 
     <!-- imprime -->
@@ -77,7 +76,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="Reportes"><i class="fa fa-print"></i> Reportes<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/reportes') }}" title="Reporte General"> Reporte General</a></li>
+								<li><a href="{{ url('/reportes') }}" title="Relacion de Bienes Activo Fijo"> Relacion de Bienes Activo Fijo</a></li>
 								<li><a href="{{ url('/especifico') }}" title="Reporte Especifico"> Reporte Especifico</a></li>
 							</ul>
 						</li>

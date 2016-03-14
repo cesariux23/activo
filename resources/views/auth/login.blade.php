@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{Auth::guest()}}
+<!--{{Auth::guest()}}-->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -11,16 +11,7 @@
 				<div class="panel-body">
 
 					<h1 class="text-center">Sistema de control de Activo Fijo</h1>
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							Tus datos no han sido encontrados, por favor verifica la siguente información.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{$error}}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+					
 
 					<p class="help-block text-center">Ingrese sus datos de accesso.</p>
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">

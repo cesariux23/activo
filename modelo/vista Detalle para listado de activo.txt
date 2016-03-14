@@ -1,9 +1,15 @@
 create view detalles as
-select IdDet,movtosdetal.IdEmp,FecMovto,EdoDelBien,Ubicac,Comenta,Ultimo, movimientos.* , DescEmp, DescOfna from movtosdetal
+select IdDet,movtosdetal.IdEmp,FecMovto,EdoDelBien,Ubicac,Comenta,Ultimo, movimientos.* , DescEmp, DescOfna, DescAdq, DescProv
+ from movtosdetal
 join movimientos on movimientos.movto=movtosdetal.movto
 join 02empleados on 02empleados.idemp=movtosdetal.idemp
 join 01ofnas on 01ofnas.idofna=ubicac
+join 03proveed on 03proveed.IdProv=movimientos.IdProv
+join 04tipadq on 04tipadq.IdTipAdq=movimientos.IdTipAdq
 where
 ultimo=1
+
+
+//esto no poner al agregar la vista
 and
 edodelbien not like "%BAJA%"

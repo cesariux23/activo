@@ -76,7 +76,7 @@ class Detalles extends Model {
                 break;
             case '1':
             	# code...
-            $query->whereRaw("edo like '%BAJA%' or edodelbien like '%BAJA%'");
+            $query->whereRaw("(edo like '%BAJA%' or edodelbien like '%BAJA%')");
             	break;
             case '2':
                 # agrega bajas definitivas

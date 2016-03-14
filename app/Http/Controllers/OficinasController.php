@@ -74,7 +74,12 @@ class OficinasController extends Controller {
         $oficina = Oficina::findOrFail($id);
         //$empleados= $oficina->empleados;
 
-        return view('oficinas.show', compact('oficina'));
+        $costo=0;
+        foreach ($oficina->movimientos as $af) {
+          $costo+=$af->Costo;
+        }
+
+        return view('oficinas.show', compact('oficina','costo'));
     }
 
     /**

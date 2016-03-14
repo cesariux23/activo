@@ -1,4 +1,6 @@
-<?php namespace ActivoFijo\Http\Controllers;
+<?php 
+
+namespace ActivoFijo\Http\Controllers;
 
 use ActivoFijo\Http\Requests;
 use ActivoFijo\Http\Controllers\Controller;

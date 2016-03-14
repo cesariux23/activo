@@ -107,7 +107,7 @@ class ActivoFijo extends Model {
 
     public function getUltimoAttribute()
     {
-        return MovtosDetalle::where('ultimo',1)
+        return MovtosDetalle::where('ultimo',0)
         ->where('Movto',$this->Movto)
         ->whereRaw("NOT edo like '%BAJA%' and NOT edodelbien like '%BAJA%'")
         ->first();

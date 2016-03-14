@@ -15,10 +15,6 @@
 	<div class="panel-heading">Filtrado por Activo</div>
 	<div class="panel-body">
 		<!-- Table -->
-		
-		
-	</div>
-
 
 
 </div>

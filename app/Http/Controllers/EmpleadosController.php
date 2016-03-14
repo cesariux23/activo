@@ -84,7 +84,11 @@ class EmpleadosController extends Controller {
   {
     
     $empleado = Empleado::findOrFail($id);
-    return view('empleados.show', compact('empleado','empleados','activofijo','detalles','movimientos'));
+    $costo=0;
+    foreach ($empleado->bienes as $af) {
+      $costo+=$af->Costo;
+    }
+    return view('empleados.show', compact('empleado','empleados','activofijo','detalles','movimientos','costo'));
   }
 
 	/**

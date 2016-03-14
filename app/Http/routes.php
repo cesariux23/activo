@@ -33,8 +33,8 @@ Route::resource('movimientos', 'MovimientosController');
 
 Route::resource('activofijo', 'ActivoFijoController');
 
-
 Route::resource('rubros','RubrosController');
+
 Route::resource('codigos','CodigoController');
 
 Route::resource('reportes','ReportesController');

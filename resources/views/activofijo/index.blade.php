@@ -17,10 +17,12 @@
 		
 
 		<a  href="{{ url('excel').'?'.'tipo='.$t.'&'.http_build_query(Request::all())}}" class="btn btn-default" ng-show="!buscar"  title="Exportar"> <span class="fa fa-cloud-download text-success"></span> Exportar..</a>
-				
-		<a  href="{{ url($urlCreate) }}" class="btn btn-success" ng-show="!buscar" title="Nuevo"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
-			</form>
-	</div>
+		@if(!$baja)	
+			<a  href="{{ url($urlCreate) }}" class="btn btn-success" ng-show="!buscar" title="Nuevo"> <span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+		@endif
+		</div>
+</form>
+	
 		<h1>Listado de Activo {{ucfirst($tipo)}}</h1>
 			@if ($baja>0)
 				<h3 class="text-danger">Bajas {{$baja==2?'definitivas':''}}</h3>
@@ -29,7 +31,7 @@
 		<hr>
 
 		<div class="well hidden-print" ng-show="buscar">
-			{!! Form::model(Request::all(),array('route' => $tipo.'.activofijo.index', 'method' => 'GET','class' => 'form-inline')) !!}
+			{!! Form::model(Request::all(),array('url' =>$url, 'method' => 'GET','class' => 'form-inline')) !!}
 
 			<div>
 				<div class="form-group">

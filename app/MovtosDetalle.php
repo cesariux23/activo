@@ -8,7 +8,7 @@ class MovtosDetalle extends Model {
 	protected $table = 'movtosdetal';
 	public $timestamps = false;
 	protected $primaryKey = 'IdDet';
-	protected $fillable = ['DescEmp'];
+	protected $fillable = ['DescEmp','EdoDelBien'];
 
 
 	public function bien()

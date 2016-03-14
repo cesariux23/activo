@@ -13,7 +13,7 @@
 					<fieldset>
 					<legend>Usuario responsable/resguardo del Bien</legend>
 					<div class="row">
-						<div class="form-group col-md-3">
+						<div class="form-group col-xs-3">
 							<label>Fecha Alta</label>
 							<div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
 								<input class="form-control" size="16" type="text" value="" name="detalle[FecMovto]" readonly name="FecMovto" ng-model="temp.FecMovto">
@@ -21,11 +21,11 @@
 							</div>
 							<input type="hidden" id="dtp_input2" value="" /><br/>
 						</div>
-						<div class="col-md-2">
+						<div class="col-xs-2">
 							<label>Clave</label>
 							{!!Form::text('detalle[IdEmp]', null, array("class"=>"form-control txt","placeholder"=>"Clave empleado", 'id'=>"emp", 'mayus', "ng-model"=>"temp.IdEmp"))!!}
 						</div>
-						<div class="col-md-7">
+						<div class="col-xs-7">
 							<label >Nombre Usuario</label>
 							<select ng-options="e.IdEmp as e.IdEmp+' -- '+e.DescEmp for e in empleados" ng-model="temp.IdEmp" class="form-control" ng-change="
 								IdOfna=(empleados | filter:{IdEmp:temp.IdEmp})[0].IdOfna;
@@ -44,18 +44,18 @@
 					<legend>Estado y Ubicación del Bien</legend>
 					<div class="row">
 						@if(isset($guardar))
-						<div class="col-md-3">
+						<div class="col-xs-3">
 							<label>Estado del Bien</label>
 							{!!Form::select('detalle[EdoDelBien]',config('opciones.estados'),null ,['class'=>'form-control', 'ng-model'=>"temp.EdoDelBien" ])!!}
 							</div>
 						@else
 						<input type="hidden" name="detalle[EdoDelBien]" value='<%temp.EdoDelBien%>'>
 						@endif
-							<div class="col-md-2">
+							<div class="col-xs-2">
 								<label>Ubicación</label>
 								{!!Form::text('detalle[Ubicac]', null, array("class"=>"form-control txt","placeholder"=>"Clave ubicación", 'id'=>"ubic",'ng-model'=>"temp.Ubicac" ))!!}
 							</div>
-							<div class="col-md-7">
+							<div class="col-xs-7">
 								<label>Edificio</label>
 								<select id="idubic" class="form-control" ng-model="temp.Ubicac">
 									<option value="">--Seleccione--</option>
@@ -99,8 +99,8 @@
 						<br>
 						<div class="alert alert-warning">
 							<div class="row">
-								<div class="col-md-1"><i class="fa fa-info-circle fa-4x"></i></div>
-						    <div class="col-md-11">
+								<div class="col-xs-1"><i class="fa fa-info-circle fa-4x"></i></div>
+						    <div class="col-xs-11">
 						    	<b>Importante:</b>
 						    	<rb>
 						    	<p>Al momento de guardar no podra borrar los datos guardados. Favor de verificar esta informacion.</p>

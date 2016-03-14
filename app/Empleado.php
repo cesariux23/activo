@@ -22,7 +22,7 @@ class Empleado extends Model {
     {
         return $this->hasMany('ActivoFijo\Detalles','IdEmp','IdEmp')
         ->where('ultimo',1)
-        ->whereRaw("NOT EdodelBien like '%BAJA%'");
+        ->whereRaw("NOT edo like '%BAJA%' and NOT edodelbien like '%BAJA%'");
         //->get();
     }
 

@@ -20,7 +20,6 @@ use ActivoFijo\Empleado;
 use ActivoFijo\Oficina;
 
 use ActivoFijo\ActivoFijo;
-
 use Illuminate\Http\Request;
 
 class ReportesController extends Controller {
@@ -41,12 +40,15 @@ class ReportesController extends Controller {
 		//
 		$proveedores = Proveedor::all();
 		$adquisicion = TipoAdquisicion::all();
-		$empleados=$this->empleados();
+		$empleados = $this->empleados();
+		$empleadoss = Empleado::all();
 
-		$oficinasemp=Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
-		$oficinas=Oficina::all();
+		$oficinasemp = Empleado::where('Baja',0)->lists('IdOfna','IdEmp');
+		$oficinas = Oficina::all();
 		$rubro = Rubro::all();
-		return view('reportes.consultas', compact('proveedores','oficinasemp','empleados','oficinas','adquisicion','rubro'));
+		
+		
+		return view('reportes.consultas', compact('proveedores','oficinasemp','empleados','oficinas','adquisicion','rubro','empleadoss'));
 	}
 
 	/**

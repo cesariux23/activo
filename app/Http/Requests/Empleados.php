@@ -23,7 +23,7 @@ class Empleados extends Request {
 	{
 		return [
 			
-			"IdEmp"=>"required|unique:02empleados,IdEmp,".$this->input('IdEmp').",IdEmp|min:6",
+			"IdEmp"=>"required|unique:02empleados,IdEmp,".$this->input('IdEmp').",IdEmp|min:4",
 			"DescEmp"=>"required",
 			//"IdOfna"=>"required"
 		];

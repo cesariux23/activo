@@ -12,7 +12,7 @@
 
 	@include('forms.errores')
 
-	{!!Form::model($activofijo,array('action' => 'ActivoFijoController@update', 'method' => 'put'))!!}
+	{!!Form::model($activofijo,array('url' => $tipo.'/activofijo/'.$activofijo->Movto, 'method' => 'put'))!!}
 
 	{!!Form::hidden('Movto')!!}
 

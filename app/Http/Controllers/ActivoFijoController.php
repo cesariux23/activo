@@ -48,10 +48,12 @@ class ActivoFijoController extends Controller {
 				
 		//manejo de bajas
 		$segmento1=$request->segment(1);
+		//no se muestran las bajas
 		$baja=0;
 
 		if($segmento1=="baja"){
 			$tipo = $request->segment(2);
+			//solo se buscan las bajas
 			$baja=1;
 		}
 		elseif($segmento1=="bajadefinitiva"){
@@ -79,6 +81,8 @@ class ActivoFijoController extends Controller {
 			->numinv($numinv)
 			->paginate();
 		*/
+
+		DB::enableQueryLog();
 		$activofijo = Detalles::where('TpoBien',$t)
 		//ambos estado para evitar las inconsistencias
 		->where('ultimo',1)
@@ -89,14 +93,23 @@ class ActivoFijoController extends Controller {
 		->descemp($descemp)
 		->descofna($descofna)
 		->paginate();
+
+		//print_r(DB::getQueryLog());
 		
+		$costo=0;
+		foreach ($activofijo as $af) {
+			$costo+=$af->Costo;
+		}
 		$activofijo->setPath('activofijo');
 
 		$proveedores = Proveedor::all();
 
-		$urlCreate='/'.strtolower($tipo).'/activofijo/create';
+	
+		$url=$request->path();
+		$urlCreate=$url.'/create';
 
-		return view('activofijo.index', compact('clave','numinv','activofijo', 'proveedores','tipo','urlCreate','t','baja'));
+
+		return view('activofijo.index', compact('clave','numinv','activofijo', 'proveedores','tipo','urlCreate','t','baja','costo','url'));
 	}
 
 	/**
@@ -196,7 +209,6 @@ class ActivoFijoController extends Controller {
 	        $detalle->save();
         }
 
-
 		//se notifica
         flash()->success('Se ha registrado correctamente.');
 
@@ -253,11 +265,14 @@ class ActivoFijoController extends Controller {
 	 */
 	public function update(ActivoFijos $ac)
 	{
+		//recupera el tipo para regresar
+		$tipo=$ac->segment(1);
 		$input = array_except($ac->Input(),array('_token','_method','Movto'));
-    	ActivoFijo::where('Movto',$ac->input('Movto'))->update($input);
+		$id=$ac->input('Movto');
+    	ActivoFijo::where('Movto',$id)->update($input);
 
    		flash()->success('Se ha guardado los cambios correctamente.');
-    	return redirect()->route('activofijo.index');
+    	return redirect()->route($tipo.'.activofijo.show',$id);
 	}
 
 	/**
@@ -319,12 +334,12 @@ class ActivoFijoController extends Controller {
 	public function excel(Request $request)
 	{	
 		//se crea una array con los parametros necesarios para crear el excel con el request
-		$data =Detalles::
-				tipo($request->get('tipo'))
-				->clave($request->get('Clave'))
-				->descemp($request->get('DescEmp'))
-				->descOfna($request->get('DescOfna'))
-				->where('ultimo',1)->get();
+		$data = Detalles::
+			  tipo($request->get('tipo'))
+			->clave($request->get('Clave'))
+			->descemp($request->get('DescEmp'))
+			->descOfna($request->get('DescOfna'))
+			->where('ultimo',1)->get();
 
 		//Exportar Excel y el use es para pasar variables en el interior
 		Excel::create('ActivoFijo',function($excel) use ($data)

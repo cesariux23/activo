@@ -52,6 +52,16 @@
 	<label><b>Descripción del Artículo</b></label>
 	<p>{{$bien->DescArt}}</p>
 </div>
+<div class="row">
+	<div class="col-xs-3">
+		<b>Estado del bien</b>
+		<p>{{$bien->Edo}}</p>
+	</div>
+	<div class="col-xs-3">
+		<b>Bien localizado</b>
+		<p>{{$bien->Localiz == "S" ? "Sí" : "No"}}</p>
+	</div>
+</div>
 
 @include('activofijo.tablaresponsable',['detalles'=>$bien->detalles])
 
