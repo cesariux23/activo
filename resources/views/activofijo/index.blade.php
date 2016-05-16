@@ -76,7 +76,7 @@
 		@endif
 
 		@if($activofijo->total()>0)
-		@include('activofijo.tablabienes');
+			@include('activofijo.tablabienes');
 
 		{!! $activofijo->appends(Request::only('Clave','NumInv','desc','DescEmp','DescOfna'))->render() !!}
 		@endif

@@ -105,13 +105,11 @@ class ActivoFijo extends Model {
             $query->where('DescOfna','LIKE','%'.$descofna.'%');
     }
 
-    public function getUltimoAttribute()
+     public function getUltimaAsignacionAttribute()
     {
-        return MovtosDetalle::where('ultimo',0)
+        return Detalles::where('ultimo',0)
         ->where('Movto',$this->Movto)
-        ->whereRaw("NOT edo like '%BAJA%' and NOT edodelbien like '%BAJA%'")
+        ->whereRaw("NOT Edo like '%BAJA%' and NOT EdoDelBien like '%BAJA%'")
         ->first();
     }
 }
-
-
